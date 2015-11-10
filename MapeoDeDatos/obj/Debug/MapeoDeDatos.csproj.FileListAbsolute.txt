@@ -1,0 +1,7 @@
+C:\Users\Pablo\Documents\Visual Studio 2010\Projects\Solución 'AlquileresDEC'\MapeoDeDatos\bin\Debug\MapeoDeDatos.dll
+C:\Users\Pablo\Documents\Visual Studio 2010\Projects\Solución 'AlquileresDEC'\MapeoDeDatos\bin\Debug\MapeoDeDatos.pdb
+C:\Users\Pablo\Documents\Visual Studio 2010\Projects\Solución 'AlquileresDEC'\MapeoDeDatos\bin\Debug\Entidades.dll
+C:\Users\Pablo\Documents\Visual Studio 2010\Projects\Solución 'AlquileresDEC'\MapeoDeDatos\bin\Debug\Entidades.pdb
+C:\Users\Pablo\Documents\Visual Studio 2010\Projects\Solución 'AlquileresDEC'\MapeoDeDatos\obj\Debug\MapeoDeDatos.csprojResolveAssemblyReference.cache
+C:\Users\Pablo\Documents\Visual Studio 2010\Projects\Solución 'AlquileresDEC'\MapeoDeDatos\obj\Debug\MapeoDeDatos.dll
+C:\Users\Pablo\Documents\Visual Studio 2010\Projects\Solución 'AlquileresDEC'\MapeoDeDatos\obj\Debug\MapeoDeDatos.pdb

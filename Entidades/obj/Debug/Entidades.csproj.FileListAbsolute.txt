@@ -1,0 +1,4 @@
+C:\Users\Pablo\Documents\Visual Studio 2010\Projects\Solución 'AlquileresDEC'\Entidades\bin\Debug\Entidades.dll
+C:\Users\Pablo\Documents\Visual Studio 2010\Projects\Solución 'AlquileresDEC'\Entidades\bin\Debug\Entidades.pdb
+C:\Users\Pablo\Documents\Visual Studio 2010\Projects\Solución 'AlquileresDEC'\Entidades\obj\Debug\Entidades.dll
+C:\Users\Pablo\Documents\Visual Studio 2010\Projects\Solución 'AlquileresDEC'\Entidades\obj\Debug\Entidades.pdb
