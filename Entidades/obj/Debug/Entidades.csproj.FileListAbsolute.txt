@@ -2,3 +2,7 @@ C:\Users\Pablo\Documents\Visual Studio 2010\Projects\Solución 'AlquileresDEC'\E
 C:\Users\Pablo\Documents\Visual Studio 2010\Projects\Solución 'AlquileresDEC'\Entidades\bin\Debug\Entidades.pdb
 C:\Users\Pablo\Documents\Visual Studio 2010\Projects\Solución 'AlquileresDEC'\Entidades\obj\Debug\Entidades.dll
 C:\Users\Pablo\Documents\Visual Studio 2010\Projects\Solución 'AlquileresDEC'\Entidades\obj\Debug\Entidades.pdb
+C:\Users\Pablo\Desktop\AplicacionAlquilerDEC\Entidades\bin\Debug\Entidades.dll
+C:\Users\Pablo\Desktop\AplicacionAlquilerDEC\Entidades\bin\Debug\Entidades.pdb
+C:\Users\Pablo\Desktop\AplicacionAlquilerDEC\Entidades\obj\Debug\Entidades.dll
+C:\Users\Pablo\Desktop\AplicacionAlquilerDEC\Entidades\obj\Debug\Entidades.pdb
