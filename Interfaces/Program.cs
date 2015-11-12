@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using AlquileresDEC.Interfaces;
 
 namespace Interfaces
 {
@@ -15,7 +16,7 @@ namespace Interfaces
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ABM_Propiedad());
+            Application.Run(new Menu_Principal());
         }
     }
 }

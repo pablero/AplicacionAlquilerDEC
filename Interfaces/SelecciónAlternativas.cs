@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace AlquileresDEC.Interfaces
 {
-    public partial class SelecciónAlternativas : Form
+    public partial class Seleccion_Alternativas : Form
     {
-        public SelecciónAlternativas()
+        public Seleccion_Alternativas()
         {
             InitializeComponent();
         }

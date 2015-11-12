@@ -10,9 +10,9 @@ using Interfaces;
 
 namespace AlquileresDEC.Interfaces
 {
-    public partial class MenuPrincipal : Form
+    public partial class Menu_Principal : Form
     {
-        public MenuPrincipal()
+        public Menu_Principal()
         {
             InitializeComponent();
         }
@@ -21,6 +21,23 @@ namespace AlquileresDEC.Interfaces
         {
             var form = new ABM_Propiedad();
             form.Show();
+        }
+
+        private void consultarPropiedadesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new Consulta_Propiedades();
+            form.Show();
+        }
+
+        private void selecciónDeAlternativasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new Seleccion_Alternativas();
+            form.Show();
+        }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Dispose();
         }
 
     }

@@ -30,9 +30,7 @@ C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\Interfaces.
 C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\Interfaces.pdb
 C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\Interfaces.csprojResolveAssemblyReference.cache
 C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\AlquileresDEC.Interfaces.Consulta_Propiedades.resources
-C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\AlquileresDEC.Interfaces.MenuPrincipal.resources
 C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\AlquileresDEC.Interfaces.Properties.Resources.resources
-C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\AlquileresDEC.Interfaces.SelecciónAlternativas.resources
 C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\Interfaces.csproj.GenerateResource.Cache
 C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\Interfaces.ABM_Propiedad.resources
 C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\bin\Debug\Interfaces.exe
@@ -41,3 +39,5 @@ C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\bin\Debug\Entidades.dll
 C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\bin\Debug\MapeoDeDatos.dll
 C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\bin\Debug\Entidades.pdb
 C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\bin\Debug\MapeoDeDatos.pdb
+C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\AlquileresDEC.Interfaces.Menu_Principal.resources
+C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\AlquileresDEC.Interfaces.Seleccion_Alternativas.resources

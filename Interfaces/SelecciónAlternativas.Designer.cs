@@ -1,6 +1,6 @@
 ﻿namespace AlquileresDEC.Interfaces
 {
-    partial class SelecciónAlternativas
+    partial class Seleccion_Alternativas
     {
         /// <summary>
         /// Required designer variable.
@@ -43,27 +43,27 @@
             this.label1 = new System.Windows.Forms.Label();
             this.gbAlternativasCandidatas = new System.Windows.Forms.GroupBox();
             this.dgvAltCandidatas = new System.Windows.Forms.DataGridView();
+            this.Seleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnQuitar = new System.Windows.Forms.Button();
             this.gbAlternativasElegidas = new System.Windows.Forms.GroupBox();
             this.dgvAltElegidas = new System.Windows.Forms.DataGridView();
+            this.Seleccionar2 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnAgregarTodos = new System.Windows.Forms.Button();
             this.btnQuitarTodos = new System.Windows.Forms.Button();
             this.gbParametros = new System.Windows.Forms.GroupBox();
+            this.btnExcel = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.gbNormalizacion = new System.Windows.Forms.GroupBox();
+            this.rbMaximo = new System.Windows.Forms.RadioButton();
+            this.rbRaiz = new System.Windows.Forms.RadioButton();
+            this.rbSuma = new System.Windows.Forms.RadioButton();
+            this.gbSeleccionP = new System.Windows.Forms.GroupBox();
+            this.cmbP = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.dgvCriterios = new System.Windows.Forms.DataGridView();
             this.Criterios = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Objetivo = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.gbNormalizacion = new System.Windows.Forms.GroupBox();
-            this.Seleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Seleccionar2 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.gbSeleccionP = new System.Windows.Forms.GroupBox();
-            this.rbSuma = new System.Windows.Forms.RadioButton();
-            this.rbRaiz = new System.Windows.Forms.RadioButton();
-            this.rbMaximo = new System.Windows.Forms.RadioButton();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cmbP = new System.Windows.Forms.ComboBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnExcel = new System.Windows.Forms.Button();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.gbFiltros.SuspendLayout();
@@ -72,10 +72,10 @@
             this.gbAlternativasElegidas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAltElegidas)).BeginInit();
             this.gbParametros.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCriterios)).BeginInit();
+            this.groupBox5.SuspendLayout();
             this.gbNormalizacion.SuspendLayout();
             this.gbSeleccionP.SuspendLayout();
-            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCriterios)).BeginInit();
             this.SuspendLayout();
             // 
             // gbFiltros
@@ -92,60 +92,68 @@
             this.gbFiltros.Controls.Add(this.label2);
             this.gbFiltros.Controls.Add(this.cmbFiltroTipoPropiedad);
             this.gbFiltros.Controls.Add(this.label1);
-            this.gbFiltros.Location = new System.Drawing.Point(8, 12);
+            this.gbFiltros.Location = new System.Drawing.Point(12, 18);
+            this.gbFiltros.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbFiltros.Name = "gbFiltros";
-            this.gbFiltros.Size = new System.Drawing.Size(733, 113);
+            this.gbFiltros.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.gbFiltros.Size = new System.Drawing.Size(1100, 174);
             this.gbFiltros.TabIndex = 1;
             this.gbFiltros.TabStop = false;
             this.gbFiltros.Text = "Filtros";
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(394, 84);
+            this.btnLimpiar.Location = new System.Drawing.Point(591, 129);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpiar.Size = new System.Drawing.Size(112, 35);
             this.btnLimpiar.TabIndex = 13;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(280, 84);
+            this.btnBuscar.Location = new System.Drawing.Point(420, 129);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.Size = new System.Drawing.Size(112, 35);
             this.btnBuscar.TabIndex = 11;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             // 
             // txtPrecioHasta
             // 
-            this.txtPrecioHasta.Location = new System.Drawing.Point(225, 48);
+            this.txtPrecioHasta.Location = new System.Drawing.Point(338, 74);
+            this.txtPrecioHasta.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPrecioHasta.Name = "txtPrecioHasta";
-            this.txtPrecioHasta.Size = new System.Drawing.Size(92, 20);
+            this.txtPrecioHasta.Size = new System.Drawing.Size(136, 26);
             this.txtPrecioHasta.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(206, 52);
+            this.label4.Location = new System.Drawing.Point(309, 80);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(13, 13);
+            this.label4.Size = new System.Drawing.Size(18, 20);
             this.label4.TabIndex = 18;
             this.label4.Text = "a";
             // 
             // txtPrecioDesde
             // 
-            this.txtPrecioDesde.Location = new System.Drawing.Point(111, 48);
+            this.txtPrecioDesde.Location = new System.Drawing.Point(166, 74);
+            this.txtPrecioDesde.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPrecioDesde.Name = "txtPrecioDesde";
-            this.txtPrecioDesde.Size = new System.Drawing.Size(89, 20);
+            this.txtPrecioDesde.Size = new System.Drawing.Size(132, 26);
             this.txtPrecioDesde.TabIndex = 3;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(53, 51);
+            this.label8.Location = new System.Drawing.Point(80, 78);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 13);
+            this.label8.Size = new System.Drawing.Size(76, 20);
             this.label8.TabIndex = 16;
             this.label8.Text = "Precio ($)";
             // 
@@ -153,35 +161,39 @@
             // 
             this.cmbFiltroBarrio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFiltroBarrio.FormattingEnabled = true;
-            this.cmbFiltroBarrio.Location = new System.Drawing.Point(419, 50);
+            this.cmbFiltroBarrio.Location = new System.Drawing.Point(628, 77);
+            this.cmbFiltroBarrio.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbFiltroBarrio.Name = "cmbFiltroBarrio";
-            this.cmbFiltroBarrio.Size = new System.Drawing.Size(255, 21);
+            this.cmbFiltroBarrio.Size = new System.Drawing.Size(380, 28);
             this.cmbFiltroBarrio.TabIndex = 9;
             // 
             // cmbFiltroLocalidad
             // 
             this.cmbFiltroLocalidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFiltroLocalidad.FormattingEnabled = true;
-            this.cmbFiltroLocalidad.Location = new System.Drawing.Point(419, 19);
+            this.cmbFiltroLocalidad.Location = new System.Drawing.Point(628, 29);
+            this.cmbFiltroLocalidad.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbFiltroLocalidad.Name = "cmbFiltroLocalidad";
-            this.cmbFiltroLocalidad.Size = new System.Drawing.Size(255, 21);
+            this.cmbFiltroLocalidad.Size = new System.Drawing.Size(380, 28);
             this.cmbFiltroLocalidad.TabIndex = 7;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(370, 50);
+            this.label3.Location = new System.Drawing.Point(555, 77);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(34, 13);
+            this.label3.Size = new System.Drawing.Size(51, 20);
             this.label3.TabIndex = 7;
             this.label3.Text = "Barrio";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(360, 22);
+            this.label2.Location = new System.Drawing.Point(540, 34);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 13);
+            this.label2.Size = new System.Drawing.Size(77, 20);
             this.label2.TabIndex = 6;
             this.label2.Text = "Localidad";
             // 
@@ -189,26 +201,30 @@
             // 
             this.cmbFiltroTipoPropiedad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFiltroTipoPropiedad.FormattingEnabled = true;
-            this.cmbFiltroTipoPropiedad.Location = new System.Drawing.Point(111, 19);
+            this.cmbFiltroTipoPropiedad.Location = new System.Drawing.Point(166, 29);
+            this.cmbFiltroTipoPropiedad.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbFiltroTipoPropiedad.Name = "cmbFiltroTipoPropiedad";
-            this.cmbFiltroTipoPropiedad.Size = new System.Drawing.Size(206, 21);
+            this.cmbFiltroTipoPropiedad.Size = new System.Drawing.Size(307, 28);
             this.cmbFiltroTipoPropiedad.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 22);
+            this.label1.Location = new System.Drawing.Point(16, 34);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 13);
+            this.label1.Size = new System.Drawing.Size(137, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Tipo de Propiedad";
             // 
             // gbAlternativasCandidatas
             // 
             this.gbAlternativasCandidatas.Controls.Add(this.dgvAltCandidatas);
-            this.gbAlternativasCandidatas.Location = new System.Drawing.Point(10, 131);
+            this.gbAlternativasCandidatas.Location = new System.Drawing.Point(15, 202);
+            this.gbAlternativasCandidatas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbAlternativasCandidatas.Name = "gbAlternativasCandidatas";
-            this.gbAlternativasCandidatas.Size = new System.Drawing.Size(381, 236);
+            this.gbAlternativasCandidatas.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.gbAlternativasCandidatas.Size = new System.Drawing.Size(572, 363);
             this.gbAlternativasCandidatas.TabIndex = 2;
             this.gbAlternativasCandidatas.TabStop = false;
             this.gbAlternativasCandidatas.Text = "Alternativas Candidatas";
@@ -220,25 +236,33 @@
             this.dgvAltCandidatas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAltCandidatas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar});
-            this.dgvAltCandidatas.Location = new System.Drawing.Point(12, 19);
+            this.dgvAltCandidatas.Location = new System.Drawing.Point(18, 29);
+            this.dgvAltCandidatas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvAltCandidatas.Name = "dgvAltCandidatas";
-            this.dgvAltCandidatas.Size = new System.Drawing.Size(354, 199);
+            this.dgvAltCandidatas.Size = new System.Drawing.Size(531, 306);
             this.dgvAltCandidatas.TabIndex = 15;
+            // 
+            // Seleccionar
+            // 
+            this.Seleccionar.HeaderText = "Seleccionar";
+            this.Seleccionar.Name = "Seleccionar";
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(402, 172);
+            this.btnAgregar.Location = new System.Drawing.Point(603, 265);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregar.Size = new System.Drawing.Size(112, 35);
             this.btnAgregar.TabIndex = 17;
             this.btnAgregar.Text = "--->";
             this.btnAgregar.UseVisualStyleBackColor = true;
             // 
             // btnQuitar
             // 
-            this.btnQuitar.Location = new System.Drawing.Point(402, 259);
+            this.btnQuitar.Location = new System.Drawing.Point(603, 398);
+            this.btnQuitar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnQuitar.Name = "btnQuitar";
-            this.btnQuitar.Size = new System.Drawing.Size(75, 23);
+            this.btnQuitar.Size = new System.Drawing.Size(112, 35);
             this.btnQuitar.TabIndex = 23;
             this.btnQuitar.Text = "<---";
             this.btnQuitar.UseVisualStyleBackColor = true;
@@ -246,9 +270,11 @@
             // gbAlternativasElegidas
             // 
             this.gbAlternativasElegidas.Controls.Add(this.dgvAltElegidas);
-            this.gbAlternativasElegidas.Location = new System.Drawing.Point(488, 131);
+            this.gbAlternativasElegidas.Location = new System.Drawing.Point(732, 202);
+            this.gbAlternativasElegidas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbAlternativasElegidas.Name = "gbAlternativasElegidas";
-            this.gbAlternativasElegidas.Size = new System.Drawing.Size(389, 236);
+            this.gbAlternativasElegidas.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.gbAlternativasElegidas.Size = new System.Drawing.Size(584, 363);
             this.gbAlternativasElegidas.TabIndex = 17;
             this.gbAlternativasElegidas.TabStop = false;
             this.gbAlternativasElegidas.Text = "Alternativas Elegidas";
@@ -260,25 +286,33 @@
             this.dgvAltElegidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAltElegidas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar2});
-            this.dgvAltElegidas.Location = new System.Drawing.Point(16, 19);
+            this.dgvAltElegidas.Location = new System.Drawing.Point(24, 29);
+            this.dgvAltElegidas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvAltElegidas.Name = "dgvAltElegidas";
-            this.dgvAltElegidas.Size = new System.Drawing.Size(354, 199);
+            this.dgvAltElegidas.Size = new System.Drawing.Size(531, 306);
             this.dgvAltElegidas.TabIndex = 21;
+            // 
+            // Seleccionar2
+            // 
+            this.Seleccionar2.HeaderText = "Seleccionar";
+            this.Seleccionar2.Name = "Seleccionar2";
             // 
             // btnAgregarTodos
             // 
-            this.btnAgregarTodos.Location = new System.Drawing.Point(402, 201);
+            this.btnAgregarTodos.Location = new System.Drawing.Point(603, 309);
+            this.btnAgregarTodos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAgregarTodos.Name = "btnAgregarTodos";
-            this.btnAgregarTodos.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregarTodos.Size = new System.Drawing.Size(112, 35);
             this.btnAgregarTodos.TabIndex = 19;
             this.btnAgregarTodos.Text = "--->>";
             this.btnAgregarTodos.UseVisualStyleBackColor = true;
             // 
             // btnQuitarTodos
             // 
-            this.btnQuitarTodos.Location = new System.Drawing.Point(402, 288);
+            this.btnQuitarTodos.Location = new System.Drawing.Point(603, 443);
+            this.btnQuitarTodos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnQuitarTodos.Name = "btnQuitarTodos";
-            this.btnQuitarTodos.Size = new System.Drawing.Size(75, 23);
+            this.btnQuitarTodos.Size = new System.Drawing.Size(112, 35);
             this.btnQuitarTodos.TabIndex = 25;
             this.btnQuitarTodos.Text = "<<---";
             this.btnQuitarTodos.UseVisualStyleBackColor = true;
@@ -288,12 +322,117 @@
             this.gbParametros.Controls.Add(this.btnExcel);
             this.gbParametros.Controls.Add(this.groupBox5);
             this.gbParametros.Controls.Add(this.dgvCriterios);
-            this.gbParametros.Location = new System.Drawing.Point(10, 385);
+            this.gbParametros.Location = new System.Drawing.Point(15, 592);
+            this.gbParametros.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbParametros.Name = "gbParametros";
-            this.gbParametros.Size = new System.Drawing.Size(867, 244);
+            this.gbParametros.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.gbParametros.Size = new System.Drawing.Size(1300, 375);
             this.gbParametros.TabIndex = 23;
             this.gbParametros.TabStop = false;
             this.gbParametros.Text = "Parámetros a utilizar en Topsis";
+            // 
+            // btnExcel
+            // 
+            this.btnExcel.Location = new System.Drawing.Point(189, 309);
+            this.btnExcel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(162, 35);
+            this.btnExcel.TabIndex = 36;
+            this.btnExcel.Text = "Exportar A Excel";
+            this.btnExcel.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.gbNormalizacion);
+            this.groupBox5.Controls.Add(this.gbSeleccionP);
+            this.groupBox5.Location = new System.Drawing.Point(588, 29);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox5.Size = new System.Drawing.Size(704, 271);
+            this.groupBox5.TabIndex = 3;
+            this.groupBox5.TabStop = false;
+            // 
+            // gbNormalizacion
+            // 
+            this.gbNormalizacion.Controls.Add(this.rbMaximo);
+            this.gbNormalizacion.Controls.Add(this.rbRaiz);
+            this.gbNormalizacion.Controls.Add(this.rbSuma);
+            this.gbNormalizacion.Location = new System.Drawing.Point(9, 29);
+            this.gbNormalizacion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.gbNormalizacion.Name = "gbNormalizacion";
+            this.gbNormalizacion.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.gbNormalizacion.Size = new System.Drawing.Size(648, 85);
+            this.gbNormalizacion.TabIndex = 29;
+            this.gbNormalizacion.TabStop = false;
+            this.gbNormalizacion.Text = "Selección de Normalización";
+            // 
+            // rbMaximo
+            // 
+            this.rbMaximo.AutoSize = true;
+            this.rbMaximo.Location = new System.Drawing.Point(504, 35);
+            this.rbMaximo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.rbMaximo.Name = "rbMaximo";
+            this.rbMaximo.Size = new System.Drawing.Size(88, 24);
+            this.rbMaximo.TabIndex = 32;
+            this.rbMaximo.Text = "Máximo";
+            this.rbMaximo.UseVisualStyleBackColor = true;
+            // 
+            // rbRaiz
+            // 
+            this.rbRaiz.AutoSize = true;
+            this.rbRaiz.Location = new System.Drawing.Point(266, 35);
+            this.rbRaiz.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.rbRaiz.Name = "rbRaiz";
+            this.rbRaiz.Size = new System.Drawing.Size(66, 24);
+            this.rbRaiz.TabIndex = 31;
+            this.rbRaiz.Text = "Raíz";
+            this.rbRaiz.UseVisualStyleBackColor = true;
+            // 
+            // rbSuma
+            // 
+            this.rbSuma.AutoSize = true;
+            this.rbSuma.Checked = true;
+            this.rbSuma.Location = new System.Drawing.Point(28, 35);
+            this.rbSuma.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.rbSuma.Name = "rbSuma";
+            this.rbSuma.Size = new System.Drawing.Size(76, 24);
+            this.rbSuma.TabIndex = 30;
+            this.rbSuma.TabStop = true;
+            this.rbSuma.Text = "Suma";
+            this.rbSuma.UseVisualStyleBackColor = true;
+            // 
+            // gbSeleccionP
+            // 
+            this.gbSeleccionP.Controls.Add(this.cmbP);
+            this.gbSeleccionP.Controls.Add(this.label5);
+            this.gbSeleccionP.Location = new System.Drawing.Point(9, 138);
+            this.gbSeleccionP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.gbSeleccionP.Name = "gbSeleccionP";
+            this.gbSeleccionP.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.gbSeleccionP.Size = new System.Drawing.Size(648, 91);
+            this.gbSeleccionP.TabIndex = 34;
+            this.gbSeleccionP.TabStop = false;
+            this.gbSeleccionP.Text = "Selección del valor de P";
+            // 
+            // cmbP
+            // 
+            this.cmbP.FormattingEnabled = true;
+            this.cmbP.Location = new System.Drawing.Point(242, 37);
+            this.cmbP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbP.Name = "cmbP";
+            this.cmbP.Size = new System.Drawing.Size(238, 28);
+            this.cmbP.TabIndex = 35;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(202, 42);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(28, 20);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "P=";
             // 
             // dgvCriterios
             // 
@@ -301,9 +440,10 @@
             this.dgvCriterios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Criterios,
             this.Objetivo});
-            this.dgvCriterios.Location = new System.Drawing.Point(12, 19);
+            this.dgvCriterios.Location = new System.Drawing.Point(18, 29);
+            this.dgvCriterios.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvCriterios.Name = "dgvCriterios";
-            this.dgvCriterios.Size = new System.Drawing.Size(369, 176);
+            this.dgvCriterios.Size = new System.Drawing.Size(554, 271);
             this.dgvCriterios.TabIndex = 27;
             // 
             // Criterios
@@ -319,130 +459,31 @@
             "Minimizar"});
             this.Objetivo.Name = "Objetivo";
             // 
-            // gbNormalizacion
-            // 
-            this.gbNormalizacion.Controls.Add(this.rbMaximo);
-            this.gbNormalizacion.Controls.Add(this.rbRaiz);
-            this.gbNormalizacion.Controls.Add(this.rbSuma);
-            this.gbNormalizacion.Location = new System.Drawing.Point(6, 19);
-            this.gbNormalizacion.Name = "gbNormalizacion";
-            this.gbNormalizacion.Size = new System.Drawing.Size(432, 55);
-            this.gbNormalizacion.TabIndex = 29;
-            this.gbNormalizacion.TabStop = false;
-            this.gbNormalizacion.Text = "Selección de Normalización";
-            // 
-            // Seleccionar
-            // 
-            this.Seleccionar.HeaderText = "Seleccionar";
-            this.Seleccionar.Name = "Seleccionar";
-            // 
-            // Seleccionar2
-            // 
-            this.Seleccionar2.HeaderText = "Seleccionar";
-            this.Seleccionar2.Name = "Seleccionar2";
-            // 
-            // gbSeleccionP
-            // 
-            this.gbSeleccionP.Controls.Add(this.cmbP);
-            this.gbSeleccionP.Controls.Add(this.label5);
-            this.gbSeleccionP.Location = new System.Drawing.Point(6, 90);
-            this.gbSeleccionP.Name = "gbSeleccionP";
-            this.gbSeleccionP.Size = new System.Drawing.Size(432, 59);
-            this.gbSeleccionP.TabIndex = 34;
-            this.gbSeleccionP.TabStop = false;
-            this.gbSeleccionP.Text = "Selección del valor de P";
-            // 
-            // rbSuma
-            // 
-            this.rbSuma.AutoSize = true;
-            this.rbSuma.Checked = true;
-            this.rbSuma.Location = new System.Drawing.Point(19, 23);
-            this.rbSuma.Name = "rbSuma";
-            this.rbSuma.Size = new System.Drawing.Size(52, 17);
-            this.rbSuma.TabIndex = 30;
-            this.rbSuma.TabStop = true;
-            this.rbSuma.Text = "Suma";
-            this.rbSuma.UseVisualStyleBackColor = true;
-            // 
-            // rbRaiz
-            // 
-            this.rbRaiz.AutoSize = true;
-            this.rbRaiz.Location = new System.Drawing.Point(177, 23);
-            this.rbRaiz.Name = "rbRaiz";
-            this.rbRaiz.Size = new System.Drawing.Size(48, 17);
-            this.rbRaiz.TabIndex = 31;
-            this.rbRaiz.Text = "Raíz";
-            this.rbRaiz.UseVisualStyleBackColor = true;
-            // 
-            // rbMaximo
-            // 
-            this.rbMaximo.AutoSize = true;
-            this.rbMaximo.Location = new System.Drawing.Point(336, 23);
-            this.rbMaximo.Name = "rbMaximo";
-            this.rbMaximo.Size = new System.Drawing.Size(61, 17);
-            this.rbMaximo.TabIndex = 32;
-            this.rbMaximo.Text = "Máximo";
-            this.rbMaximo.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(135, 27);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(20, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "P=";
-            // 
-            // cmbP
-            // 
-            this.cmbP.FormattingEnabled = true;
-            this.cmbP.Location = new System.Drawing.Point(161, 24);
-            this.cmbP.Name = "cmbP";
-            this.cmbP.Size = new System.Drawing.Size(160, 21);
-            this.cmbP.TabIndex = 35;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.gbNormalizacion);
-            this.groupBox5.Controls.Add(this.gbSeleccionP);
-            this.groupBox5.Location = new System.Drawing.Point(392, 19);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(469, 176);
-            this.groupBox5.TabIndex = 3;
-            this.groupBox5.TabStop = false;
-            // 
-            // btnExcel
-            // 
-            this.btnExcel.Location = new System.Drawing.Point(126, 201);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(108, 23);
-            this.btnExcel.TabIndex = 36;
-            this.btnExcel.Text = "Exportar A Excel";
-            this.btnExcel.UseVisualStyleBackColor = true;
-            // 
             // btnGenerar
             // 
-            this.btnGenerar.Location = new System.Drawing.Point(280, 635);
+            this.btnGenerar.Location = new System.Drawing.Point(420, 977);
+            this.btnGenerar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnGenerar.Name = "btnGenerar";
-            this.btnGenerar.Size = new System.Drawing.Size(111, 39);
+            this.btnGenerar.Size = new System.Drawing.Size(166, 60);
             this.btnGenerar.TabIndex = 38;
             this.btnGenerar.Text = "Generar Solución Topsis";
             this.btnGenerar.UseVisualStyleBackColor = true;
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(488, 635);
+            this.btnSalir.Location = new System.Drawing.Point(732, 977);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(87, 39);
+            this.btnSalir.Size = new System.Drawing.Size(130, 60);
             this.btnSalir.TabIndex = 40;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             // 
-            // SelecciónAlternativas
+            // Seleccion_Alternativas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(883, 686);
+            this.ClientSize = new System.Drawing.Size(1324, 1051);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnGenerar);
             this.Controls.Add(this.gbParametros);
@@ -453,7 +494,8 @@
             this.Controls.Add(this.btnQuitar);
             this.Controls.Add(this.gbAlternativasCandidatas);
             this.Controls.Add(this.gbFiltros);
-            this.Name = "SelecciónAlternativas";
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Name = "Seleccion_Alternativas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SelecciónAlternativas";
             this.gbFiltros.ResumeLayout(false);
@@ -463,12 +505,12 @@
             this.gbAlternativasElegidas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAltElegidas)).EndInit();
             this.gbParametros.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCriterios)).EndInit();
+            this.groupBox5.ResumeLayout(false);
             this.gbNormalizacion.ResumeLayout(false);
             this.gbNormalizacion.PerformLayout();
             this.gbSeleccionP.ResumeLayout(false);
             this.gbSeleccionP.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCriterios)).EndInit();
             this.ResumeLayout(false);
 
         }
