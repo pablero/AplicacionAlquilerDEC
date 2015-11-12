@@ -1,0 +1,7 @@
+C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\MapeoDeDatos\bin\Release\MapeoDeDatos.dll
+C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\MapeoDeDatos\bin\Release\MapeoDeDatos.pdb
+C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\MapeoDeDatos\bin\Release\Entidades.dll
+C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\MapeoDeDatos\bin\Release\Entidades.pdb
+C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\MapeoDeDatos\obj\Release\MapeoDeDatos.csprojResolveAssemblyReference.cache
+C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\MapeoDeDatos\obj\Release\MapeoDeDatos.dll
+C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\MapeoDeDatos\obj\Release\MapeoDeDatos.pdb

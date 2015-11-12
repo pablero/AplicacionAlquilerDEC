@@ -10,15 +10,16 @@ using AlquileresDEC.Datos;
 using AlquileresDEC.Entidades;
 using System.IO;
 using System.Drawing.Imaging;
+using AlquileresDEC.Interfaces;
 
 namespace Interfaces
 {
-    public partial class Form1 : Form
+    public partial class ABM_Propiedad : Form
     {        
         private MapeoPropiedad mp;
         private byte[] foto;
 
-        public Form1()
+        public ABM_Propiedad()
         {
             InitializeComponent();
             mp = new MapeoPropiedad();             
@@ -155,6 +156,12 @@ namespace Interfaces
             {
                 pbFoto.Image = Image.FromFile(dialog.FileName);
             }
+        }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            var form = new Consulta_Propiedades();
+            form.Show();
         }
     }
 }

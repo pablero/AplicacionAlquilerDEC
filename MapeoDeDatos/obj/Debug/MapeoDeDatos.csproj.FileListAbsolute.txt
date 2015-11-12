@@ -12,3 +12,10 @@ C:\Users\Pablo\Desktop\AplicacionAlquilerDEC\MapeoDeDatos\bin\Debug\Entidades.pd
 C:\Users\Pablo\Desktop\AplicacionAlquilerDEC\MapeoDeDatos\obj\Debug\MapeoDeDatos.csprojResolveAssemblyReference.cache
 C:\Users\Pablo\Desktop\AplicacionAlquilerDEC\MapeoDeDatos\obj\Debug\MapeoDeDatos.dll
 C:\Users\Pablo\Desktop\AplicacionAlquilerDEC\MapeoDeDatos\obj\Debug\MapeoDeDatos.pdb
+C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\MapeoDeDatos\bin\Debug\MapeoDeDatos.dll
+C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\MapeoDeDatos\bin\Debug\MapeoDeDatos.pdb
+C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\MapeoDeDatos\bin\Debug\Entidades.dll
+C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\MapeoDeDatos\bin\Debug\Entidades.pdb
+C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\MapeoDeDatos\obj\Debug\MapeoDeDatos.csprojResolveAssemblyReference.cache
+C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\MapeoDeDatos\obj\Debug\MapeoDeDatos.dll
+C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\MapeoDeDatos\obj\Debug\MapeoDeDatos.pdb
