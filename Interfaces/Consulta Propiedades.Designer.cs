@@ -43,8 +43,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.gbResultados = new System.Windows.Forms.GroupBox();
             this.dgvPropiedades = new System.Windows.Forms.DataGridView();
-            this.Modificar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnVolver = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.gbFiltros.SuspendLayout();
@@ -108,6 +106,8 @@
             this.txtPrecioHasta.Name = "txtPrecioHasta";
             this.txtPrecioHasta.Size = new System.Drawing.Size(136, 26);
             this.txtPrecioHasta.TabIndex = 4;
+            this.txtPrecioHasta.Text = "Máximo";
+            this.txtPrecioHasta.Click += new System.EventHandler(this.txtPrecioHasta_Click);
             this.txtPrecioHasta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioHasta_KeyPress);
             // 
             // label4
@@ -117,9 +117,9 @@
             this.label4.Location = new System.Drawing.Point(324, 80);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(19, 20);
+            this.label4.Size = new System.Drawing.Size(15, 20);
             this.label4.TabIndex = 18;
-            this.label4.Text = "a";
+            this.label4.Text = "-";
             // 
             // txtPrecioDesde
             // 
@@ -129,6 +129,8 @@
             this.txtPrecioDesde.Name = "txtPrecioDesde";
             this.txtPrecioDesde.Size = new System.Drawing.Size(132, 26);
             this.txtPrecioDesde.TabIndex = 3;
+            this.txtPrecioDesde.Text = "Mínimo";
+            this.txtPrecioDesde.Click += new System.EventHandler(this.txtPrecioDesde_Click);
             this.txtPrecioDesde.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioDesde_KeyPress);
             // 
             // label8
@@ -164,6 +166,7 @@
             this.cmbFiltroLocalidad.Size = new System.Drawing.Size(380, 28);
             this.cmbFiltroLocalidad.TabIndex = 2;
             this.cmbFiltroLocalidad.SelectedIndexChanged += new System.EventHandler(this.cmbFiltroLocalidad_SelectedIndexChanged);
+            this.cmbFiltroLocalidad.Click += new System.EventHandler(this.cmbFiltroLocalidad_Click);
             // 
             // label3
             // 
@@ -197,6 +200,7 @@
             this.cmbFiltroTipoPropiedad.Name = "cmbFiltroTipoPropiedad";
             this.cmbFiltroTipoPropiedad.Size = new System.Drawing.Size(307, 28);
             this.cmbFiltroTipoPropiedad.TabIndex = 1;
+            this.cmbFiltroTipoPropiedad.Click += new System.EventHandler(this.cmbFiltroTipoPropiedad_Click);
             // 
             // label1
             // 
@@ -226,24 +230,12 @@
             this.dgvPropiedades.AllowUserToAddRows = false;
             this.dgvPropiedades.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPropiedades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPropiedades.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Modificar,
-            this.Eliminar});
-            this.dgvPropiedades.Location = new System.Drawing.Point(21, 43);
+            this.dgvPropiedades.Location = new System.Drawing.Point(21, 29);
             this.dgvPropiedades.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvPropiedades.Name = "dgvPropiedades";
-            this.dgvPropiedades.Size = new System.Drawing.Size(1050, 268);
+            this.dgvPropiedades.ReadOnly = true;
+            this.dgvPropiedades.Size = new System.Drawing.Size(1050, 282);
             this.dgvPropiedades.TabIndex = 8;
-            // 
-            // Modificar
-            // 
-            this.Modificar.HeaderText = "Modificar";
-            this.Modificar.Name = "Modificar";
-            // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "Eliminar";
-            this.Eliminar.Name = "Eliminar";
             // 
             // btnVolver
             // 
@@ -305,8 +297,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox gbResultados;
         private System.Windows.Forms.DataGridView dgvPropiedades;
-        private System.Windows.Forms.DataGridViewButtonColumn Modificar;
-        private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
         private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnLimpiar;

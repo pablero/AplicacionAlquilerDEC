@@ -146,7 +146,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Menu_Principal";
-            this.Text = "Menú - Alquiler Departamentos - TOPSIS";
+            this.Text = "Menú - Alquiler de Propiedades- TOPSIS";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
