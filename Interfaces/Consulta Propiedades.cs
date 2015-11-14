@@ -14,7 +14,7 @@ namespace AlquileresDEC.Interfaces
     public partial class Consulta_Propiedades : Form
     {
         private MapeoPropiedad mp;
-     
+        
         public Consulta_Propiedades()
         {
             InitializeComponent();
@@ -104,14 +104,6 @@ namespace AlquileresDEC.Interfaces
             {
                 e.Handled = true;
             }
-
-            /*
-            // solo acepta una coma, no deberia permitir una coma como primer caracter...
-            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
-            {
-                e.Handled = true;
-            }
-            */
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -138,77 +130,234 @@ namespace AlquileresDEC.Interfaces
         {
             if (cmbFiltroTipoPropiedad.Text == "<Seleccione un Item de la Lista>" && cmbFiltroBarrio.Enabled == false && (txtPrecioDesde.Text == "" || txtPrecioDesde.Text == "Mínimo") && (txtPrecioHasta.Text == "" || txtPrecioHasta.Text == "Máximo"))
             {
-                MessageBox.Show("Debe completar alguno de los filtros para realizar la búsqueda.","Consulta de Propiedades", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Debe completar por lo menos un filtro para realizar la búsqueda.","Consulta de Propiedades", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 cmbFiltroTipoPropiedad.Focus();
             }
 
-            //Buscar por tipo de propiedad
-            if (cmbFiltroTipoPropiedad.Text != "<Seleccione un Item de la Lista>" && cmbFiltroBarrio.Enabled == false && txtPrecioDesde.Text == "Mínimo" && txtPrecioHasta.Text == "Máximo")
-            {
-
-            }
-
-
-            //Buscar por localidad y barrio
-            if (cmbFiltroTipoPropiedad.Text == "<Seleccione un Item de la Lista>" && cmbFiltroBarrio.Enabled == true && txtPrecioDesde.Text == "Mínimo" && txtPrecioHasta.Text == "Máximo")
-            {
-
-            }
-
-            //Buscar por precio
+            //Validaciones del precio
             if (cmbFiltroTipoPropiedad.Text == "<Seleccione un Item de la Lista>" && cmbFiltroBarrio.Enabled == false && (txtPrecioDesde.Text != "Mínimo" || txtPrecioHasta.Text != "Máximo"))
             {
                 if ((txtPrecioDesde.Text != "Mínimo" && txtPrecioDesde.Text != "") && (txtPrecioHasta.Text != "" && txtPrecioHasta.Text != "Máximo"))
-                { 
-                    //validar menor y mayor
-                }
-
-                if ((txtPrecioDesde.Text != "Mínimo" && txtPrecioDesde.Text != "") || (txtPrecioHasta.Text != "" && txtPrecioHasta.Text != "Máximo"))
                 {
+                    //Valida que el precio mínimo no supere al precio máximo
+                    var precioMinimo = int.Parse(txtPrecioDesde.Text);
+                    var precioMaximo = int.Parse(txtPrecioHasta.Text);
 
+                    if (precioMinimo >= precioMaximo)
+                    {
+                        MessageBox.Show("El precio mínimo debe ser menor al precio máximo.", "Consulta de Propiedades", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
-
             }
-
-            //Buscar por tipo de propiedad, localidad y barrio
-            if (cmbFiltroTipoPropiedad.Text != "<Seleccione un Item de la Lista>" && cmbFiltroBarrio.Enabled == false && txtPrecioDesde.Text == "" && txtPrecioHasta.Text == "")
-            {
-
-            }
-
-            //Buscar por tipo de propiedad y precio
-            if (cmbFiltroTipoPropiedad.Text != "<Seleccione un Item de la Lista>" && cmbFiltroBarrio.Enabled == false && (txtPrecioDesde.Text != "" || txtPrecioHasta.Text != ""))
-            {
-
-            }
-
-            //Buscar por localidad, barrio y precio
-            if (cmbFiltroTipoPropiedad.Text == "<Seleccione un Item de la Lista>" && cmbFiltroBarrio.Enabled == true && (txtPrecioDesde.Text != "" || txtPrecioHasta.Text != ""))
-            {
-
-            }
-
-            //Buscar todas las propiedades
-            if (cmbFiltroTipoPropiedad.Text != "<Seleccione un Item de la Lista>" && cmbFiltroBarrio.Enabled == true && txtPrecioDesde.Text != "" && txtPrecioHasta.Text != "")
-            {
-            
-            }
-
             if (txtPrecioDesde.Text == "")
                 txtPrecioDesde.Text = "Mínimo";
 
             if (txtPrecioHasta.Text == "")
                 txtPrecioHasta.Text = "Máximo";
 
-            //No se encontro ninguna propiedad
+            //NO ME SALIO...
+            /*
+            int? id_tipoPropiedad = null;
+            int? id_localidad = null;
+            int? id_barrio = null;
+            
+            dgvPropiedades.Visible = true;
+
+            if (cmbFiltroTipoPropiedad.SelectedItem != null)
+            {
+                id_tipoPropiedad = int.Parse(cmbFiltroTipoPropiedad.SelectedValue.ToString());
+            }
+            if (cmbFiltroLocalidad.SelectedItem != null)
+            {
+                id_localidad = int.Parse(cmbFiltroLocalidad.SelectedValue.ToString());
+            }
+            if (cmbFiltroBarrio.SelectedItem != null)
+            {
+                id_barrio = int.Parse(cmbFiltroBarrio.SelectedValue.ToString());
+            }
+
+            var pd = txtPrecioDesde.Text;
+            var ph = txtPrecioHasta.Text;
+
+            dgvPropiedades.DataSource = mp.consultarPorFiltro(id_tipoPropiedad, id_localidad, id_barrio, pd, ph);
+            dgvPropiedades.DataMember = "consultaFiltro";
+            */
+
+            //Buscar por tipo de propiedad
+            if (cmbFiltroTipoPropiedad.Text != "<Seleccione un Item de la Lista>" && cmbFiltroBarrio.Enabled == false && txtPrecioDesde.Text == "Mínimo" && txtPrecioHasta.Text == "Máximo")
+            {
+                int id_tipoPropiedad = int.Parse(cmbFiltroTipoPropiedad.SelectedValue.ToString());
+                dgvPropiedades.DataSource = mp.consultarPropiedadesPorTipo(id_tipoPropiedad);
+                dgvPropiedades.DataMember = "Propiedades";
+            }
+
+            //Buscar por localidad y barrio
+            if (cmbFiltroTipoPropiedad.Text == "<Seleccione un Item de la Lista>" && cmbFiltroBarrio.Enabled == true && txtPrecioDesde.Text == "Mínimo" && txtPrecioHasta.Text == "Máximo")
+            {
+                int id_localidad = int.Parse(cmbFiltroLocalidad.SelectedValue.ToString());
+                int id_barrio = int.Parse(cmbFiltroBarrio.SelectedValue.ToString());
+                dgvPropiedades.DataSource = mp.consultarPropiedadesPorLocalidadYBarrio(id_localidad, id_barrio);
+                dgvPropiedades.DataMember = "Propiedades";
+            }
+
+            //Buscar por precio
+            if (cmbFiltroTipoPropiedad.Text == "<Seleccione un Item de la Lista>" && cmbFiltroBarrio.Enabled == false && (txtPrecioDesde.Text != "Mínimo" || txtPrecioHasta.Text != "Máximo"))
+            {
+                //Si no tiene cargado un precio máximo o mínimo lo pone en 0
+                if (txtPrecioDesde.Text == "Mínimo" || txtPrecioDesde.Text == "")
+                    txtPrecioDesde.Text = "0";
+
+                if (txtPrecioHasta.Text == "Máximo" || txtPrecioHasta.Text == "")
+                    txtPrecioHasta.Text = "0";
+
+                //Convierte los precios a entero
+                if ((txtPrecioDesde.Text != "Mínimo" && txtPrecioDesde.Text != "") || (txtPrecioHasta.Text != "" && txtPrecioHasta.Text != "Máximo"))
+                { 
+                    //Valida que el precio mínimo no supere al precio máximo
+                    var precioMinimo = int.Parse(txtPrecioDesde.Text);
+                    var precioMaximo = int.Parse(txtPrecioHasta.Text);
+
+                    if (precioMinimo >= precioMaximo)
+                    {
+                        MessageBox.Show("El precio mínimo debe ser menor al precio máximo.", "Consulta de Propiedades", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+                    else
+                    {
+                        int precioInferior = int.Parse(txtPrecioDesde.Text);
+                        int precioSuperior = int.Parse(txtPrecioHasta.Text);
+
+                        dgvPropiedades.DataSource = mp.consultarPropiedadesPorPrecio(precioInferior,precioSuperior);
+                        dgvPropiedades.DataMember = "Propiedades";        
+                    }
+                } 
+            }
+
+            //Buscar por tipo de propiedad, localidad y barrio
+            if (cmbFiltroTipoPropiedad.Text != "<Seleccione un Item de la Lista>" && cmbFiltroBarrio.Enabled == true && txtPrecioDesde.Text == "Mínimo" && txtPrecioHasta.Text == "Máximo")
+            {
+                int id_tipoPropiedad = int.Parse(cmbFiltroTipoPropiedad.SelectedValue.ToString());
+                int id_localidad = int.Parse(cmbFiltroLocalidad.SelectedValue.ToString());
+                int id_barrio = int.Parse(cmbFiltroBarrio.SelectedValue.ToString());
+                dgvPropiedades.DataSource = mp.consultarPropiedadesPorTipoYUbicacion(id_tipoPropiedad, id_localidad, id_barrio);
+                dgvPropiedades.DataMember = "Propiedades";
+            }
+
+            //Buscar por tipo de propiedad y precio
+            if (cmbFiltroTipoPropiedad.Text != "<Seleccione un Item de la Lista>" && cmbFiltroBarrio.Enabled == false && (txtPrecioDesde.Text != "Mínimo" || txtPrecioHasta.Text != "Máximo"))
+            {
+                int id_tipoPropiedad = int.Parse(cmbFiltroTipoPropiedad.SelectedValue.ToString());
+
+                //Si no tiene cargado un precio máximo o mínimo lo pone en 0
+                if (txtPrecioDesde.Text == "Mínimo" || txtPrecioDesde.Text == "")
+                    txtPrecioDesde.Text = "0";
+
+                if (txtPrecioHasta.Text == "Máximo" || txtPrecioHasta.Text == "")
+                    txtPrecioHasta.Text = "0";
+
+                //Convierte los precios a entero
+                if ((txtPrecioDesde.Text != "Mínimo" && txtPrecioDesde.Text != "") || (txtPrecioHasta.Text != "" && txtPrecioHasta.Text != "Máximo"))
+                {
+                    //Valida que el precio mínimo no supere al precio máximo
+                    var precioMinimo = int.Parse(txtPrecioDesde.Text);
+                    var precioMaximo = int.Parse(txtPrecioHasta.Text);
+
+                    if (precioMinimo >= precioMaximo)
+                    {
+                        MessageBox.Show("El precio mínimo debe ser menor al precio máximo.", "Consulta de Propiedades", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+                    else
+                    {
+                        int precioInferior = int.Parse(txtPrecioDesde.Text);
+                        int precioSuperior = int.Parse(txtPrecioHasta.Text);
+
+                        dgvPropiedades.DataSource = mp.consultarPropiedadesPorTipoYPrecio(id_tipoPropiedad, precioInferior, precioSuperior);
+                        dgvPropiedades.DataMember = "Propiedades";
+                    }
+                } 
+            }
+
+            //Buscar por localidad, barrio y precio
+            if (cmbFiltroTipoPropiedad.Text == "<Seleccione un Item de la Lista>" && cmbFiltroBarrio.Enabled == true && (txtPrecioDesde.Text != "Mínimo" || txtPrecioHasta.Text != "Máximo"))
+            {
+                int id_localidad = int.Parse(cmbFiltroLocalidad.SelectedValue.ToString());
+                int id_barrio = int.Parse(cmbFiltroBarrio.SelectedValue.ToString());
+                
+                //Si no tiene cargado un precio máximo o mínimo lo pone en 0
+                if (txtPrecioDesde.Text == "Mínimo" || txtPrecioDesde.Text == "")
+                    txtPrecioDesde.Text = "0";
+
+                if (txtPrecioHasta.Text == "Máximo" || txtPrecioHasta.Text == "")
+                    txtPrecioHasta.Text = "0";
+
+                //Convierte los precios a entero
+                if ((txtPrecioDesde.Text != "Mínimo" && txtPrecioDesde.Text != "") || (txtPrecioHasta.Text != "" && txtPrecioHasta.Text != "Máximo"))
+                {
+                    //Valida que el precio mínimo no supere al precio máximo
+                    var precioMinimo = int.Parse(txtPrecioDesde.Text);
+                    var precioMaximo = int.Parse(txtPrecioHasta.Text);
+
+                    if (precioMinimo >= precioMaximo)
+                    {
+                        MessageBox.Show("El precio mínimo debe ser menor al precio máximo.", "Consulta de Propiedades", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+                    else
+                    {
+                        int precioInferior = int.Parse(txtPrecioDesde.Text);
+                        int precioSuperior = int.Parse(txtPrecioHasta.Text);
+
+                        dgvPropiedades.DataSource = mp.consultarPropiedadesPorUbicacionYPrecio(id_localidad, id_barrio, precioInferior, precioSuperior);
+                        dgvPropiedades.DataMember = "Propiedades";
+                    }
+                } 
+            }
+
+            //Búsqueda completa
+            if (cmbFiltroTipoPropiedad.Text != "<Seleccione un Item de la Lista>" && cmbFiltroBarrio.Enabled == true && (txtPrecioDesde.Text != "Mínimo" || txtPrecioHasta.Text != "Máximo"))
+            {
+                int id_tipoPropiedad = int.Parse(cmbFiltroTipoPropiedad.SelectedValue.ToString());
+
+                int id_localidad = int.Parse(cmbFiltroLocalidad.SelectedValue.ToString());
+                int id_barrio = int.Parse(cmbFiltroBarrio.SelectedValue.ToString());
+
+                //Si no tiene cargado un precio máximo o mínimo lo pone en 0
+                if (txtPrecioDesde.Text == "Mínimo" || txtPrecioDesde.Text == "")
+                    txtPrecioDesde.Text = "0";
+
+                if (txtPrecioHasta.Text == "Máximo" || txtPrecioHasta.Text == "")
+                    txtPrecioHasta.Text = "0";
+
+                //Convierte los precios a entero
+                if ((txtPrecioDesde.Text != "Mínimo" && txtPrecioDesde.Text != "") || (txtPrecioHasta.Text != "" && txtPrecioHasta.Text != "Máximo"))
+                {
+                    //Valida que el precio mínimo no supere al precio máximo
+                    var precioMinimo = int.Parse(txtPrecioDesde.Text);
+                    var precioMaximo = int.Parse(txtPrecioHasta.Text);
+
+                    if (precioMinimo >= precioMaximo)
+                    {
+                        MessageBox.Show("El precio mínimo debe ser menor al precio máximo.", "Consulta de Propiedades", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+                    else
+                    {
+                        int precioInferior = int.Parse(txtPrecioDesde.Text);
+                        int precioSuperior = int.Parse(txtPrecioHasta.Text);
+
+                        dgvPropiedades.DataSource = mp.consultarPropiedadesPorBúsquedaCompleta(id_tipoPropiedad, id_localidad, id_barrio, precioInferior, precioSuperior);
+                        dgvPropiedades.DataMember = "Propiedades";
+                    }
+                }
+            }
+
+            //Cuando no se encuentra ninguna propiedad
             if (dgvPropiedades.RowCount == 0)
             {
                 MessageBox.Show("No se encontró ninguna propiedad que cumpla con los criterios de búsqueda.", "Advertencia", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 limpiar();
-                /*dgvPropiedades.DataSource = mp.consultarPropiedades();
-                dgvPropiedades.DataMember = "Localidades";
-                //dgvPropiedades.Columns[0].Visible = false;*/
             }
         }
 
@@ -237,9 +386,7 @@ namespace AlquileresDEC.Interfaces
         
             if (txtPrecioHasta.Text == "")
                 txtPrecioHasta.Text = "Máximo";
-        
         }
-
 
         //Al hacer click en una localidad si existe un precio vacio setea "Mínimo" o "Máximo" segun corresponda
         private void cmbFiltroLocalidad_Click(object sender, EventArgs e)
@@ -270,17 +417,10 @@ namespace AlquileresDEC.Interfaces
             txtPrecioDesde.Text = "Mínimo";
             txtPrecioHasta.Text = "Máximo";
             cmbFiltroTipoPropiedad.Focus();
+
+            //Mostrar todas las propiedades en grilla
+            dgvPropiedades.DataSource = mp.consultarPropiedades();
+            dgvPropiedades.DataMember = "Propiedades";
         }
-        /*
-//validar precios
-if (txtPrecioDesde.Text != "" && txtPrecioHasta.Text != "")
-{
-if (Convert.ToInt32(txtPrecioDesde) <= Convert.ToInt32(txtPrecioHasta))
-{ 
-    MessageBox.Show("El precio mínimo debe ser menor al precio máximo.","Consulta de Propiedades", MessageBoxButtons.OK, MessageBoxIcon.Information);
-}
-} */     
-
-
     }
 }
