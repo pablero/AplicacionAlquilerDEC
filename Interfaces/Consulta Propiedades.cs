@@ -108,22 +108,7 @@ namespace AlquileresDEC.Interfaces
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            //Cargar combo TipoPropiedad
-            cmbFiltroTipoPropiedad.DisplayMember = "Nombre";
-            cmbFiltroTipoPropiedad.ValueMember = "Id_tipoPropiedad";
-            cmbFiltroTipoPropiedad.DataSource = ObtenerListaItemOpcionalTP();
-
-            //Cargar combo Localidad
-            cmbFiltroLocalidad.DisplayMember = "Nombre";
-            cmbFiltroLocalidad.ValueMember = "Id_localidad";
-            cmbFiltroLocalidad.DataSource = ObtenerListaItemOpcionalLoc();
-
-            cmbFiltroBarrio.Enabled = false;
-            
-            //Carga txt de precios
-            txtPrecioDesde.Text = "Mínimo";
-            txtPrecioHasta.Text = "Máximo";
-            cmbFiltroTipoPropiedad.Focus();
+            limpiar();    
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -355,7 +340,7 @@ namespace AlquileresDEC.Interfaces
             //Cuando no se encuentra ninguna propiedad
             if (dgvPropiedades.RowCount == 0)
             {
-                MessageBox.Show("No se encontró ninguna propiedad que cumpla con los criterios de búsqueda.", "Advertencia", MessageBoxButtons.OK,
+                MessageBox.Show("No se encontró ninguna propiedad que cumpla con los criterios de búsqueda cargados.", "Advertencia", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 limpiar();
             }
@@ -397,7 +382,6 @@ namespace AlquileresDEC.Interfaces
             if (txtPrecioHasta.Text == "")
                 txtPrecioHasta.Text = "Máximo";
         }
-
 
         public void limpiar()
         {

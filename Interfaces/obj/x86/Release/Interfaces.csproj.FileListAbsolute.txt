@@ -5,10 +5,11 @@ C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\bin\Release\MapeoDeDatos.
 C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\bin\Release\Entidades.pdb
 C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\bin\Release\MapeoDeDatos.pdb
 C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Release\Interfaces.csprojResolveAssemblyReference.cache
-C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Release\Interfaces.Form1.resources
 C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Release\AlquileresDEC.Interfaces.Consulta_Propiedades.resources
 C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Release\AlquileresDEC.Interfaces.Properties.Resources.resources
-C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Release\AlquileresDEC.Interfaces.SelecciónAlternativas.resources
 C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Release\Interfaces.csproj.GenerateResource.Cache
 C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Release\Interfaces.exe
 C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Release\Interfaces.pdb
+C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Release\Interfaces.ABM_Propiedad.resources
+C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Release\AlquileresDEC.Interfaces.Menu_Principal.resources
+C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Release\AlquileresDEC.Interfaces.Seleccion_Alternativas.resources
