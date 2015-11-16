@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using AlquileresDEC.Datos;
 using AlquileresDEC.Entidades;
+using Interfaces;
 
 namespace AlquileresDEC.Interfaces
 {
@@ -43,6 +44,9 @@ namespace AlquileresDEC.Interfaces
             //Mostrar todas las propiedades en grilla
             dgvPropiedades.DataSource = mp.consultarPropiedades();
             dgvPropiedades.DataMember = "Propiedades";
+            
+            //Ocultar id_propiedad
+            dgvPropiedades.Columns[2].Visible = false;
         }
 
         //Listas con ItemOpcional
@@ -131,6 +135,7 @@ namespace AlquileresDEC.Interfaces
                     if (precioMinimo >= precioMaximo)
                     {
                         MessageBox.Show("El precio mínimo debe ser menor al precio máximo.", "Consulta de Propiedades", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtPrecioDesde.Focus();
                     }
                 }
             }
@@ -197,14 +202,23 @@ namespace AlquileresDEC.Interfaces
 
                 //Convierte los precios a entero
                 if ((txtPrecioDesde.Text != "Mínimo" && txtPrecioDesde.Text != "") || (txtPrecioHasta.Text != "" && txtPrecioHasta.Text != "Máximo"))
-                { 
+                {
                     //Valida que el precio mínimo no supere al precio máximo
                     var precioMinimo = int.Parse(txtPrecioDesde.Text);
+                    
                     var precioMaximo = int.Parse(txtPrecioHasta.Text);
 
                     if (precioMinimo >= precioMaximo)
                     {
                         MessageBox.Show("El precio mínimo debe ser menor al precio máximo.", "Consulta de Propiedades", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (precioMaximo == 0)
+                        {
+                            txtPrecioHasta.Text = "";
+                            txtPrecioHasta.Focus();
+                            MessageBox.Show("Debe completar el precio máximo.", "Consulta de Propiedades", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                            txtPrecioDesde.Focus();
                     }
 
                     else
@@ -212,8 +226,8 @@ namespace AlquileresDEC.Interfaces
                         int precioInferior = int.Parse(txtPrecioDesde.Text);
                         int precioSuperior = int.Parse(txtPrecioHasta.Text);
 
-                        dgvPropiedades.DataSource = mp.consultarPropiedadesPorPrecio(precioInferior,precioSuperior);
-                        dgvPropiedades.DataMember = "Propiedades";        
+                        dgvPropiedades.DataSource = mp.consultarPropiedadesPorPrecio(precioInferior, precioSuperior);
+                        dgvPropiedades.DataMember = "Propiedades";
                     }
                 } 
             }
@@ -233,6 +247,7 @@ namespace AlquileresDEC.Interfaces
             {
                 int id_tipoPropiedad = int.Parse(cmbFiltroTipoPropiedad.SelectedValue.ToString());
 
+
                 //Si no tiene cargado un precio máximo o mínimo lo pone en 0
                 if (txtPrecioDesde.Text == "Mínimo" || txtPrecioDesde.Text == "")
                     txtPrecioDesde.Text = "0";
@@ -245,11 +260,20 @@ namespace AlquileresDEC.Interfaces
                 {
                     //Valida que el precio mínimo no supere al precio máximo
                     var precioMinimo = int.Parse(txtPrecioDesde.Text);
+
                     var precioMaximo = int.Parse(txtPrecioHasta.Text);
 
                     if (precioMinimo >= precioMaximo)
                     {
                         MessageBox.Show("El precio mínimo debe ser menor al precio máximo.", "Consulta de Propiedades", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (precioMaximo == 0)
+                        {
+                            txtPrecioHasta.Text = "";
+                            txtPrecioHasta.Focus();
+                            MessageBox.Show("Debe completar el precio máximo.", "Consulta de Propiedades", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                            txtPrecioDesde.Focus();
                     }
 
                     else
@@ -268,7 +292,8 @@ namespace AlquileresDEC.Interfaces
             {
                 int id_localidad = int.Parse(cmbFiltroLocalidad.SelectedValue.ToString());
                 int id_barrio = int.Parse(cmbFiltroBarrio.SelectedValue.ToString());
-                
+
+
                 //Si no tiene cargado un precio máximo o mínimo lo pone en 0
                 if (txtPrecioDesde.Text == "Mínimo" || txtPrecioDesde.Text == "")
                     txtPrecioDesde.Text = "0";
@@ -281,11 +306,20 @@ namespace AlquileresDEC.Interfaces
                 {
                     //Valida que el precio mínimo no supere al precio máximo
                     var precioMinimo = int.Parse(txtPrecioDesde.Text);
+
                     var precioMaximo = int.Parse(txtPrecioHasta.Text);
 
                     if (precioMinimo >= precioMaximo)
                     {
                         MessageBox.Show("El precio mínimo debe ser menor al precio máximo.", "Consulta de Propiedades", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (precioMaximo == 0)
+                        {
+                            txtPrecioHasta.Text = "";
+                            txtPrecioHasta.Focus();
+                            MessageBox.Show("Debe completar el precio máximo.", "Consulta de Propiedades", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                            txtPrecioDesde.Focus();
                     }
 
                     else
@@ -307,6 +341,7 @@ namespace AlquileresDEC.Interfaces
                 int id_localidad = int.Parse(cmbFiltroLocalidad.SelectedValue.ToString());
                 int id_barrio = int.Parse(cmbFiltroBarrio.SelectedValue.ToString());
 
+
                 //Si no tiene cargado un precio máximo o mínimo lo pone en 0
                 if (txtPrecioDesde.Text == "Mínimo" || txtPrecioDesde.Text == "")
                     txtPrecioDesde.Text = "0";
@@ -319,11 +354,20 @@ namespace AlquileresDEC.Interfaces
                 {
                     //Valida que el precio mínimo no supere al precio máximo
                     var precioMinimo = int.Parse(txtPrecioDesde.Text);
+
                     var precioMaximo = int.Parse(txtPrecioHasta.Text);
 
                     if (precioMinimo >= precioMaximo)
                     {
                         MessageBox.Show("El precio mínimo debe ser menor al precio máximo.", "Consulta de Propiedades", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (precioMaximo == 0)
+                        {
+                            txtPrecioHasta.Text = "";
+                            txtPrecioHasta.Focus();
+                            MessageBox.Show("Debe completar el precio máximo.", "Consulta de Propiedades", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                            txtPrecioDesde.Focus();
                     }
 
                     else
@@ -353,7 +397,6 @@ namespace AlquileresDEC.Interfaces
             if (txtPrecioHasta.Text == "")
                 txtPrecioHasta.Text = "Máximo";
         }
-
 
         //Setea "mínimo" cuando no se completa el precio
         private void txtPrecioHasta_Click(object sender, EventArgs e)
@@ -405,6 +448,66 @@ namespace AlquileresDEC.Interfaces
             //Mostrar todas las propiedades en grilla
             dgvPropiedades.DataSource = mp.consultarPropiedades();
             dgvPropiedades.DataMember = "Propiedades";
+        }
+
+        private void dgvPropiedades_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DialogResult res;
+            int id_propiedad;
+            if (dgvPropiedades.CurrentCell.ColumnIndex == 0)
+            {
+                res = MessageBox.Show("¿Está seguro de que desea modificar a la propiedad seleccionada?", "Confirmación",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (res == DialogResult.Yes)
+                {
+                    try
+                    {
+                        id_propiedad = int.Parse(dgvPropiedades.Rows[e.RowIndex].Cells[2].Value.ToString());
+
+                        /*
+                         Guardo id_propiedad para usarlo como parámetro en el constructor del ABM Propiedad.
+                         Creo una ventana desde aquí para ir al ABM Propiedad.
+                         
+                         Indicar que estoy haciendo una Modificación en alguna parte de la pantalla y bloquear para que id para que se guarde el cambio sobre el id que paso por parámetro.                         usaria el id para hacer una consulta y mostrarla en una grilla oculta, tomo los datos del select * y con esos datos cargo cada cmb y txt
+                         Usar un puntero y setearlo en 1 para saber que es una modificación.
+                         Borrar esa indicación al modificar y el puntero setearlo en 0.
+                         */
+
+                        //Abre ventana ABM Propiedad
+                        var form = new ABM_Propiedad();
+                        form.Show();
+                        
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                }
+            }
+
+            if (dgvPropiedades.CurrentCell.ColumnIndex == 1)
+            {
+                res = MessageBox.Show("¿Está seguro de que desea eliminar a la propiedad seleccionada?", "Confirmación",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (res == DialogResult.Yes)
+                {
+                    try
+                    {
+                        var id = int.Parse(dgvPropiedades.Rows[e.RowIndex].Cells[2].Value.ToString());
+                        mp.eliminarPropiedad(id);
+
+                        //consulto luego de eliminar para refrescar la grilla
+                        dgvPropiedades.DataSource = mp.consultarPropiedades();
+                        dgvPropiedades.DataMember = "Propiedades";
+                        //dgvPropiedades.Columns[2].Visible = false;
+                        res = MessageBox.Show("La propiedad ha sido eliminada.", "Borrado exitoso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+                }
+            }
         }
     }
 }
