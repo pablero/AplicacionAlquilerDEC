@@ -232,7 +232,7 @@ namespace AlquileresDEC.Datos
             }
         }
 
-        //*****COMIENZO CONSULTAS*****
+        //*****Inicio de consultas de ConsultarPropiedad*****
         public DataSet consultarPropiedades()
         {
             conexion.origen.Open();
@@ -373,54 +373,23 @@ namespace AlquileresDEC.Datos
 
             conexion.origen.Close();
         }
-
-        //NO ME SALIO...
-        public DataSet consultarPorFiltro(int? id_tipoPropiedad, int? id_localidad, int? id_barrio, string pd, string ph)
+        //*****Fin de consultas de ConsultarPropiedad*****
+        
+        //Inicio de consultas de ModificarPropiedad
+        public DataSet consultarPropiedadesModificar(int id)
         {
-            try
-            {
-                conexion.origen.Open();
-                conexion.ds = new DataSet();
+            conexion.origen.Open();
+            conexion.ds = new DataSet();
 
-                conexion.str_sql = @"SELECT TipoPropiedad.nombre AS Tipo, Localidad.nombre As Localidad, Barrio.nombre AS Barrio, Propiedad.direccion AS Dirección, Propiedad.piso AS Piso, Propiedad.nro_habitaciones AS Habitaciones, Propiedad.fecha_inauguracion AS Antiguedad, Estado.nombre AS Estado, Servicio.nombre AS Servicio, Requisito.nombre AS Requisito, Propiedad.precio AS Precio  
-                FROM Propiedad, TipoPropiedad, Barrio, Estado, Localidad, Requisito, Servicio
-                WHERE Propiedad.id_tipoPropiedad = TipoPropiedad.id_tipoPropiedad AND Propiedad.id_barrio = Barrio.id_barrio AND Barrio.id_localidad = Localidad.id_localidad AND Propiedad.id_estado = Estado.id_estado AND Propiedad.id_requisito = Requisito.id_requisito AND Propiedad.id_Servicio = Servicio.id_servicio";
-                /*                           
-                                if (id_tipoPropiedad.HasValue)
-                                {
-                                    conexion.str_sql += " and Propiedad.id_tipoPropiedad = " + id_tipoPropiedad;
-                                }
-                
-                                if (id_barrio.HasValue)
-                                {
-                                    conexion.str_sql += " and Propiedad.id_barrio= " + id_barrio;
-                                } 
-                
-                                if (id_localidad.HasValue)
-                                {
-                                    conexion.str_sql += " and Barrio.id_localidad= " + id_localidad;
-                                }
+            conexion.str_sql = @"SELECT Propiedad.id_propiedad, TipoPropiedad.nombre AS Tipo, Localidad.nombre As Localidad, Barrio.nombre AS Barrio, Propiedad.direccion AS Dirección, Propiedad.piso AS Piso, Propiedad.nro_habitaciones AS Habitaciones, Propiedad.fecha_inauguracion AS Antiguedad, Estado.nombre AS Estado, Servicio.nombre AS Servicio, Requisito.nombre AS Requisito, Propiedad.precio AS Precio, Propiedad.depto, Propiedad.descripcion, Propiedad.foto
+            FROM Propiedad, TipoPropiedad, Barrio, Estado, Localidad, Requisito, Servicio
+            WHERE Propiedad.id_tipoPropiedad = TipoPropiedad.id_tipoPropiedad AND Propiedad.id_barrio = Barrio.id_barrio AND Barrio.id_localidad = Localidad.id_localidad AND Propiedad.id_estado = Estado.id_estado AND Propiedad.id_requisito = Requisito.id_requisito AND Propiedad.id_Servicio = Servicio.id_servicio AND id_propiedad = " + id;
 
-                                if (!string.IsNullOrEmpty(pd))
-                                {
-                                    conexion.str_sql += " and Propiedad.precio between "+ pd + "AND" + ph;
-                                }
-                                */
-                conexion.da = new SqlDataAdapter(conexion.str_sql, conexion.origen);
-                conexion.da.Fill(conexion.ds, "consultaFiltro");
-                conexion.origen.Close();
-                return conexion.ds;
-            }
+            conexion.da = new SqlDataAdapter(conexion.str_sql, conexion.origen);
+            conexion.da.Fill(conexion.ds, "Propiedades");
 
-            catch (Exception)
-            {
-                if (conexion.origen.State == ConnectionState.Open)
-                {
-                    conexion.origen.Close();
-                }
-                return null;
-            }
-        }        
+            conexion.origen.Close();
+            return conexion.ds;
+        }
     }
-    //*****FIN CONSULTAS*****
 }

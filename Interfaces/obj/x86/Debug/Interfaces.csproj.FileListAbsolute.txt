@@ -41,3 +41,4 @@ C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\bin\Debug\Entidades.pdb
 C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\bin\Debug\MapeoDeDatos.pdb
 C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\AlquileresDEC.Interfaces.Menu_Principal.resources
 C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\AlquileresDEC.Interfaces.Seleccion_Alternativas.resources
+C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\Interfaces.ModificarPropiedad.resources

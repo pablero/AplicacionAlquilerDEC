@@ -145,34 +145,6 @@ namespace AlquileresDEC.Interfaces
             if (txtPrecioHasta.Text == "")
                 txtPrecioHasta.Text = "Máximo";
 
-            //NO ME SALIO...
-            /*
-            int? id_tipoPropiedad = null;
-            int? id_localidad = null;
-            int? id_barrio = null;
-            
-            dgvPropiedades.Visible = true;
-
-            if (cmbFiltroTipoPropiedad.SelectedItem != null)
-            {
-                id_tipoPropiedad = int.Parse(cmbFiltroTipoPropiedad.SelectedValue.ToString());
-            }
-            if (cmbFiltroLocalidad.SelectedItem != null)
-            {
-                id_localidad = int.Parse(cmbFiltroLocalidad.SelectedValue.ToString());
-            }
-            if (cmbFiltroBarrio.SelectedItem != null)
-            {
-                id_barrio = int.Parse(cmbFiltroBarrio.SelectedValue.ToString());
-            }
-
-            var pd = txtPrecioDesde.Text;
-            var ph = txtPrecioHasta.Text;
-
-            dgvPropiedades.DataSource = mp.consultarPorFiltro(id_tipoPropiedad, id_localidad, id_barrio, pd, ph);
-            dgvPropiedades.DataMember = "consultaFiltro";
-            */
-
             //Buscar por tipo de propiedad
             if (cmbFiltroTipoPropiedad.Text != "<Seleccione un Item de la Lista>" && cmbFiltroBarrio.Enabled == false && txtPrecioDesde.Text == "Mínimo" && txtPrecioHasta.Text == "Máximo")
             {
@@ -474,7 +446,7 @@ namespace AlquileresDEC.Interfaces
                          */
 
                         //Abre ventana ABM Propiedad
-                        var form = new ABM_Propiedad();
+                        var form = new ModificarPropiedad(id_propiedad);
                         form.Show();
                         
                     }

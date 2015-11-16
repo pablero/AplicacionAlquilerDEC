@@ -70,11 +70,17 @@
     <Compile Include="ABM Propiedad.Designer.cs">
       <DependentUpon>ABM Propiedad.cs</DependentUpon>
     </Compile>
-    <Compile Include="Consulta Propiedades.cs">
+    <Compile Include="ConsultarPropiedades.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Consulta Propiedades.Designer.cs">
-      <DependentUpon>Consulta Propiedades.cs</DependentUpon>
+    <Compile Include="ConsultarPropiedades.Designer.cs">
+      <DependentUpon>ConsultarPropiedades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarPropiedad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModificarPropiedad.Designer.cs">
+      <DependentUpon>ModificarPropiedad.cs</DependentUpon>
     </Compile>
     <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
@@ -98,8 +104,11 @@
     <EmbeddedResource Include="ABM Propiedad.resx">
       <DependentUpon>ABM Propiedad.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Consulta Propiedades.resx">
-      <DependentUpon>Consulta Propiedades.cs</DependentUpon>
+    <EmbeddedResource Include="ConsultarPropiedades.resx">
+      <DependentUpon>ConsultarPropiedades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarPropiedad.resx">
+      <DependentUpon>ModificarPropiedad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
