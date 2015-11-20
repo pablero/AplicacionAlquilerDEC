@@ -20,7 +20,7 @@ namespace AlquileresDEC.Interfaces
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             var form = new ABM_Propiedad();
-            form.Show();
+            form.ShowDialog();
         }
 
         private void consultarPropiedadesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -31,8 +31,8 @@ namespace AlquileresDEC.Interfaces
 
         private void selecciónDeAlternativasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = new Seleccion_Alternativas();
-            form.Show();
+            var form=new SelecciónAlternativas();
+            form.ShowDialog();
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)

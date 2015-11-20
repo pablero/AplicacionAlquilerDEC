@@ -42,3 +42,13 @@ C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\bin\Debug\MapeoDeDatos.pd
 C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\AlquileresDEC.Interfaces.Menu_Principal.resources
 C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\AlquileresDEC.Interfaces.Seleccion_Alternativas.resources
 C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\Interfaces.ModificarPropiedad.resources
+C:\Users\Pablo\Documents\GitHub\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\Interfaces.exe
+C:\Users\Pablo\Documents\GitHub\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\Interfaces.pdb
+C:\Users\Pablo\Documents\GitHub\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\Interfaces.csprojResolveAssemblyReference.cache
+C:\Users\Pablo\Documents\GitHub\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\Interfaces.ABM_Propiedad.resources
+C:\Users\Pablo\Documents\GitHub\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\AlquileresDEC.Interfaces.Consulta_Propiedades.resources
+C:\Users\Pablo\Documents\GitHub\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\Interfaces.ModificarPropiedad.resources
+C:\Users\Pablo\Documents\GitHub\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\AlquileresDEC.Interfaces.Menu_Principal.resources
+C:\Users\Pablo\Documents\GitHub\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\AlquileresDEC.Interfaces.Properties.Resources.resources
+C:\Users\Pablo\Documents\GitHub\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\AlquileresDEC.Interfaces.SelecciónAlternativas.resources
+C:\Users\Pablo\Documents\GitHub\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\Interfaces.csproj.GenerateResource.Cache
