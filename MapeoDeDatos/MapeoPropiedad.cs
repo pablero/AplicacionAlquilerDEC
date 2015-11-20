@@ -371,6 +371,8 @@ namespace AlquileresDEC.Datos
         }
 
         //*****Inicio de consultas de ConsultarPropiedad*****
+
+        
         public DataSet consultarPropiedades()
         {
             conexion.origen.Open();

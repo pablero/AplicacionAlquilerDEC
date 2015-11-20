@@ -33,6 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbFiltros = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cmbFiltroNroHab = new System.Windows.Forms.ComboBox();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtPrecioHasta = new System.Windows.Forms.TextBox();
@@ -58,6 +60,8 @@
             // 
             // gbFiltros
             // 
+            this.gbFiltros.Controls.Add(this.label7);
+            this.gbFiltros.Controls.Add(this.cmbFiltroNroHab);
             this.gbFiltros.Controls.Add(this.btnLimpiar);
             this.gbFiltros.Controls.Add(this.btnBuscar);
             this.gbFiltros.Controls.Add(this.txtPrecioHasta);
@@ -75,19 +79,48 @@
             this.gbFiltros.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbFiltros.Name = "gbFiltros";
             this.gbFiltros.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.gbFiltros.Size = new System.Drawing.Size(1100, 174);
+            this.gbFiltros.Size = new System.Drawing.Size(1100, 236);
             this.gbFiltros.TabIndex = 0;
             this.gbFiltros.TabStop = false;
             this.gbFiltros.Text = "Filtros de Búsqueda";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(10, 80);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(152, 20);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "Nro. Habitaciones";
+            // 
+            // cmbFiltroNroHab
+            // 
+            this.cmbFiltroNroHab.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFiltroNroHab.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbFiltroNroHab.FormattingEnabled = true;
+            this.cmbFiltroNroHab.Items.AddRange(new object[] {
+            "<Todos los Items>",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"});
+            this.cmbFiltroNroHab.Location = new System.Drawing.Point(181, 77);
+            this.cmbFiltroNroHab.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbFiltroNroHab.Name = "cmbFiltroNroHab";
+            this.cmbFiltroNroHab.Size = new System.Drawing.Size(186, 28);
+            this.cmbFiltroNroHab.TabIndex = 3;
+            // 
             // btnLimpiar
             // 
             this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiar.Location = new System.Drawing.Point(535, 129);
+            this.btnLimpiar.Location = new System.Drawing.Point(535, 180);
             this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(112, 35);
-            this.btnLimpiar.TabIndex = 7;
+            this.btnLimpiar.TabIndex = 8;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
@@ -95,11 +128,11 @@
             // btnBuscar
             // 
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.Location = new System.Drawing.Point(377, 129);
+            this.btnBuscar.Location = new System.Drawing.Point(376, 180);
             this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(112, 35);
-            this.btnBuscar.TabIndex = 6;
+            this.btnBuscar.TabIndex = 7;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -107,12 +140,11 @@
             // txtPrecioHasta
             // 
             this.txtPrecioHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrecioHasta.Location = new System.Drawing.Point(353, 74);
+            this.txtPrecioHasta.Location = new System.Drawing.Point(532, 119);
             this.txtPrecioHasta.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPrecioHasta.Name = "txtPrecioHasta";
-            this.txtPrecioHasta.Size = new System.Drawing.Size(136, 26);
-            this.txtPrecioHasta.TabIndex = 4;
-            this.txtPrecioHasta.Text = "Máximo";
+            this.txtPrecioHasta.Size = new System.Drawing.Size(88, 26);
+            this.txtPrecioHasta.TabIndex = 6;
             this.txtPrecioHasta.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtPrecioHasta.Click += new System.EventHandler(this.txtPrecioHasta_Click);
             this.txtPrecioHasta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioHasta_KeyPress);
@@ -121,7 +153,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(324, 80);
+            this.label4.Location = new System.Drawing.Point(498, 122);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(15, 20);
@@ -131,12 +163,11 @@
             // txtPrecioDesde
             // 
             this.txtPrecioDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrecioDesde.Location = new System.Drawing.Point(181, 74);
+            this.txtPrecioDesde.Location = new System.Drawing.Point(393, 119);
             this.txtPrecioDesde.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPrecioDesde.Name = "txtPrecioDesde";
-            this.txtPrecioDesde.Size = new System.Drawing.Size(132, 26);
-            this.txtPrecioDesde.TabIndex = 3;
-            this.txtPrecioDesde.Text = "Mínimo";
+            this.txtPrecioDesde.Size = new System.Drawing.Size(88, 26);
+            this.txtPrecioDesde.TabIndex = 5;
             this.txtPrecioDesde.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtPrecioDesde.Click += new System.EventHandler(this.txtPrecioDesde_Click);
             this.txtPrecioDesde.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioDesde_KeyPress);
@@ -145,7 +176,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(76, 77);
+            this.label8.Location = new System.Drawing.Point(288, 122);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(86, 20);
@@ -161,7 +192,7 @@
             this.cmbFiltroBarrio.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbFiltroBarrio.Name = "cmbFiltroBarrio";
             this.cmbFiltroBarrio.Size = new System.Drawing.Size(380, 28);
-            this.cmbFiltroBarrio.TabIndex = 5;
+            this.cmbFiltroBarrio.TabIndex = 4;
             // 
             // cmbFiltroLocalidad
             // 
@@ -225,7 +256,7 @@
             // 
             this.gbResultados.Controls.Add(this.dgvPropiedades);
             this.gbResultados.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbResultados.Location = new System.Drawing.Point(20, 203);
+            this.gbResultados.Location = new System.Drawing.Point(20, 279);
             this.gbResultados.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbResultados.Name = "gbResultados";
             this.gbResultados.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -258,12 +289,12 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvPropiedades.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvPropiedades.Location = new System.Drawing.Point(21, 29);
+            this.dgvPropiedades.Location = new System.Drawing.Point(22, 29);
             this.dgvPropiedades.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvPropiedades.Name = "dgvPropiedades";
             this.dgvPropiedades.ReadOnly = true;
             this.dgvPropiedades.Size = new System.Drawing.Size(1050, 282);
-            this.dgvPropiedades.TabIndex = 8;
+            this.dgvPropiedades.TabIndex = 9;
             this.dgvPropiedades.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPropiedades_CellContentClick);
             // 
             // Modificar
@@ -299,22 +330,22 @@
             // btnVolver
             // 
             this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVolver.Location = new System.Drawing.Point(20, 566);
+            this.btnVolver.Location = new System.Drawing.Point(20, 642);
             this.btnVolver.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(112, 35);
-            this.btnVolver.TabIndex = 9;
+            this.btnVolver.TabIndex = 10;
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = true;
             // 
             // btnSalir
             // 
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Location = new System.Drawing.Point(1006, 566);
+            this.btnSalir.Location = new System.Drawing.Point(1006, 643);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(112, 35);
-            this.btnSalir.TabIndex = 10;
+            this.btnSalir.TabIndex = 11;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
@@ -323,7 +354,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1134, 617);
+            this.ClientSize = new System.Drawing.Size(1134, 705);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.gbResultados);
@@ -362,5 +393,7 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.DataGridViewButtonColumn Modificar;
         private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cmbFiltroNroHab;
     }
 }
