@@ -24,7 +24,7 @@ namespace AlquileresDEC.Interfaces
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-           this.Close();
+            this.Close();
         }
 
         private void Consulta_Propiedades_Load(object sender, EventArgs e)

@@ -12,22 +12,33 @@ using System.IO;
 using System.Drawing.Imaging;
 using AlquileresDEC.Interfaces;
 
+
 namespace Interfaces
 {
     public partial class ModificarPropiedad : Form
     {        
         private MapeoPropiedad mp;
-        private byte[] foto;
-    
+        private byte[] foto;//Convertir la la foto que se encuentra cuando el usuario clikeó guardar a byte para luego comparar con la de abajo.
+        private int contador;//Para saber si cargó foto o no.        
+        private string guardado;
+        private string existe; //Para llamar al método que verifica que no existe ya en la bd para luego poder guardarla en caso de que no.
+
         //inicio nuevo
         //Id de la propiedad a modificar - nuevo
         int id;
+
+        public ModificarPropiedad()
+        {
+            InitializeComponent();
+            mp = new MapeoPropiedad();
+            contador = 0;            
+        }
 
         public ModificarPropiedad(int id_propiedad)
         {
             InitializeComponent();
             mp = new MapeoPropiedad();
-            id = id_propiedad; 
+            id = id_propiedad;
         }
         //fin nuevo
 
@@ -37,12 +48,15 @@ namespace Interfaces
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
+        {            
+            //No Visible
+            lbl4.Visible = false;
+            lbl5.Visible = false;
+
             //Cargar combo TipoPropiedad
             cmbTipoPropiedad.DisplayMember = "Nombre";
             cmbTipoPropiedad.ValueMember = "Id_tipoPropiedad";
             cmbTipoPropiedad.DataSource = ObtenerListaItemOpcionalTP();
-            //cmbTipoPropiedad.DataSource = mp.consultarTipoPropiedadModificar(id);
 
             //Cargar combo Localidad
             cmbLocalidad.DisplayMember = "Nombre";
@@ -80,7 +94,7 @@ namespace Interfaces
             //Mostrar todas las propiedades en grilla
             dgvPropiedades.DataSource = mp.consultarPropiedadesModificar(id);
             dgvPropiedades.DataMember = "Propiedades";
-            
+
             /*
             var ds = new DataSet();
             ds = mp.consultarTipoPropiedadModificar(id);
@@ -90,7 +104,7 @@ namespace Interfaces
 
             //cmbTipoPropiedad.Text = dgvPropiedades.Rows[0].Cells[1].Value.ToString();
             */
-            
+
             cmbTipoPropiedad.Text = dgvPropiedades.Rows[0].Cells[1].Value.ToString();
             cmbLocalidad.Text = dgvPropiedades.Rows[0].Cells[2].Value.ToString();
             cmbBarrio.Text = dgvPropiedades.Rows[0].Cells[3].Value.ToString();
@@ -101,16 +115,27 @@ namespace Interfaces
             txtPrecio.Text = dgvPropiedades.Rows[0].Cells[11].Value.ToString();
             cmbEstado.Text = dgvPropiedades.Rows[0].Cells[8].Value.ToString();
             cmbRequisitos.Text = dgvPropiedades.Rows[0].Cells[10].Value.ToString();
-            //FALTA fecha de inauguracion...  [7]
+            
+            string fechaSinConvertir = dgvPropiedades.Rows[0].Cells[7].Value.ToString();
+
+            DateTime fechaConvertida = Convert.ToDateTime(fechaSinConvertir);
+            dtpFechaInaug.Value = fechaConvertida;
+
             cmbServicios.Text = dgvPropiedades.Rows[0].Cells[9].Value.ToString();
             txtDescrip.Text = dgvPropiedades.Rows[0].Cells[13].Value.ToString();
+
             //pbFoto.Image = dgvPropiedades.Rows[0].Cells[14].Value.toString();
+            //   foto = ImgToByte(pbFotoDeportista.Image);
+ 
             /*
             var ms = new MemoryStream(dep.foto);
             pbFoto.Image = Image.FromStream(ms);
         */
             //fin nuevo
-        }
+
+            //mtbFechaInag.ValidatingType = typeof(System.DateTime);
+            //mtbFechaInag.TypeValidationCompleted+=new TypeValidationEventHandler(mtbFechaInag_TypeValidationCompleted);
+        }                                          
 
         //Listas con ItemOpcional
         private List<TipoPropiedad> ObtenerListaItemOpcionalTP()
@@ -185,6 +210,7 @@ namespace Interfaces
                 cmbBarrio.DisplayMember = "Nombre";
                 cmbBarrio.ValueMember = "Id_barrio";
                 cmbBarrio.DataSource = ObtenerListaBarrio(id_loc);
+                cmbBarrio.Enabled = true;
             }
         }
 
@@ -200,6 +226,7 @@ namespace Interfaces
             if (result == DialogResult.OK)
             {
                 pbFoto.Image = Image.FromFile(dialog.FileName);
+                contador++;
             }
         }
 
@@ -208,5 +235,334 @@ namespace Interfaces
             var form = new Consulta_Propiedades();
             form.Show();
         }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            //Control para que el usuario ingrese o seleccione campos obligatorios
+            if (txtDireccion.Text=="")
+            {
+                MessageBox.Show("Ingrese una dirección", "Advertencia", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                lbl3.ForeColor = Color.Red;
+                txtDireccion.BackColor = Color.Yellow;
+                txtDireccion.Focus();
+                return;
+            }
+            if (txtPrecio.Text == "")
+            {
+                MessageBox.Show("Ingrese un precio en pesos", "Advertencia", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                lbl6.ForeColor = Color.Red;
+                txtPrecio.BackColor = Color.Yellow;
+                txtPrecio.Focus();
+                return;
+            }
+            /*if (mtbFechaInag.MaskFull==false)
+            {
+                MessageBox.Show("Ingrese una fecha de inauguración correctamente", "Advertencia", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                lbl9.ForeColor = Color.Red;
+                mtbFechaInag.BackColor = Color.Yellow;
+                mtbFechaInag.Focus();
+                return;
+            }*/
+            if (cmbTipoPropiedad.SelectedIndex == 0)
+            {
+                MessageBox.Show("Seleccione un tipo de Propiedad", "Advertencia", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                lbl1.ForeColor = Color.Red;             
+                cmbTipoPropiedad.Focus();
+                return;
+            }
+            if (cmbLocalidad.SelectedIndex == 0)
+            {
+                MessageBox.Show("Seleccione una Localidad", "Advertencia", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                lbl2.ForeColor = Color.Red;
+                cmbLocalidad.Focus();
+                return;
+            }
+            if (cmbEstado.SelectedIndex == 0)
+            {
+                MessageBox.Show("Seleccione un estado de la Propiedad", "Advertencia", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                lbl7.ForeColor = Color.Red;
+                cmbEstado.Focus();
+                return;
+            }
+            if (cmbRequisitos.SelectedIndex == 0)
+            {
+                MessageBox.Show("Seleccione el nivel de Requisitos", "Advertencia", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                lbl8.ForeColor = Color.Red;
+                cmbRequisitos.Focus();
+                return;
+            }
+            if (cmbServicios.SelectedIndex == 0)
+            {
+                MessageBox.Show("Seleccione el nivel de Servicio", "Advertencia", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                lbl10.ForeColor = Color.Red;
+                cmbServicios.Focus();
+                return;
+            }
+            //Si selecciono departamento debe ingresar un nro. de piso
+            if (cmbTipoPropiedad.SelectedIndex == 2 && txtPiso.Text == "")
+            {
+                MessageBox.Show("Ingrese un piso", "Advertencia", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                lbl4.ForeColor = Color.Red;
+                txtPiso.BackColor = Color.Yellow;
+                txtPiso.Focus();
+                return; 
+            }
+            //Si selecciono departamento debe ingresar un Depto.
+            if (cmbTipoPropiedad.SelectedIndex == 2 && txtDepto.Text == "")
+            {
+                MessageBox.Show("Ingrese un Depto.", "Advertencia", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                lbl5.ForeColor = Color.Red;
+                txtDepto.BackColor = Color.Yellow;
+                txtDepto.Focus();
+                return;
+            }
+            //Controlar el si la fecha ingresada está dentro del rango válido
+            //bool res = FechaValida(DateTime.Parse(mtbFechaInag.Text));
+            bool res = FechaValida(DateTime.Parse(dtpFechaInaug.Text));
+            if (res == false)
+            {
+                MessageBox.Show("Ingrese una fecha de inauguración correctamente", "Advertencia", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                lbl9.ForeColor = Color.Red;                
+                dtpFechaInaug.Focus();
+                //mtbFechaInag.BackColor = Color.Yellow;
+                //mtbFechaInag.Focus();
+                return;
+            }
+
+            //Foto pasarla a Byte en caso de ser distinta a la foto de inicio
+            if (pbFoto.Image != null)
+            {
+                //p.foto = ImgToByte(pbFotoDeportista.Image);
+                foto = ImgToByte(pbFoto.Image);
+            }
+
+            //Creo los objetos con los datos cargados por el Usuario.
+            Propiedad p = new Propiedad();
+            TipoPropiedad tp = new TipoPropiedad();
+            //Localidad l = new Localidad();
+            Barrio b = new Barrio();
+            Estado es = new Estado();
+            Requisito req = new Requisito();
+            Servicio ss = new Servicio();
+            p.Direccion = txtDireccion.Text;
+            p.Descripcion = txtDescrip.Text;
+            if (txtPiso.Text != "")
+                p.Piso = int.Parse(txtPiso.Text);
+            else
+                p.Piso = 0;
+            if(txtDepto.Text != "")
+                p.Depto = char.Parse(txtDepto.Text);
+            else
+                p.Depto='ñ';
+            p.FechaIng = DateTime.Parse(dtpFechaInaug.Text);
+            p.NroHabitaciones = int.Parse(cmbNroHab.SelectedItem.ToString());
+            tp = (TipoPropiedad)cmbTipoPropiedad.SelectedItem;
+            //l = (Localidad)cmbLocalidad.SelectedItem;
+            b = (Barrio)cmbBarrio.SelectedItem;
+            es = (Estado)cmbEstado.SelectedItem;
+            req = (Requisito)cmbRequisitos.SelectedItem;
+            ss = (Servicio)cmbServicios.SelectedItem;
+            p.Id_tipoPropiedad = tp.Id_tipoPropiedad;
+            p.Id_barrio = b.Id_barrio;
+            p.Id_estado = es.Id_estado;
+            p.Id_requisito = req.Id_requisito;
+            p.Id_servicio = ss.Id_servicio;
+            p.Precio = double.Parse(txtPrecio.Text);
+            if (contador > 0)
+                p.foto = foto;
+            else
+                p.foto = null;
+            /*if (foto != fotoXDefecto)
+                p.foto = foto;
+            else
+                p.foto = null;*/
+
+            //nuevos cambios
+                    guardado = mp.ModificarPropiedad(id, p);
+                    MessageBox.Show("La propiedad ha sido modificada", "Modificación de Propiedad", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                    Limpiar();
+                    return;
+        }
+
+        private void cmbTipoPropiedad_SelectedIndexChanged(object sender, EventArgs e)
+        {            
+            switch (cmbTipoPropiedad.SelectedIndex)
+            {
+                case 0:
+                    {
+                        lbl4.Visible = false;
+                        lbl5.Visible = false;
+                        break;
+                    }
+                case 1:
+                    {
+                        lbl4.Visible = false;
+                        lbl5.Visible = false;
+                        break;
+                    }
+                case 2:
+                    {
+                        lbl4.Visible = true;
+                        lbl5.Visible = true;
+                        break;
+                    }
+            }
+        }
+        private void Limpiar()
+        {
+            cmbTipoPropiedad.SelectedIndex = 0;
+            cmbLocalidad.SelectedIndex = 0;
+            cmbRequisitos.SelectedIndex = 0;
+            cmbServicios.SelectedIndex = 0;
+            cmbNroHab.SelectedIndex = 1;
+            cmbEstado.SelectedIndex = 0;
+            txtDireccion.Text = "";
+            txtDescrip.Text = "";
+            txtPiso.Text = "";
+            txtDepto.Text = "";
+            txtPrecio.Text = "";
+            dtpFechaInaug.Text="";
+            //mtbFechaInag.Text = "";
+
+            //Foto Ruta relativa
+            var ruta = Application.StartupPath;
+            ruta = ruta.Substring(0, ruta.Length - 10);
+            var imagepath = Path.Combine(ruta, "Resources\\imagenInicio4.jpg");
+            pbFoto.Image = Image.FromFile(imagepath);
+            contador = 0;
+
+            cmbTipoPropiedad.Focus();
+            this.Seteo();
+
+        }
+        //Seteo poner las cajas de texto y asteriscos del color por defecto
+        private void Seteo()
+        {
+            lbl1.ForeColor = Color.Black;
+            lbl2.ForeColor = Color.Black;
+            lbl3.ForeColor = Color.Black;
+            lbl4.ForeColor = Color.Black;
+            lbl5.ForeColor = Color.Black;
+            lbl6.ForeColor = Color.Black;
+            lbl7.ForeColor = Color.Black;
+            lbl8.ForeColor = Color.Black;
+            lbl9.ForeColor = Color.Black;
+            lbl10.ForeColor = Color.Black;
+            txtDireccion.BackColor = Color.White;
+            txtDepto.BackColor=Color.White;
+            txtPiso.BackColor = Color.White;
+            txtDescrip.BackColor = Color.White;
+            txtPrecio.BackColor = Color.White;
+            //mtbFechaInag.BackColor = Color.White;
+
+        }
+
+        //Validaciones de Eventos
+        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            txtPrecio.MaxLength = 5;
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se Permiten Números", "Advertencia", MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+                e.Handled = true;
+            }
+        }
+
+        private void txtDireccion_KeyPress(object sender, KeyPressEventArgs e)//Puede escribir hasta 49 caracteres ya que eso soporta la bd.
+        {
+            txtDireccion.MaxLength = 49;
+            
+        }
+
+        private void txtPiso_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            txtPiso.MaxLength = 2;
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se Permiten Números", "Advertencia", MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+                e.Handled = true;
+            }
+        }
+
+        private void txtDepto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            txtDepto.MaxLength = 1;
+            if ((char.IsNumber(e.KeyChar)))
+            {
+                MessageBox.Show("Solo se Permiten Letras", "Advertencia", MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+                e.Handled = true;
+            }
+        }
+
+        private void txtDescrip_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            txtDescrip.MaxLength = 49;
+        }
+
+        private bool FechaValida(DateTime fecha)
+        {
+            
+            DateTime fechaMin=Convert.ToDateTime("01/01/1910");
+            DateTime fechaMax=DateTime.Now;
+            if ((fecha >= fechaMin) && (fecha <= fechaMax))
+                return true;
+            else
+                return false;
+        }
+
+        private void btnQuitarImag_Click(object sender, EventArgs e)
+        {
+            //Foto Ruta relativa
+            var ruta = Application.StartupPath;
+            ruta = ruta.Substring(0, ruta.Length - 10);
+            var imagepath = Path.Combine(ruta, "Resources\\imagenInicio4.jpg");
+            pbFoto.Image = Image.FromFile(imagepath);
+            contador = 0;
+        }
+
+
+        /*private void mtbFechaInag_Validating(object sender, CancelEventArgs e)
+        {
+            DateTime fecha;
+            if (DateTime.TryParse(mtbFechaInag.Text, out fecha))
+            {
+                MessageBox.Show("Ingrese una fecha de inauguración correctamente", "Advertencia", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                lbl9.ForeColor = Color.Red;
+                mtbFechaInag.BackColor = Color.Yellow;
+                mtbFechaInag.Focus();
+                return;
+            }
+        }*/
+
+        /*private void mtbFechaInag_TypeValidationCompleted(object sender, TypeValidationEventArgs e)
+        {
+            if (e.IsValidInput)
+            {
+                MessageBox.Show("Ingrese una fecha de inauguración válida", "Advertencia", MessageBoxButtons.OK,
+                   MessageBoxIcon.Warning);
+                lbl9.ForeColor = Color.Red;
+                mtbFechaInag.BackColor = Color.Yellow;
+                mtbFechaInag.Focus();
+                e.Cancel=true;
+            }
+        }*/
+
+        
     }
 }

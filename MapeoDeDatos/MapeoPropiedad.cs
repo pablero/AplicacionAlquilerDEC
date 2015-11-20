@@ -418,5 +418,62 @@ namespace AlquileresDEC.Datos
             conexion.origen.Close();
             return conexion.ds;
         }
+
+
+        //Modificar Propiedad según el id pasado por parámetro
+        public string ModificarPropiedad(int id, Propiedad p)
+        {
+            conexion.origen.Open();
+            try
+            {
+                conexion.str_sql = "UPDATE Propiedad SET direccion=@direccion,id_barrio=@id_barrio,fecha_inauguracion=@fecha_inauguracion,foto=@foto,nro_habitaciones=@nro_habitaciones,id_estado=@id_estado,piso=@piso,depto=@depto,id_servicio=@id_servicio,id_requisito=@id_requisito,precio=@precio,descripcion=@descripcion,id_tipoPropiedad=@id_tipoPropiedad WHERE id_propiedad = "+id;
+                conexion.cmd = new SqlCommand(conexion.str_sql, conexion.origen);
+                //Parámetros
+                conexion.cmd.Parameters.Add("@direccion", p.Direccion);
+                conexion.cmd.Parameters.Add("@id_barrio", p.Id_barrio);
+                conexion.cmd.Parameters.Add("@fecha_inauguracion", p.FechaIng);
+                if (p.foto != null)
+                {
+                    //conexion.cmd.Parameters.Add("@foto", p.foto); 
+                    conexion.cmd.Parameters.Add(new SqlParameter("@foto", SqlDbType.Image) { Value = p.foto });
+                }
+
+                else
+                {
+                    //conexion.cmd.Parameters.Add("@foto", DBNull.Value); 
+                    conexion.cmd.Parameters.Add(new SqlParameter("@foto", SqlDbType.Image) { Value = DBNull.Value });
+                }
+                conexion.cmd.Parameters.Add("@nro_habitaciones", p.NroHabitaciones);
+                conexion.cmd.Parameters.Add("@id_estado", p.Id_estado);
+                if (p.Piso != 0)
+                    conexion.cmd.Parameters.Add("@piso", p.Piso);
+                else
+                    conexion.cmd.Parameters.Add("@piso", DBNull.Value);
+                if (p.Depto != 'ñ')
+                    conexion.cmd.Parameters.Add("@depto", p.Depto);
+                else
+                    conexion.cmd.Parameters.Add("@depto", DBNull.Value);
+
+                conexion.cmd.Parameters.Add("@id_servicio", p.Id_servicio);
+                conexion.cmd.Parameters.Add("@id_requisito", p.Id_requisito);
+                conexion.cmd.Parameters.Add("@precio", p.Precio);
+                if (p.Descripcion != "")
+                    conexion.cmd.Parameters.Add("@descripcion", p.Descripcion);
+                else
+                    conexion.cmd.Parameters.Add("@descripcion", DBNull.Value);
+                conexion.cmd.Parameters.Add("@id_tipoPropiedad", p.Id_tipoPropiedad);
+
+                conexion.cmd.ExecuteNonQuery();
+                conexion.origen.Close();
+                return "Modificado";
+            }
+            catch (Exception)
+            {
+                if (conexion.origen.State == ConnectionState.Open)
+                    conexion.origen.Close();
+                return "Error al Guardar";
+            }
+        }
+
     }
 }
