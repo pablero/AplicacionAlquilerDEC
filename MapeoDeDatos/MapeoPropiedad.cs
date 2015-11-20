@@ -368,7 +368,166 @@ namespace AlquileresDEC.Datos
                     conexion.origen.Close();
                 return null;
             }
- 
+        }
+
+        //*****Inicio de consultas de ConsultarPropiedad*****
+        public DataSet consultarPropiedades()
+        {
+            conexion.origen.Open();
+            conexion.ds = new DataSet();
+
+            conexion.str_sql = @"SELECT Propiedad.id_propiedad, TipoPropiedad.nombre AS Tipo, Localidad.nombre As Localidad, Barrio.nombre AS Barrio, Propiedad.direccion AS Dirección, Propiedad.piso AS Piso, Propiedad.nro_habitaciones AS Habitaciones, Propiedad.fecha_inauguracion AS Antiguedad, Estado.nombre AS Estado, Servicio.nombre AS Servicio, Requisito.nombre AS Requisito, Propiedad.precio AS Precio  
+            FROM Propiedad, TipoPropiedad, Barrio, Estado, Localidad, Requisito, Servicio
+            WHERE Propiedad.id_tipoPropiedad = TipoPropiedad.id_tipoPropiedad AND Propiedad.id_barrio = Barrio.id_barrio AND Barrio.id_localidad = Localidad.id_localidad AND Propiedad.id_estado = Estado.id_estado AND Propiedad.id_requisito = Requisito.id_requisito AND Propiedad.id_Servicio = Servicio.id_servicio";
+
+            conexion.da = new SqlDataAdapter(conexion.str_sql, conexion.origen);
+            conexion.da.Fill(conexion.ds, "Propiedades");
+
+            conexion.origen.Close();
+            return conexion.ds;
+        }
+
+        public DataSet consultarPropiedadesPorTipo(int id_tp)
+        {
+            conexion.origen.Open();
+            conexion.ds = new DataSet();
+
+            conexion.str_sql = @"SELECT Propiedad.id_propiedad, TipoPropiedad.nombre AS Tipo, Localidad.nombre As Localidad, Barrio.nombre AS Barrio, Propiedad.direccion AS Dirección, Propiedad.piso AS Piso, Propiedad.nro_habitaciones AS Habitaciones, Propiedad.fecha_inauguracion AS Antiguedad, Estado.nombre AS Estado, Servicio.nombre AS Servicio, Requisito.nombre AS Requisito, Propiedad.precio AS Precio  
+            FROM Propiedad, TipoPropiedad, Barrio, Estado, Localidad, Requisito, Servicio
+            WHERE Propiedad.id_tipoPropiedad = TipoPropiedad.id_tipoPropiedad AND Propiedad.id_barrio = Barrio.id_barrio AND Barrio.id_localidad = Localidad.id_localidad AND Propiedad.id_estado = Estado.id_estado AND Propiedad.id_requisito = Requisito.id_requisito AND Propiedad.id_Servicio = Servicio.id_servicio AND Propiedad.id_tipoPropiedad = " + id_tp;
+
+            conexion.da = new SqlDataAdapter(conexion.str_sql, conexion.origen);
+            conexion.da.Fill(conexion.ds, "Propiedades");
+
+            conexion.origen.Close();
+            return conexion.ds;
+        }
+
+        public DataSet consultarPropiedadesPorLocalidadYBarrio(int id_l, int id_b)
+        {
+            conexion.origen.Open();
+            conexion.ds = new DataSet();
+
+            conexion.str_sql = @"SELECT Propiedad.id_propiedad, TipoPropiedad.nombre AS Tipo, Localidad.nombre As Localidad, Barrio.nombre AS Barrio, Propiedad.direccion AS Dirección, Propiedad.piso AS Piso, Propiedad.nro_habitaciones AS Habitaciones, Propiedad.fecha_inauguracion AS Antiguedad, Estado.nombre AS Estado, Servicio.nombre AS Servicio, Requisito.nombre AS Requisito, Propiedad.precio AS Precio  
+            FROM Propiedad, TipoPropiedad, Barrio, Estado, Localidad, Requisito, Servicio
+            WHERE Propiedad.id_tipoPropiedad = TipoPropiedad.id_tipoPropiedad AND Propiedad.id_barrio = Barrio.id_barrio AND Barrio.id_localidad = Localidad.id_localidad AND Propiedad.id_estado = Estado.id_estado AND Propiedad.id_requisito = Requisito.id_requisito AND Propiedad.id_Servicio = Servicio.id_servicio AND Propiedad.id_barrio = " + id_b + " AND Barrio.id_localidad = " + id_l;
+
+            conexion.da = new SqlDataAdapter(conexion.str_sql, conexion.origen);
+            conexion.da.Fill(conexion.ds, "Propiedades");
+
+            conexion.origen.Close();
+            return conexion.ds;
+        }
+
+        public DataSet consultarPropiedadesPorPrecio(int precioA, int precioB)
+        {
+            conexion.origen.Open();
+            conexion.ds = new DataSet();
+
+            conexion.str_sql = @"SELECT Propiedad.id_propiedad, TipoPropiedad.nombre AS Tipo, Localidad.nombre As Localidad, Barrio.nombre AS Barrio, Propiedad.direccion AS Dirección, Propiedad.piso AS Piso, Propiedad.nro_habitaciones AS Habitaciones, Propiedad.fecha_inauguracion AS Antiguedad, Estado.nombre AS Estado, Servicio.nombre AS Servicio, Requisito.nombre AS Requisito, Propiedad.precio AS Precio  
+            FROM Propiedad, TipoPropiedad, Barrio, Estado, Localidad, Requisito, Servicio
+            WHERE Propiedad.id_tipoPropiedad = TipoPropiedad.id_tipoPropiedad AND Propiedad.id_barrio = Barrio.id_barrio AND Barrio.id_localidad = Localidad.id_localidad AND Propiedad.id_estado = Estado.id_estado AND Propiedad.id_requisito = Requisito.id_requisito AND Propiedad.id_Servicio = Servicio.id_servicio AND Propiedad.precio BETWEEN " + precioA + "AND " + precioB;
+
+            conexion.da = new SqlDataAdapter(conexion.str_sql, conexion.origen);
+            conexion.da.Fill(conexion.ds, "Propiedades");
+
+            conexion.origen.Close();
+            return conexion.ds;
+        }
+
+        public DataSet consultarPropiedadesPorTipoYUbicacion(int id_tp, int id_l, int id_b)
+        {
+            conexion.origen.Open();
+            conexion.ds = new DataSet();
+
+            conexion.str_sql = @"SELECT Propiedad.id_propiedad, TipoPropiedad.nombre AS Tipo, Localidad.nombre As Localidad, Barrio.nombre AS Barrio, Propiedad.direccion AS Dirección, Propiedad.piso AS Piso, Propiedad.nro_habitaciones AS Habitaciones, Propiedad.fecha_inauguracion AS Antiguedad, Estado.nombre AS Estado, Servicio.nombre AS Servicio, Requisito.nombre AS Requisito, Propiedad.precio AS Precio  
+            FROM Propiedad, TipoPropiedad, Barrio, Estado, Localidad, Requisito, Servicio
+            WHERE Propiedad.id_tipoPropiedad = TipoPropiedad.id_tipoPropiedad AND Propiedad.id_barrio = Barrio.id_barrio AND Barrio.id_localidad = Localidad.id_localidad AND Propiedad.id_estado = Estado.id_estado AND Propiedad.id_requisito = Requisito.id_requisito AND Propiedad.id_Servicio = Servicio.id_servicio AND Propiedad.id_barrio = " + id_b + " AND Barrio.id_localidad = " + id_l + " AND Propiedad.id_tipoPropiedad = " + id_tp; ;
+
+            conexion.da = new SqlDataAdapter(conexion.str_sql, conexion.origen);
+            conexion.da.Fill(conexion.ds, "Propiedades");
+
+            conexion.origen.Close();
+            return conexion.ds;
+        }
+
+        public DataSet consultarPropiedadesPorTipoYPrecio(int id_tp, int precioA, int precioB)
+        {
+            conexion.origen.Open();
+            conexion.ds = new DataSet();
+
+            conexion.str_sql = @"SELECT Propiedad.id_propiedad, TipoPropiedad.nombre AS Tipo, Localidad.nombre As Localidad, Barrio.nombre AS Barrio, Propiedad.direccion AS Dirección, Propiedad.piso AS Piso, Propiedad.nro_habitaciones AS Habitaciones, Propiedad.fecha_inauguracion AS Antiguedad, Estado.nombre AS Estado, Servicio.nombre AS Servicio, Requisito.nombre AS Requisito, Propiedad.precio AS Precio  
+            FROM Propiedad, TipoPropiedad, Barrio, Estado, Localidad, Requisito, Servicio
+            WHERE Propiedad.id_tipoPropiedad = TipoPropiedad.id_tipoPropiedad AND Propiedad.id_barrio = Barrio.id_barrio AND Barrio.id_localidad = Localidad.id_localidad AND Propiedad.id_estado = Estado.id_estado AND Propiedad.id_requisito = Requisito.id_requisito AND Propiedad.id_Servicio = Servicio.id_servicio AND Propiedad.id_tipoPropiedad = " + id_tp + "AND Propiedad.precio BETWEEN " + precioA + "AND " + precioB;
+
+            conexion.da = new SqlDataAdapter(conexion.str_sql, conexion.origen);
+            conexion.da.Fill(conexion.ds, "Propiedades");
+
+            conexion.origen.Close();
+            return conexion.ds;
+        }
+
+        public DataSet consultarPropiedadesPorUbicacionYPrecio(int id_l, int id_b, int precioA, int precioB)
+        {
+            conexion.origen.Open();
+            conexion.ds = new DataSet();
+
+            conexion.str_sql = @"SELECT Propiedad.id_propiedad, TipoPropiedad.nombre AS Tipo, Localidad.nombre As Localidad, Barrio.nombre AS Barrio, Propiedad.direccion AS Dirección, Propiedad.piso AS Piso, Propiedad.nro_habitaciones AS Habitaciones, Propiedad.fecha_inauguracion AS Antiguedad, Estado.nombre AS Estado, Servicio.nombre AS Servicio, Requisito.nombre AS Requisito, Propiedad.precio AS Precio  
+            FROM Propiedad, TipoPropiedad, Barrio, Estado, Localidad, Requisito, Servicio
+            WHERE Propiedad.id_tipoPropiedad = TipoPropiedad.id_tipoPropiedad AND Propiedad.id_barrio = Barrio.id_barrio AND Barrio.id_localidad = Localidad.id_localidad AND Propiedad.id_estado = Estado.id_estado AND Propiedad.id_requisito = Requisito.id_requisito AND Propiedad.id_Servicio = Servicio.id_servicio AND Propiedad.id_barrio = " + id_b + " AND Barrio.id_localidad = " + id_l + " AND Propiedad.precio BETWEEN " + precioA + "AND " + precioB;
+
+            conexion.da = new SqlDataAdapter(conexion.str_sql, conexion.origen);
+            conexion.da.Fill(conexion.ds, "Propiedades");
+
+            conexion.origen.Close();
+            return conexion.ds;
+        }
+
+
+        public DataSet consultarPropiedadesPorBúsquedaCompleta(int id_tp, int id_l, int id_b, int precioA, int precioB)
+        {
+            conexion.origen.Open();
+            conexion.ds = new DataSet();
+
+            conexion.str_sql = @"SELECT Propiedad.id_propiedad, TipoPropiedad.nombre AS Tipo, Localidad.nombre As Localidad, Barrio.nombre AS Barrio, Propiedad.direccion AS Dirección, Propiedad.piso AS Piso, Propiedad.nro_habitaciones AS Habitaciones, Propiedad.fecha_inauguracion AS Antiguedad, Estado.nombre AS Estado, Servicio.nombre AS Servicio, Requisito.nombre AS Requisito, Propiedad.precio AS Precio  
+            FROM Propiedad, TipoPropiedad, Barrio, Estado, Localidad, Requisito, Servicio
+            WHERE Propiedad.id_tipoPropiedad = TipoPropiedad.id_tipoPropiedad AND Propiedad.id_barrio = Barrio.id_barrio AND Barrio.id_localidad = Localidad.id_localidad AND Propiedad.id_estado = Estado.id_estado AND Propiedad.id_requisito = Requisito.id_requisito AND Propiedad.id_Servicio = Servicio.id_servicio AND Propiedad.id_tipoPropiedad = " + id_tp + " AND Propiedad.id_barrio = " + id_b + " AND Barrio.id_localidad = " + id_l + " AND Propiedad.precio BETWEEN " + precioA + "AND " + precioB;
+
+            conexion.da = new SqlDataAdapter(conexion.str_sql, conexion.origen);
+            conexion.da.Fill(conexion.ds, "Propiedades");
+
+            conexion.origen.Close();
+            return conexion.ds;
+        }
+
+        public void eliminarPropiedad(int id)
+        {
+            conexion.origen.Open();
+            conexion.ds = new DataSet();
+
+            conexion.str_sql = @"DELETE FROM Propiedad WHERE id_propiedad=" + id;
+            conexion.da = new SqlDataAdapter(conexion.str_sql, conexion.origen);
+            conexion.da.Fill(conexion.ds, "Propiedades");
+
+            conexion.origen.Close();
+        }
+        //*****Fin de consultas de ConsultarPropiedad*****
+
+        //Inicio de consultas de ModificarPropiedad
+        public DataSet consultarPropiedadesModificar(int id)
+        {
+            conexion.origen.Open();
+            conexion.ds = new DataSet();
+
+            conexion.str_sql = @"SELECT Propiedad.id_propiedad, TipoPropiedad.nombre AS Tipo, Localidad.nombre As Localidad, Barrio.nombre AS Barrio, Propiedad.direccion AS Dirección, Propiedad.piso AS Piso, Propiedad.nro_habitaciones AS Habitaciones, Propiedad.fecha_inauguracion AS Antiguedad, Estado.nombre AS Estado, Servicio.nombre AS Servicio, Requisito.nombre AS Requisito, Propiedad.precio AS Precio, Propiedad.depto, Propiedad.descripcion, Propiedad.foto
+            FROM Propiedad, TipoPropiedad, Barrio, Estado, Localidad, Requisito, Servicio
+            WHERE Propiedad.id_tipoPropiedad = TipoPropiedad.id_tipoPropiedad AND Propiedad.id_barrio = Barrio.id_barrio AND Barrio.id_localidad = Localidad.id_localidad AND Propiedad.id_estado = Estado.id_estado AND Propiedad.id_requisito = Requisito.id_requisito AND Propiedad.id_Servicio = Servicio.id_servicio AND id_propiedad = " + id;
+
+            conexion.da = new SqlDataAdapter(conexion.str_sql, conexion.origen);
+            conexion.da.Fill(conexion.ds, "Propiedades");
+
+            conexion.origen.Close();
+            return conexion.ds;
         }
     }
 }
