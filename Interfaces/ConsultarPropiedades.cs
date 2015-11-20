@@ -29,6 +29,13 @@ namespace AlquileresDEC.Interfaces
 
         private void Consulta_Propiedades_Load(object sender, EventArgs e)
         {
+            //Oculta un txt y muestra el txt auxiliar
+            txtPrecioDesde.Visible = false;
+            txtAuxDesde.Visible = true;
+
+            txtPrecioHasta.Visible = false;
+            txtAuxHasta.Visible = true;
+
             //Cargar combo TipoPropiedad
             cmbFiltroTipoPropiedad.DisplayMember = "Nombre";
             cmbFiltroTipoPropiedad.ValueMember = "Id_tipoPropiedad";
@@ -140,7 +147,19 @@ namespace AlquileresDEC.Interfaces
             dgvPropiedades.DataSource = mp.ConsultarPropiedadConFiltros(id_tipoPropiedad, id_barrio, nro_hab, precioDesde, precioHasta);
             dgvPropiedades.DataMember = "PropiedadFiltro";
             dgvPropiedades.Columns[2].Visible = false;
-            
+
+            if (txtPrecioDesde.Text != "" && txtPrecioHasta.Text != "")
+            {
+                var precioMinimo = int.Parse(txtPrecioDesde.Text);
+                var precioMaximo = int.Parse(txtPrecioHasta.Text);
+                
+                if (precioMinimo >= precioMaximo)
+                {
+                    MessageBox.Show("El precio mínimo debe ser menor al precio máximo.", "Consulta de Propiedades", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtPrecioDesde.Focus();
+                }
+            }
+                
             if (cmbFiltroTipoPropiedad.Text == "<Seleccione un Item de la Lista>" && cmbFiltroBarrio.Enabled == false && (txtPrecioDesde.Text == "" || txtPrecioDesde.Text == "Mínimo") && (txtPrecioHasta.Text == "" || txtPrecioHasta.Text == "Máximo") && cmbFiltroNroHab.Text == "<Todos los Item>")
             {
                 MessageBox.Show("Debe completar por lo menos un filtro para realizar la búsqueda.","Consulta de Propiedades", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -156,43 +175,6 @@ namespace AlquileresDEC.Interfaces
             }
         }
 
-        //Setea "máximo" en el txt cuando no se completa el precio
-        private void txtPrecioDesde_Click(object sender, EventArgs e)
-        {/*
-            txtPrecioDesde.Text = "";
-            if (txtPrecioHasta.Text == "")
-                txtPrecioHasta.Text = "Máximo";*/
-        }
-
-
-        //Setea "mínimo" cuando no se completa el precio
-        private void txtPrecioHasta_Click(object sender, EventArgs e)
-        {/*
-            txtPrecioHasta.Text = "";
-            if (txtPrecioDesde.Text == "")
-                txtPrecioDesde.Text = "Mínimo";*/
-        }
-
-        //Al hacer click en algun precio borra "Mínimo" o "Máximo"
-        private void cmbFiltroTipoPropiedad_Click(object sender, EventArgs e)
-        {/*
-            if (txtPrecioDesde.Text == "")
-                txtPrecioDesde.Text = "Mínimo";
-        
-            if (txtPrecioHasta.Text == "")
-                txtPrecioHasta.Text = "Máximo";*/
-        }
-
-        //Al hacer click en una localidad si existe un precio vacio setea "Mínimo" o "Máximo" segun corresponda
-        private void cmbFiltroLocalidad_Click(object sender, EventArgs e)
-        {/*
-            if (txtPrecioDesde.Text == "")
-                txtPrecioDesde.Text = "Mínimo";
-        
-            if (txtPrecioHasta.Text == "")
-                txtPrecioHasta.Text = "Máximo";*/
-        }
-
         public void limpiar()
         {
             cmbFiltroTipoPropiedad.SelectedIndex = 0;
@@ -200,27 +182,15 @@ namespace AlquileresDEC.Interfaces
             cmbFiltroNroHab.SelectedIndex = 0;
             txtPrecioDesde.Text = "";
             txtPrecioHasta.Text = "";
-            
-            /*
-            //Cargar combo TipoPropiedad
-            cmbFiltroTipoPropiedad.DisplayMember = "Nombre";
-            cmbFiltroTipoPropiedad.ValueMember = "Id_tipoPropiedad";
-            cmbFiltroTipoPropiedad.DataSource = ObtenerListaItemOpcionalTP();
 
-            //Cargar combo Localidad
-            cmbFiltroLocalidad.DisplayMember = "Nombre";
-            cmbFiltroLocalidad.ValueMember = "Id_localidad";
-            cmbFiltroLocalidad.DataSource = ObtenerListaItemOpcionalLoc();
-            */
+
+            txtPrecioDesde.Visible = false;
+            txtAuxDesde.Visible = true;
+
+            txtPrecioHasta.Visible = false;
+            txtAuxHasta.Visible = true;
 
             cmbFiltroBarrio.Enabled = false;
-
-            /*
-            //Carga txt de precios
-            txtPrecioDesde.Text = "Mínimo";
-            txtPrecioHasta.Text = "Máximo";
-            cmbFiltroTipoPropiedad.Focus();
-            */
 
             //Mostrar todas las propiedades en grilla
             dgvPropiedades.DataSource = mp.consultarPropiedades();
@@ -288,6 +258,67 @@ namespace AlquileresDEC.Interfaces
                     }
                 }
             }
+        }
+
+        public void limpiarPrecios()
+        {
+            if (txtPrecioDesde.Text == "")
+            {
+                txtPrecioDesde.Visible = false;
+                txtAuxDesde.Visible = true;
+            }
+
+            if (txtPrecioHasta.Text == "")
+            {
+                txtPrecioHasta.Visible = false;
+                txtAuxHasta.Visible = true;
+            }
+        }
+
+        private void txtAuxDesde_Click(object sender, EventArgs e)
+        {
+            txtPrecioDesde.Visible = true;
+            txtAuxDesde.Visible = false;
+            txtPrecioDesde.Focus();
+            
+            if (txtPrecioHasta.Text == "")
+            {
+                txtPrecioHasta.Visible = false;
+                txtAuxHasta.Visible = true;
+            }    
+        }
+
+        private void txtAuxHasta_Click(object sender, EventArgs e)
+        {
+            txtPrecioHasta.Visible = true;
+            txtAuxHasta.Visible = false;
+            txtPrecioHasta.Focus();
+
+            if (txtPrecioDesde.Text == "")
+            {
+                txtPrecioDesde.Visible = false;
+                txtAuxDesde.Visible = true;
+            }   
+        }
+
+        private void cmbFiltroTipoPropiedad_Click(object sender, EventArgs e)
+        {
+            limpiarPrecios();
+        }
+
+        private void cmbFiltroNroHab_Click(object sender, EventArgs e)
+        {
+            limpiarPrecios();
+        }
+
+        private void cmbFiltroLocalidad_Click(object sender, EventArgs e)
+        {
+            limpiarPrecios();
+        }
+
+        private void cmbFiltroBarrio_Click(object sender, EventArgs e)
+        {
+            limpiarPrecios();
         }
     }
 }

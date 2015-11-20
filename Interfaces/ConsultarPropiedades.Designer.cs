@@ -33,6 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbFiltros = new System.Windows.Forms.GroupBox();
+            this.txtAuxHasta = new System.Windows.Forms.TextBox();
+            this.txtAuxDesde = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cmbFiltroNroHab = new System.Windows.Forms.ComboBox();
             this.btnLimpiar = new System.Windows.Forms.Button();
@@ -60,6 +62,8 @@
             // 
             // gbFiltros
             // 
+            this.gbFiltros.Controls.Add(this.txtAuxHasta);
+            this.gbFiltros.Controls.Add(this.txtAuxDesde);
             this.gbFiltros.Controls.Add(this.label7);
             this.gbFiltros.Controls.Add(this.cmbFiltroNroHab);
             this.gbFiltros.Controls.Add(this.btnLimpiar);
@@ -83,6 +87,28 @@
             this.gbFiltros.TabIndex = 0;
             this.gbFiltros.TabStop = false;
             this.gbFiltros.Text = "Filtros de Búsqueda";
+            // 
+            // txtAuxHasta
+            // 
+            this.txtAuxHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAuxHasta.Location = new System.Drawing.Point(532, 119);
+            this.txtAuxHasta.Name = "txtAuxHasta";
+            this.txtAuxHasta.Size = new System.Drawing.Size(88, 26);
+            this.txtAuxHasta.TabIndex = 25;
+            this.txtAuxHasta.Text = "Máximo";
+            this.txtAuxHasta.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtAuxHasta.Click += new System.EventHandler(this.txtAuxHasta_Click);
+            // 
+            // txtAuxDesde
+            // 
+            this.txtAuxDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAuxDesde.Location = new System.Drawing.Point(393, 119);
+            this.txtAuxDesde.Name = "txtAuxDesde";
+            this.txtAuxDesde.Size = new System.Drawing.Size(88, 26);
+            this.txtAuxDesde.TabIndex = 24;
+            this.txtAuxDesde.Text = "Mínimo";
+            this.txtAuxDesde.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtAuxDesde.Click += new System.EventHandler(this.txtAuxDesde_Click);
             // 
             // label7
             // 
@@ -112,6 +138,7 @@
             this.cmbFiltroNroHab.Name = "cmbFiltroNroHab";
             this.cmbFiltroNroHab.Size = new System.Drawing.Size(186, 28);
             this.cmbFiltroNroHab.TabIndex = 3;
+            this.cmbFiltroNroHab.Click += new System.EventHandler(this.cmbFiltroNroHab_Click);
             // 
             // btnLimpiar
             // 
@@ -146,7 +173,6 @@
             this.txtPrecioHasta.Size = new System.Drawing.Size(88, 26);
             this.txtPrecioHasta.TabIndex = 6;
             this.txtPrecioHasta.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtPrecioHasta.Click += new System.EventHandler(this.txtPrecioHasta_Click);
             this.txtPrecioHasta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioHasta_KeyPress);
             // 
             // label4
@@ -169,7 +195,6 @@
             this.txtPrecioDesde.Size = new System.Drawing.Size(88, 26);
             this.txtPrecioDesde.TabIndex = 5;
             this.txtPrecioDesde.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtPrecioDesde.Click += new System.EventHandler(this.txtPrecioDesde_Click);
             this.txtPrecioDesde.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioDesde_KeyPress);
             // 
             // label8
@@ -193,6 +218,7 @@
             this.cmbFiltroBarrio.Name = "cmbFiltroBarrio";
             this.cmbFiltroBarrio.Size = new System.Drawing.Size(380, 28);
             this.cmbFiltroBarrio.TabIndex = 4;
+            this.cmbFiltroBarrio.Click += new System.EventHandler(this.cmbFiltroBarrio_Click);
             // 
             // cmbFiltroLocalidad
             // 
@@ -395,5 +421,7 @@
         private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cmbFiltroNroHab;
+        private System.Windows.Forms.TextBox txtAuxDesde;
+        private System.Windows.Forms.TextBox txtAuxHasta;
     }
 }
