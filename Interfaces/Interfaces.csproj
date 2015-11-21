@@ -70,6 +70,12 @@
     <Compile Include="ABM Propiedad.Designer.cs">
       <DependentUpon>ABM Propiedad.cs</DependentUpon>
     </Compile>
+    <Compile Include="AcercaDe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AcercaDe.Designer.cs">
+      <DependentUpon>AcercaDe.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConsultarPropiedades.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,8 +107,17 @@
     <Compile Include="SelecciónAlternativas.Designer.cs">
       <DependentUpon>SelecciónAlternativas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tutorial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tutorial.Designer.cs">
+      <DependentUpon>Tutorial.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ABM Propiedad.resx">
       <DependentUpon>ABM Propiedad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AcercaDe.resx">
+      <DependentUpon>AcercaDe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConsultarPropiedades.resx">
       <DependentUpon>ConsultarPropiedades.cs</DependentUpon>
@@ -120,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SelecciónAlternativas.resx">
       <DependentUpon>SelecciónAlternativas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tutorial.resx">
+      <DependentUpon>Tutorial.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -166,6 +184,35 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\menu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

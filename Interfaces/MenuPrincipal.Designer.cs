@@ -114,6 +114,7 @@
             this.tutorialToolStripMenuItem.Name = "tutorialToolStripMenuItem";
             this.tutorialToolStripMenuItem.Size = new System.Drawing.Size(161, 30);
             this.tutorialToolStripMenuItem.Text = "Tutorial";
+            this.tutorialToolStripMenuItem.Click += new System.EventHandler(this.tutorialToolStripMenuItem_Click);
             // 
             // acercaDeToolStripMenuItem
             // 
@@ -121,6 +122,7 @@
             this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
             this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(161, 30);
             this.acercaDeToolStripMenuItem.Text = "Acerca de";
+            this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.acercaDeToolStripMenuItem_Click);
             // 
             // menuStrip1
             // 
@@ -147,7 +149,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Menu_Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Menú - Alquiler de Propiedades- TOPSIS";
+            this.Text = "Menú Principal - Alquiler de Propiedades- TOPSIS";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

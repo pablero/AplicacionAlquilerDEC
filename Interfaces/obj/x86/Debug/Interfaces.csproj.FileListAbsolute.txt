@@ -52,3 +52,6 @@ C:\Users\Pablo\Documents\GitHub\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\A
 C:\Users\Pablo\Documents\GitHub\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\AlquileresDEC.Interfaces.SelecciónAlternativas.resources
 C:\Users\Pablo\Documents\GitHub\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\Interfaces.csproj.GenerateResource.Cache
 C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\AlquileresDEC.Interfaces.SelecciónAlternativas.resources
+C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\Interfaces.csproj.ResolveComReference.cache
+C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\AlquileresDEC.Interfaces.AcercaDe.resources
+C:\Users\Yoda\Desktop\AplicacionAlquilerDEC\Interfaces\obj\x86\Debug\AlquileresDEC.Interfaces.Tutorial.resources

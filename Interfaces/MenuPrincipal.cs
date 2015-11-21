@@ -40,5 +40,17 @@ namespace AlquileresDEC.Interfaces
             Dispose();
         }
 
+        private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new AcercaDe();
+            form.ShowDialog();
+        }
+
+        private void tutorialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new Tutorial();
+            form.ShowDialog();
+        }
+
     }
 }
