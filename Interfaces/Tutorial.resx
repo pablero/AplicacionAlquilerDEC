@@ -131,7 +131,7 @@ La aplicación utiliza la técnica TOPSIS para determinar el orden de preferenci
 El programa emplea una base de datos que cuenta con alrededor de 30 departamentos extraídos de diversas inmobiliarias. 
 Es posible filtrar los departamentos en función de los siguientes criterios: precio, barrio, estado, requisitos, servicios, antigüedad y número de habitaciones.  
 En cada uno de estos criterios se puede determinar su objetivo indicando si se desea maximizar o minimizar. 
-Ademas el usuario puede establecer el peso de cada uno.
+Además el usuario puede establecer el peso de cada uno.
 A continuación detallaremos cada uno de los criterios analizados:
 
 - Precio: Indica el costo monetario para alquilar una propiedad (Casa o Departamento).
