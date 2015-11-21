@@ -232,6 +232,7 @@ namespace Interfaces
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
+            this.Close();
             var form = new Consulta_Propiedades();
             form.Show();
         }

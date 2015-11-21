@@ -144,7 +144,7 @@ namespace AlquileresDEC.Interfaces
                 precioDesde = double.Parse(txtPrecioDesde.Text);
             if (txtPrecioHasta.Text != "")
                 precioHasta = double.Parse(txtPrecioHasta.Text);
-            dgvPropiedades.DataSource = mp.ConsultarPropiedadConFiltros(id_tipoPropiedad, id_barrio, nro_hab, precioDesde, precioHasta);
+            dgvPropiedades.DataSource = mp.ConsultarPropiedadConFiltrosOrdenados(id_tipoPropiedad, id_barrio, nro_hab, precioDesde, precioHasta);
             dgvPropiedades.DataMember = "PropiedadFiltro";
             dgvPropiedades.Columns[2].Visible = false;
 
@@ -223,7 +223,8 @@ namespace AlquileresDEC.Interfaces
                          Borrar esa indicación al modificar y el puntero setearlo en 0.
                          */
 
-                        //Abre ventana ABM Propiedad
+                        //Abre ventana Modificar Propiedad
+                        this.Hide();
                         var form = new ModificarPropiedad(id_propiedad);
                         form.Show();
                         

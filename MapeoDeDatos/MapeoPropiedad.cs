@@ -378,7 +378,7 @@ namespace AlquileresDEC.Datos
             conexion.origen.Open();
             conexion.ds = new DataSet();
 
-            conexion.str_sql = @"SELECT Propiedad.id_propiedad, TipoPropiedad.nombre AS Tipo, Localidad.nombre As Localidad, Barrio.nombre AS Barrio, Propiedad.direccion AS Dirección, Propiedad.piso AS Piso, Propiedad.nro_habitaciones AS Habitaciones, Propiedad.fecha_inauguracion AS Antiguedad, Estado.nombre AS Estado, Servicio.nombre AS Servicio, Requisito.nombre AS Requisito, Propiedad.precio AS Precio  
+            conexion.str_sql = @"SELECT Propiedad.id_propiedad, TipoPropiedad.nombre AS TipoPropiedad, Localidad.nombre As Localidad, Barrio.nombre AS Barrio, Propiedad.direccion AS Dirección, Propiedad.piso AS Piso, Propiedad.depto as Departamento, Propiedad.nro_habitaciones AS Habitaciones, cast(datediff(dd,Propiedad.fecha_inauguracion,GETDATE()) / 365.25 as int)as AñosAntigüedad, Estado.nombre AS Estado, Servicio.nombre AS Servicios, Requisito.nombre AS Requisitos, Propiedad.precio AS Precio  
             FROM Propiedad, TipoPropiedad, Barrio, Estado, Localidad, Requisito, Servicio
             WHERE Propiedad.id_tipoPropiedad = TipoPropiedad.id_tipoPropiedad AND Propiedad.id_barrio = Barrio.id_barrio AND Barrio.id_localidad = Localidad.id_localidad AND Propiedad.id_estado = Estado.id_estado AND Propiedad.id_requisito = Requisito.id_requisito AND Propiedad.id_Servicio = Servicio.id_servicio";
 
@@ -389,6 +389,44 @@ namespace AlquileresDEC.Datos
             return conexion.ds;
         }
 
+
+        //Consultar Propiedades con Filtro
+        public DataSet ConsultarPropiedadConFiltrosOrdenados(int? id_tipoP, int? id_barrio, int? nroHab, double? pDesde, double? pHasta)
+        {
+            try
+            {
+                conexion.origen.Open();
+                conexion.ds = new DataSet();
+
+                conexion.str_sql =
+                    @"select p.id_propiedad,tp.nombre as TipoPropiedad, l.nombre as Localidad, b.nombre as Barrio, p.direccion as Dirección, p.piso as Piso, p.depto as Departamento, p.nro_habitaciones as Habitaciones,
+                         cast(datediff(dd,p.fecha_inauguracion,GETDATE()) / 365.25 as int)as AñosAntigüedad, e.nombre as Estado, s.nombre as Servicios, r.nombre as Requisitos, p.precio as Precio from Propiedad p, Barrio b, Localidad l,TipoPropiedad tp, Estado e, Servicio s, Requisito r
+                         where p.id_tipoPropiedad=tp.id_tipoPropiedad and p.id_barrio=b.id_barrio and b.id_localidad=l.id_localidad and p.id_estado=e.id_estado and p.id_servicio=s.id_servicio and p.id_requisito=r.id_requisito";
+                if (id_tipoP.HasValue)
+                    conexion.str_sql += " and p.id_tipoPropiedad= " + id_tipoP;
+                if (id_barrio.HasValue)
+                    conexion.str_sql += " and p.id_barrio= " + id_barrio;
+                if (nroHab.HasValue)
+                    conexion.str_sql += " and p.nro_habitaciones= " + nroHab;
+                if (pDesde.HasValue)
+                    conexion.str_sql += " and p.precio > '" + pDesde + "'";
+                if (pHasta.HasValue)
+                    conexion.str_sql += " and p.precio < '" + pHasta + "'";
+
+                conexion.da = new SqlDataAdapter(conexion.str_sql, conexion.origen);
+                conexion.da.Fill(conexion.ds, "PropiedadFiltro");
+                conexion.origen.Close();
+                return conexion.ds;
+
+            }
+            catch (Exception)
+            {
+                if (conexion.origen.State == ConnectionState.Open)
+                    conexion.origen.Close();
+                return null;
+            }
+        }
+        
         public void eliminarPropiedad(int id)
         {
             conexion.origen.Open();
