@@ -51,6 +51,5 @@ namespace AlquileresDEC.Interfaces
             var form = new Tutorial();
             form.ShowDialog();
         }
-
     }
 }

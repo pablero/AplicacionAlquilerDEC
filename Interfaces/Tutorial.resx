@@ -117,57 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="richTextBox1.Text" xml:space="preserve">
-    <value>******************************************************************************************************
-¿PARA QUÉ SIRVE?
-******************************************************************************************************
-
-La aplicación utiliza la técnica TOPSIS para determinar el orden de preferencia en el que se recomienda alquilar una propiedad. 
-
-******************************************************************************************************
-¿CÓMO FUNCIONA?
-******************************************************************************************************
-
-El programa emplea una base de datos que cuenta con alrededor de 30 departamentos extraídos de diversas inmobiliarias. 
-Es posible filtrar los departamentos en función de los siguientes criterios: precio, barrio, estado, requisitos, servicios, antigüedad y número de habitaciones.  
-En cada uno de estos criterios se puede determinar su objetivo indicando si se desea maximizar o minimizar. 
-Además el usuario puede establecer el peso de cada uno.
-A continuación detallaremos cada uno de los criterios analizados:
-
-- Precio: Indica el costo monetario para alquilar una propiedad (Casa o Departamento).
-- Barrio: Representa la ubicación de la propiedad (Alberdi, Alta Córdoba, Barrio Jardín, Centro, Cerro de las Rosas, Cofico, General Paz, Nueva Córdoba).
-- Estado: Indica las condiciones en las que se encuentra la propiedad (Malo, Regular, Bueno, Muy Bueno, Excelente). 
-- Requisitos: Indica las condiciones necesarias para alquilar una propiedad (garantía propietaria de familiar, recibo de sueldo, documentación, etc.)
-En función de la cantidad de requisitos solicitados se los clasifica como: Ninguno, Pocos, Algunos, Bastantes, Muchos.
-- Servicios: Representa las comodidades que ofrece la propiedad (estacionamiento, muebles, asador, pileta, tv con cable, internet, etc.)
-En función de la cantidad de servicios solicitados se los clasifica como: Ninguno, Pocos, Algunos, Bastantes, Muchos.
-- Antigüedad: Representa el tiempo transcurrido desde su inauguración.
-- Número de habitaciones: Indica de cuantas habitaciones dispone la propiedad (1,2, ..., 6).
-
-******************************************************************************************************
-OPCIONES DEL PROGRAMA
-******************************************************************************************************
-
----------------------------------------------------------------------------------------------------------------------------------------------------------
-1. ABM Propiedad
----------------------------------------------------------------------------------------------------------------------------------------------------------
-
-Permite dar de alta una propiedad completando los campos obligatorios indicados con *.
-
----------------------------------------------------------------------------------------------------------------------------------------------------------
-2. Consultar Propiedades
----------------------------------------------------------------------------------------------------------------------------------------------------------
-
-Permite realizar la búsqueda de propiedades filtrando por tipo de propiedad, localidad, barrio, precio y número de habitaciones.
-
----------------------------------------------------------------------------------------------------------------------------------------------------------
-3. Selección de Alternativas
----------------------------------------------------------------------------------------------------------------------------------------------------------
-
-Permite realizar la búsqueda filtrando por tipo de propiedad, localidad, barrio, precio y número de habitaciones para mostrar las alternativas candidatas.
-De esas alternativas candidatas se pueden agregar una en particular o todas las alternativas elegidas. 
-Además se deben seleccionar los criterios indicando su objetivo y el peso de cada criterio.</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
