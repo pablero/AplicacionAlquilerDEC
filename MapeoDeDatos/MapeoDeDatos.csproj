@@ -41,6 +41,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexion.cs" />
+    <Compile Include="dtoPropiedad.cs">
+      <DependentUpon>dtoPropiedad.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="dtoPropiedad.designer.cs">
+      <DependentUpon>dtoPropiedad.cs</DependentUpon>
+    </Compile>
     <Compile Include="MapeoPropiedad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -49,6 +56,19 @@
       <Project>{76BEF22F-29FC-423A-8ED1-A1A66AB6E8FF}</Project>
       <Name>Entidades</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dtoPropiedad.xsc">
+      <DependentUpon>dtoPropiedad.xsd</DependentUpon>
+    </None>
+    <None Include="dtoPropiedad.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dtoPropiedad1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dtoPropiedad.xss">
+      <DependentUpon>dtoPropiedad.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

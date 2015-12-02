@@ -46,6 +46,8 @@ namespace AlquileresDEC.Interfaces
 
         private void SelecciónAlternativas_Load(object sender, EventArgs e)
         {
+            dtoPropiedad datos = mp.ConsultarPropiedadSinFiltros();
+            
             //Cargar combo TipoPropiedad
             cmbFiltroTipoPropiedad.DisplayMember = "Nombre";
             cmbFiltroTipoPropiedad.ValueMember = "Id_tipoPropiedad";
@@ -59,7 +61,12 @@ namespace AlquileresDEC.Interfaces
             cmbFiltoNroHab.SelectedIndex = 0;
 
             //Cargar Grilla
-            dgvAltCandidatas.DataSource = mp.ConsultarPropiedadSinFiltros();
+            //dgvAltCandidatas.DataSource = mp.ConsultarPropiedadSinFiltros();
+            //dgvAltCandidatas.DataMember = "Propiedad";
+            //dgvAltCandidatas.Columns[1].Visible = false;
+
+            //dgvAltCandidatas.AutoGenerateColumns = false;
+            dgvAltCandidatas.DataSource = datos;
             dgvAltCandidatas.DataMember = "Propiedad";
             dgvAltCandidatas.Columns[1].Visible = false;
         }
@@ -124,48 +131,98 @@ namespace AlquileresDEC.Interfaces
                 precioDesde = double.Parse(txtPrecioDesde.Text);
             if(txtPrecioHasta.Text!="")
                 precioHasta = double.Parse(txtPrecioHasta.Text);
-            dgvAltCandidatas.DataSource = mp.ConsultarPropiedadConFiltros(id_tipoPropiedad,id_barrio,nro_hab,precioDesde,precioHasta);
+            /*dgvAltCandidatas.DataSource = mp.ConsultarPropiedadConFiltros(id_tipoPropiedad,id_barrio,nro_hab,precioDesde,precioHasta);
+            //dgvAltCandidatas.DataMember = "PropiedadFiltro";
+            dgvAltCandidatas.DataMember = "Propiedad";
+            dgvAltCandidatas.Columns[1].Visible = false;*/
+            dgvAltCandidatas.DataSource = mp.ConsultarPropiedadConFiltros(id_tipoPropiedad, id_barrio, nro_hab, precioDesde, precioHasta);
+            //dgvAltCandidatas.DataMember = "PropiedadFiltro";
             dgvAltCandidatas.DataMember = "PropiedadFiltro";
             dgvAltCandidatas.Columns[1].Visible = false;
         }
 
-        // Método que exporta a un fichero Excel el contenido de un DataGridView.
-        // DataGridView que contiene los datos a exportar.
-        // La grilla tiene que tener los pesos arriba y abajo los departamentos que cumplan con los criterios indicados: precio, barrio, estado, requisitos, servicios, antigüedad y número de habitaciones.  
-        // Podrían ser 2 exportaciones, una para pesos y otra para criterios.
-
-        private void ExportarDataGridViewExcel(DataGridView grd)
+        private void btnAgregarTodos_Click(object sender, EventArgs e)
         {
-            SaveFileDialog fichero = new SaveFileDialog();
-            fichero.Filter = "Excel (*.xls)|*.xls";
-            if (fichero.ShowDialog() == DialogResult.OK)
+            //Lista temporal de registros seleccionados
+            List<DataGridViewRow> rowSelected = new List<DataGridViewRow>();
+            foreach (DataGridViewRow row in dgvAltCandidatas.Rows)
             {
-                Microsoft.Office.Interop.Excel.Application aplicacion;
-                Microsoft.Office.Interop.Excel.Workbook libros_trabajo;
-                Microsoft.Office.Interop.Excel.Worksheet hoja_trabajo;
-                aplicacion = new Microsoft.Office.Interop.Excel.Application();
-                libros_trabajo = aplicacion.Workbooks.Add();
-                hoja_trabajo =
-                    (Microsoft.Office.Interop.Excel.Worksheet)libros_trabajo.Worksheets.get_Item(1);
-                //Recorremos el DataGridView rellenando la hoja de trabajo
-                for (int i = 0; i < grd.Rows.Count - 1; i++)
+                //Se recupera el campo del checkbox y se agrega a la lista temporal.
+                DataGridViewCheckBoxCell cellSeleccion = row.Cells["Seleccion"] as DataGridViewCheckBoxCell;
+                if (Convert.ToBoolean(cellSeleccion.Value))
                 {
-                    for (int j = 0; j < grd.Columns.Count; j++)
-                    {
-                        hoja_trabajo.Cells[i + 1, j + 1] = grd.Rows[i].Cells[j].Value.ToString();
-                    }
+                    rowSelected.Add(row);
                 }
-                libros_trabajo.SaveAs(fichero.FileName,
-                    Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
-                libros_trabajo.Close(true);
-                aplicacion.Quit();
+            }
+
+            //Agrego el item seleccionado a la grilla destino Alternativas elegidas.
+            //Eliminando la fila de la grilla alternativas candidatas.
+            foreach (DataGridViewRow row in rowSelected)
+            {
+                dgvAltElegidas.Rows.Add(new object[] {false,
+                                                      row.Cells["id_propiedad"].Value,
+                                                      row.Cells["TipoPropiedad"].Value,
+                                                      row.Cells["Dirección"].Value,
+                                                      row.Cells["Barrio"].Value,
+                                                      row.Cells["Localidad"].Value,
+                                                      row.Cells["NroHab"].Value,
+                                                      row.Cells["Piso"].Value, 
+                                                      row.Cells["Depto"].Value,
+                                                      row.Cells["Precio"].Value,
+                                                      row.Cells["Estado"].Value,
+                                                      row.Cells["Servicios"].Value,
+                                                      row.Cells["Requisitos"].Value,
+                                                      row.Cells["AñosAntigüedad"].Value});
+                dgvAltCandidatas.Rows.Remove(row);
+            }
+
+        }
+
+        private void btnQuitarTodos_Click(object sender, EventArgs e)
+        {
+            //Lista temporal de registros seleccionados
+            List<DataGridViewRow> rowSelected = new List<DataGridViewRow>();
+            foreach (DataGridViewRow row in dgvAltElegidas.Rows)
+            {
+                //Se recupera el campo del checkbox y se agrega a la lista temporal.
+                DataGridViewCheckBoxCell cellSeleccion = row.Cells["Seleccion2"] as DataGridViewCheckBoxCell;
+                if (Convert.ToBoolean(cellSeleccion.Value))
+                {
+                    rowSelected.Add(row);
+                }
+            }
+            //Valida si hay algun registro por eliminar
+            if (rowSelected.Count > 0)
+            {
+                //Propiedad datos = dgvAltCandidatas.DataSource as Propiedad;
+                dtoPropiedad datos = dgvAltCandidatas.DataSource as dtoPropiedad;
+                foreach (DataGridViewRow row in rowSelected)
+                {
+                    dtoPropiedad.PropiedadRow propRow = datos.Propiedad.NewPropiedadRow();
+                    propRow.id_propiedad = Convert.ToInt16(row.Cells["id_propiedad"].Value);
+                    propRow.TipoPropiedad = Convert.ToString(row.Cells["TipoPropiedad"].Value);
+                    propRow.Dirección = Convert.ToString(row.Cells["Direccion"].Value);
+                    propRow.Barrio = Convert.ToString(row.Cells["Barrio"].Value);
+                    propRow.Localidad = Convert.ToString(row.Cells["Localidad"].Value);
+                    propRow.NroHab = Convert.ToInt16(row.Cells["NroHab"].Value);
+                    propRow.Piso = Convert.ToInt16(row.Cells["Piso"].Value);
+                    propRow.Depto = Convert.ToChar(row.Cells["Depto"].Value);
+                    propRow.Precio = Convert.ToDouble(row.Cells["Precio"].Value);
+                    propRow.Estado = Convert.ToString(row.Cells["Estado"].Value);
+                    propRow.Servicios = Convert.ToString(row.Cells["Servicios"].Value);
+                    propRow.Requisitos = Convert.ToString(row.Cells["Requisitos"].Value);
+                    propRow.AñosAntigüedad = Convert.ToInt16(row.Cells["antiguedad"].Value);
+                    datos.Propiedad.Rows.Add(propRow);
+
+                    dgvAltElegidas.Rows.Remove(row);
+                }
+                dgvAltCandidatas.DataSource = datos;
+                dgvAltCandidatas.DataMember = "Propiedad";
+                dgvAltCandidatas.Columns[1].Visible = false;
             }
         }
 
-        private void btnExcel_Click(object sender, EventArgs e)
-        {
-            ExportarDataGridViewExcel(dgvAltElegidas);
-        }
-
+       
+        
     }
 }
