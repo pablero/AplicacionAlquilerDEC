@@ -143,6 +143,7 @@ namespace AlquileresDEC.Interfaces
 
         private void btnAgregarTodos_Click(object sender, EventArgs e)
         {
+            int c = 0;
             //Lista temporal de registros seleccionados
             List<DataGridViewRow> rowSelected = new List<DataGridViewRow>();
             foreach (DataGridViewRow row in dgvAltCandidatas.Rows)
@@ -150,8 +151,27 @@ namespace AlquileresDEC.Interfaces
                 //Se recupera el campo del checkbox y se agrega a la lista temporal.
                 DataGridViewCheckBoxCell cellSeleccion = row.Cells["Seleccion"] as DataGridViewCheckBoxCell;
                 if (Convert.ToBoolean(cellSeleccion.Value))
-                {
-                    rowSelected.Add(row);
+                {   //Prueba
+                    if (dgvAltElegidas.RowCount != 0)
+                    {
+                        foreach (DataGridViewRow row2 in dgvAltElegidas.Rows)
+                        {
+                            if (Convert.ToInt16(row2.Cells["id_propiedad"].Value) == Convert.ToInt16(row.Cells["id_propiedad"].Value))
+                            {
+                                MessageBox.Show("Algunas de las propiedades seleccionadas ya han sido elegidas, se las descartará para evitar duplicación", "Advertencia", MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning);
+                                //MessageBox.Show(row.Cells["direccion"].ToString(), "La propiedad ya ha sido elegida");
+                                dgvAltCandidatas.Rows.Remove(row);//Eliminar de la grilla de candidatas a la que ya está elegida.
+                                c++;
+                                break;
+                            }
+                        }
+                    }
+                    if (c == 0)//agregue este if
+                        rowSelected.Add(row);
+                    c = 0;
+
+                    //rowSelected.Add(row);
                 }
             }
 
