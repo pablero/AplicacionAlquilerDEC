@@ -14,10 +14,12 @@ namespace AlquileresDEC.Interfaces
     public partial class SelecciónAlternativas : Form
     {
         private MapeoPropiedad mp;
+        //private int banderaPaso;
         public SelecciónAlternativas()
         {
             InitializeComponent();
             mp = new MapeoPropiedad();
+            //banderaPaso = 0;
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -113,6 +115,7 @@ namespace AlquileresDEC.Interfaces
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+
             int? id_barrio = null;
             int? id_tipoPropiedad = null;
             //int? id_localidad = null;
@@ -139,11 +142,14 @@ namespace AlquileresDEC.Interfaces
             //dgvAltCandidatas.DataMember = "PropiedadFiltro";
             dgvAltCandidatas.DataMember = "PropiedadFiltro";
             dgvAltCandidatas.Columns[1].Visible = false;
+            cbSelTodosCand.Checked = false;
+            cbSelTodosEleg.Checked = false;
         }
 
         private void btnAgregarTodos_Click(object sender, EventArgs e)
         {
             int c = 0;
+            
             //Lista temporal de registros seleccionados
             List<DataGridViewRow> rowSelected = new List<DataGridViewRow>();
             foreach (DataGridViewRow row in dgvAltCandidatas.Rows)
@@ -157,22 +163,27 @@ namespace AlquileresDEC.Interfaces
                         foreach (DataGridViewRow row2 in dgvAltElegidas.Rows)
                         {
                             if (Convert.ToInt16(row2.Cells["id_propiedad"].Value) == Convert.ToInt16(row.Cells["id_propiedad"].Value))
-                            {
+                            {                                
                                 MessageBox.Show("Algunas de las propiedades seleccionadas ya han sido elegidas, se las descartará para evitar duplicación", "Advertencia", MessageBoxButtons.OK,
-                                    MessageBoxIcon.Warning);
-                                //MessageBox.Show(row.Cells["direccion"].ToString(), "La propiedad ya ha sido elegida");
+                                    MessageBoxIcon.Warning);                                
                                 dgvAltCandidatas.Rows.Remove(row);//Eliminar de la grilla de candidatas a la que ya está elegida.
+                                //MessageBox.Show(row.Cells["direccion"].ToString(), "La propiedad ya ha sido elegida");
+                                
                                 c++;
+                                
                                 break;
                             }
                         }
                     }
                     if (c == 0)//agregue este if
                         rowSelected.Add(row);
-                    c = 0;
+
+                    c = 0;                    
 
                     //rowSelected.Add(row);
                 }
+
+               
             }
 
             //Agrego el item seleccionado a la grilla destino Alternativas elegidas.
@@ -239,6 +250,51 @@ namespace AlquileresDEC.Interfaces
                 dgvAltCandidatas.DataSource = datos;
                 dgvAltCandidatas.DataMember = "Propiedad";
                 dgvAltCandidatas.Columns[1].Visible = false;
+                
+            }
+            cbSelTodosEleg.Checked = false;
+            cbSelTodosCand.Checked = false;
+        }
+
+        private void cbSelTodosCand_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow fila in dgvAltCandidatas.Rows)
+            {
+                if (((CheckBox)sender).Checked)
+                {
+                    fila.Cells[0].Value = true;
+                    //banderaPaso = 1;
+                }
+                else
+                {
+                    fila.Cells[0].Value = false;
+                    //banderaPaso = 0;
+                }
+            }
+        }
+
+        private void cbSelTodosEleg_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow fila in dgvAltElegidas.Rows)
+            {
+                if (((CheckBox)sender).Checked)
+                {
+                    fila.Cells[0].Value = true;
+                    //banderaPaso = 1;
+                }
+                else
+                {
+                    fila.Cells[0].Value = false;
+                    //banderaPaso = 0;
+                }
+            }
+        }
+
+        private void dgvAltCandidatas_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (dgvAltCandidatas.IsCurrentCellDirty)
+            {
+                dgvAltCandidatas.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
         }
 

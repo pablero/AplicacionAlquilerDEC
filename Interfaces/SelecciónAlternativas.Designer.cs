@@ -44,10 +44,26 @@
             this.cmbFiltroTipoPropiedad = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gbAlternativasCandidatas = new System.Windows.Forms.GroupBox();
+            this.cbSelTodosCand = new System.Windows.Forms.CheckBox();
             this.dgvAltCandidatas = new System.Windows.Forms.DataGridView();
             this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.gbAlternativasElegidas = new System.Windows.Forms.GroupBox();
+            this.cbSelTodosEleg = new System.Windows.Forms.CheckBox();
             this.dgvAltElegidas = new System.Windows.Forms.DataGridView();
+            this.Seleccion2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.id_propiedad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoPropiedad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Barrio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Localidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NroHab = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Piso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Depto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Servicios = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Requisitos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.antiguedad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAgregarTodos = new System.Windows.Forms.Button();
             this.btnQuitarTodos = new System.Windows.Forms.Button();
             this.gbParametros = new System.Windows.Forms.GroupBox();
@@ -65,20 +81,6 @@
             this.Objetivo = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.Seleccion2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.id_propiedad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipoPropiedad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Barrio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Localidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NroHab = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Piso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Depto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Servicios = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Requisitos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.antiguedad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbFiltros.SuspendLayout();
             this.gbAlternativasCandidatas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAltCandidatas)).BeginInit();
@@ -249,13 +251,25 @@
             // 
             // gbAlternativasCandidatas
             // 
+            this.gbAlternativasCandidatas.Controls.Add(this.cbSelTodosCand);
             this.gbAlternativasCandidatas.Controls.Add(this.dgvAltCandidatas);
             this.gbAlternativasCandidatas.Location = new System.Drawing.Point(10, 143);
             this.gbAlternativasCandidatas.Name = "gbAlternativasCandidatas";
-            this.gbAlternativasCandidatas.Size = new System.Drawing.Size(660, 236);
+            this.gbAlternativasCandidatas.Size = new System.Drawing.Size(660, 246);
             this.gbAlternativasCandidatas.TabIndex = 2;
             this.gbAlternativasCandidatas.TabStop = false;
             this.gbAlternativasCandidatas.Text = "Alternativas Candidatas";
+            // 
+            // cbSelTodosCand
+            // 
+            this.cbSelTodosCand.AutoSize = true;
+            this.cbSelTodosCand.Location = new System.Drawing.Point(12, 19);
+            this.cbSelTodosCand.Name = "cbSelTodosCand";
+            this.cbSelTodosCand.Size = new System.Drawing.Size(115, 17);
+            this.cbSelTodosCand.TabIndex = 16;
+            this.cbSelTodosCand.Text = "Seleccionar Todos";
+            this.cbSelTodosCand.UseVisualStyleBackColor = true;
+            this.cbSelTodosCand.CheckedChanged += new System.EventHandler(this.cbSelTodosCand_CheckedChanged);
             // 
             // dgvAltCandidatas
             // 
@@ -264,11 +278,12 @@
             this.dgvAltCandidatas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAltCandidatas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccion});
-            this.dgvAltCandidatas.Location = new System.Drawing.Point(12, 19);
+            this.dgvAltCandidatas.Location = new System.Drawing.Point(14, 41);
             this.dgvAltCandidatas.Name = "dgvAltCandidatas";
             this.dgvAltCandidatas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAltCandidatas.Size = new System.Drawing.Size(642, 199);
+            this.dgvAltCandidatas.Size = new System.Drawing.Size(642, 198);
             this.dgvAltCandidatas.TabIndex = 15;
+            this.dgvAltCandidatas.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvAltCandidatas_CurrentCellDirtyStateChanged);
             // 
             // Seleccion
             // 
@@ -278,13 +293,25 @@
             // 
             // gbAlternativasElegidas
             // 
+            this.gbAlternativasElegidas.Controls.Add(this.cbSelTodosEleg);
             this.gbAlternativasElegidas.Controls.Add(this.dgvAltElegidas);
             this.gbAlternativasElegidas.Location = new System.Drawing.Point(757, 143);
             this.gbAlternativasElegidas.Name = "gbAlternativasElegidas";
-            this.gbAlternativasElegidas.Size = new System.Drawing.Size(541, 236);
+            this.gbAlternativasElegidas.Size = new System.Drawing.Size(541, 246);
             this.gbAlternativasElegidas.TabIndex = 17;
             this.gbAlternativasElegidas.TabStop = false;
             this.gbAlternativasElegidas.Text = "Alternativas Elegidas";
+            // 
+            // cbSelTodosEleg
+            // 
+            this.cbSelTodosEleg.AutoSize = true;
+            this.cbSelTodosEleg.Location = new System.Drawing.Point(16, 18);
+            this.cbSelTodosEleg.Name = "cbSelTodosEleg";
+            this.cbSelTodosEleg.Size = new System.Drawing.Size(115, 17);
+            this.cbSelTodosEleg.TabIndex = 17;
+            this.cbSelTodosEleg.Text = "Seleccionar Todos";
+            this.cbSelTodosEleg.UseVisualStyleBackColor = true;
+            this.cbSelTodosEleg.CheckedChanged += new System.EventHandler(this.cbSelTodosEleg_CheckedChanged);
             // 
             // dgvAltElegidas
             // 
@@ -306,10 +333,95 @@
             this.Servicios,
             this.Requisitos,
             this.antiguedad});
-            this.dgvAltElegidas.Location = new System.Drawing.Point(16, 19);
+            this.dgvAltElegidas.Location = new System.Drawing.Point(16, 41);
             this.dgvAltElegidas.Name = "dgvAltElegidas";
             this.dgvAltElegidas.Size = new System.Drawing.Size(519, 199);
             this.dgvAltElegidas.TabIndex = 21;
+            // 
+            // Seleccion2
+            // 
+            this.Seleccion2.HeaderText = "Selección";
+            this.Seleccion2.Name = "Seleccion2";
+            this.Seleccion2.Width = 60;
+            // 
+            // id_propiedad
+            // 
+            this.id_propiedad.HeaderText = "id_propiedad";
+            this.id_propiedad.Name = "id_propiedad";
+            this.id_propiedad.Visible = false;
+            this.id_propiedad.Width = 93;
+            // 
+            // TipoPropiedad
+            // 
+            this.TipoPropiedad.HeaderText = "TipoPropiedad";
+            this.TipoPropiedad.Name = "TipoPropiedad";
+            this.TipoPropiedad.Width = 101;
+            // 
+            // Direccion
+            // 
+            this.Direccion.HeaderText = "Dirección";
+            this.Direccion.Name = "Direccion";
+            this.Direccion.Width = 77;
+            // 
+            // Barrio
+            // 
+            this.Barrio.HeaderText = "Barrio";
+            this.Barrio.Name = "Barrio";
+            this.Barrio.Width = 59;
+            // 
+            // Localidad
+            // 
+            this.Localidad.HeaderText = "Localidad";
+            this.Localidad.Name = "Localidad";
+            this.Localidad.Width = 78;
+            // 
+            // NroHab
+            // 
+            this.NroHab.HeaderText = "NroHab";
+            this.NroHab.Name = "NroHab";
+            this.NroHab.Width = 69;
+            // 
+            // Piso
+            // 
+            this.Piso.HeaderText = "Piso";
+            this.Piso.Name = "Piso";
+            this.Piso.Width = 52;
+            // 
+            // Depto
+            // 
+            this.Depto.HeaderText = "Depto";
+            this.Depto.Name = "Depto";
+            this.Depto.Width = 61;
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.Width = 62;
+            // 
+            // Estado
+            // 
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.Width = 65;
+            // 
+            // Servicios
+            // 
+            this.Servicios.HeaderText = "Servicios";
+            this.Servicios.Name = "Servicios";
+            this.Servicios.Width = 75;
+            // 
+            // Requisitos
+            // 
+            this.Requisitos.HeaderText = "Requisitos";
+            this.Requisitos.Name = "Requisitos";
+            this.Requisitos.Width = 81;
+            // 
+            // antiguedad
+            // 
+            this.antiguedad.HeaderText = "AñosAntigüedad";
+            this.antiguedad.Name = "antiguedad";
+            this.antiguedad.Width = 110;
             // 
             // btnAgregarTodos
             // 
@@ -336,7 +448,7 @@
             this.gbParametros.Controls.Add(this.btnExcel);
             this.gbParametros.Controls.Add(this.groupBox5);
             this.gbParametros.Controls.Add(this.dgvCriterios);
-            this.gbParametros.Location = new System.Drawing.Point(10, 385);
+            this.gbParametros.Location = new System.Drawing.Point(10, 395);
             this.gbParametros.Name = "gbParametros";
             this.gbParametros.Size = new System.Drawing.Size(867, 244);
             this.gbParametros.TabIndex = 23;
@@ -460,7 +572,7 @@
             // 
             // btnGenerar
             // 
-            this.btnGenerar.Location = new System.Drawing.Point(280, 635);
+            this.btnGenerar.Location = new System.Drawing.Point(280, 642);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(111, 39);
             this.btnGenerar.TabIndex = 38;
@@ -469,98 +581,13 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(488, 635);
+            this.btnSalir.Location = new System.Drawing.Point(488, 642);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(87, 39);
             this.btnSalir.TabIndex = 40;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // Seleccion2
-            // 
-            this.Seleccion2.HeaderText = "Selección";
-            this.Seleccion2.Name = "Seleccion2";
-            this.Seleccion2.Width = 60;
-            // 
-            // id_propiedad
-            // 
-            this.id_propiedad.HeaderText = "id_propiedad";
-            this.id_propiedad.Name = "id_propiedad";
-            this.id_propiedad.Visible = false;
-            this.id_propiedad.Width = 93;
-            // 
-            // TipoPropiedad
-            // 
-            this.TipoPropiedad.HeaderText = "TipoPropiedad";
-            this.TipoPropiedad.Name = "TipoPropiedad";
-            this.TipoPropiedad.Width = 101;
-            // 
-            // Direccion
-            // 
-            this.Direccion.HeaderText = "Dirección";
-            this.Direccion.Name = "Direccion";
-            this.Direccion.Width = 77;
-            // 
-            // Barrio
-            // 
-            this.Barrio.HeaderText = "Barrio";
-            this.Barrio.Name = "Barrio";
-            this.Barrio.Width = 59;
-            // 
-            // Localidad
-            // 
-            this.Localidad.HeaderText = "Localidad";
-            this.Localidad.Name = "Localidad";
-            this.Localidad.Width = 78;
-            // 
-            // NroHab
-            // 
-            this.NroHab.HeaderText = "NroHab";
-            this.NroHab.Name = "NroHab";
-            this.NroHab.Width = 69;
-            // 
-            // Piso
-            // 
-            this.Piso.HeaderText = "Piso";
-            this.Piso.Name = "Piso";
-            this.Piso.Width = 52;
-            // 
-            // Depto
-            // 
-            this.Depto.HeaderText = "Depto";
-            this.Depto.Name = "Depto";
-            this.Depto.Width = 61;
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
-            this.Precio.Width = 62;
-            // 
-            // Estado
-            // 
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            this.Estado.Width = 65;
-            // 
-            // Servicios
-            // 
-            this.Servicios.HeaderText = "Servicios";
-            this.Servicios.Name = "Servicios";
-            this.Servicios.Width = 75;
-            // 
-            // Requisitos
-            // 
-            this.Requisitos.HeaderText = "Requisitos";
-            this.Requisitos.Name = "Requisitos";
-            this.Requisitos.Width = 81;
-            // 
-            // antiguedad
-            // 
-            this.antiguedad.HeaderText = "AñosAntigüedad";
-            this.antiguedad.Name = "antiguedad";
-            this.antiguedad.Width = 110;
             // 
             // SelecciónAlternativas
             // 
@@ -582,8 +609,10 @@
             this.gbFiltros.ResumeLayout(false);
             this.gbFiltros.PerformLayout();
             this.gbAlternativasCandidatas.ResumeLayout(false);
+            this.gbAlternativasCandidatas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAltCandidatas)).EndInit();
             this.gbAlternativasElegidas.ResumeLayout(false);
+            this.gbAlternativasElegidas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAltElegidas)).EndInit();
             this.gbParametros.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
@@ -649,5 +678,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Servicios;
         private System.Windows.Forms.DataGridViewTextBoxColumn Requisitos;
         private System.Windows.Forms.DataGridViewTextBoxColumn antiguedad;
+        private System.Windows.Forms.CheckBox cbSelTodosCand;
+        private System.Windows.Forms.CheckBox cbSelTodosEleg;
     }
 }
