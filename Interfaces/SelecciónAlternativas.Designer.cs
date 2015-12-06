@@ -82,6 +82,9 @@
             this.Seleccion3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Objetivo = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Peso = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.btnMatrizDecision = new System.Windows.Forms.Button();
+            this.gbMatrizDec = new System.Windows.Forms.GroupBox();
+            this.dgvMatrizDec = new System.Windows.Forms.DataGridView();
             this.gbFiltros.SuspendLayout();
             this.gbAlternativasCandidatas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAltCandidatas)).BeginInit();
@@ -92,6 +95,8 @@
             this.gbNormalizacion.SuspendLayout();
             this.gbSeleccionP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCriterios)).BeginInit();
+            this.gbMatrizDec.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMatrizDec)).BeginInit();
             this.SuspendLayout();
             // 
             // gbFiltros
@@ -110,9 +115,9 @@
             this.gbFiltros.Controls.Add(this.label2);
             this.gbFiltros.Controls.Add(this.cmbFiltroTipoPropiedad);
             this.gbFiltros.Controls.Add(this.label1);
-            this.gbFiltros.Location = new System.Drawing.Point(8, 12);
+            this.gbFiltros.Location = new System.Drawing.Point(10, 12);
             this.gbFiltros.Name = "gbFiltros";
-            this.gbFiltros.Size = new System.Drawing.Size(755, 125);
+            this.gbFiltros.Size = new System.Drawing.Size(750, 125);
             this.gbFiltros.TabIndex = 1;
             this.gbFiltros.TabStop = false;
             this.gbFiltros.Text = "Filtros";
@@ -120,7 +125,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(13, 80);
+            this.label7.Location = new System.Drawing.Point(633, 22);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(92, 13);
             this.label7.TabIndex = 21;
@@ -138,16 +143,16 @@
             "4",
             "5",
             "6"});
-            this.cmbFiltoNroHab.Location = new System.Drawing.Point(111, 77);
+            this.cmbFiltoNroHab.Location = new System.Drawing.Point(636, 38);
             this.cmbFiltoNroHab.Name = "cmbFiltoNroHab";
-            this.cmbFiltoNroHab.Size = new System.Drawing.Size(125, 21);
+            this.cmbFiltoNroHab.Size = new System.Drawing.Size(83, 21);
             this.cmbFiltoNroHab.TabIndex = 6;
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(646, 28);
+            this.btnLimpiar.Location = new System.Drawing.Point(373, 91);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(75, 35);
+            this.btnLimpiar.Size = new System.Drawing.Size(101, 28);
             this.btnLimpiar.TabIndex = 13;
             this.btnLimpiar.Text = "Limpiar Búsqueda";
             this.btnLimpiar.UseVisualStyleBackColor = true;
@@ -155,9 +160,9 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(396, 96);
+            this.btnBuscar.Location = new System.Drawing.Point(225, 91);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.Size = new System.Drawing.Size(75, 28);
             this.btnBuscar.TabIndex = 11;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -440,7 +445,8 @@
             // 
             // gbParametros
             // 
-            this.gbParametros.Controls.Add(this.btnExcel);
+            this.gbParametros.Controls.Add(this.gbMatrizDec);
+            this.gbParametros.Controls.Add(this.btnMatrizDecision);
             this.gbParametros.Controls.Add(this.groupBox5);
             this.gbParametros.Controls.Add(this.dgvCriterios);
             this.gbParametros.Location = new System.Drawing.Point(10, 395);
@@ -452,9 +458,9 @@
             // 
             // btnExcel
             // 
-            this.btnExcel.Location = new System.Drawing.Point(126, 201);
+            this.btnExcel.Location = new System.Drawing.Point(410, 79);
             this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(108, 23);
+            this.btnExcel.Size = new System.Drawing.Size(108, 36);
             this.btnExcel.TabIndex = 36;
             this.btnExcel.Text = "Exportar A Excel";
             this.btnExcel.UseVisualStyleBackColor = true;
@@ -465,7 +471,7 @@
             this.groupBox5.Controls.Add(this.gbSeleccionP);
             this.groupBox5.Location = new System.Drawing.Point(392, 19);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(264, 176);
+            this.groupBox5.Size = new System.Drawing.Size(264, 190);
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             // 
@@ -556,12 +562,12 @@
             this.Peso});
             this.dgvCriterios.Location = new System.Drawing.Point(12, 19);
             this.dgvCriterios.Name = "dgvCriterios";
-            this.dgvCriterios.Size = new System.Drawing.Size(369, 176);
+            this.dgvCriterios.Size = new System.Drawing.Size(369, 190);
             this.dgvCriterios.TabIndex = 27;
             // 
             // btnGenerar
             // 
-            this.btnGenerar.Location = new System.Drawing.Point(280, 642);
+            this.btnGenerar.Location = new System.Drawing.Point(464, 645);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(111, 39);
             this.btnGenerar.TabIndex = 38;
@@ -570,7 +576,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(488, 642);
+            this.btnSalir.Location = new System.Drawing.Point(889, 645);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(87, 39);
             this.btnSalir.TabIndex = 40;
@@ -613,6 +619,34 @@
             "9"});
             this.Peso.Name = "Peso";
             // 
+            // btnMatrizDecision
+            // 
+            this.btnMatrizDecision.Location = new System.Drawing.Point(662, 85);
+            this.btnMatrizDecision.Name = "btnMatrizDecision";
+            this.btnMatrizDecision.Size = new System.Drawing.Size(74, 49);
+            this.btnMatrizDecision.TabIndex = 41;
+            this.btnMatrizDecision.Text = "Generar Matriz Decisión ->>";
+            this.btnMatrizDecision.UseVisualStyleBackColor = true;
+            // 
+            // gbMatrizDec
+            // 
+            this.gbMatrizDec.Controls.Add(this.dgvMatrizDec);
+            this.gbMatrizDec.Controls.Add(this.btnExcel);
+            this.gbMatrizDec.Location = new System.Drawing.Point(747, 19);
+            this.gbMatrizDec.Name = "gbMatrizDec";
+            this.gbMatrizDec.Size = new System.Drawing.Size(535, 194);
+            this.gbMatrizDec.TabIndex = 42;
+            this.gbMatrizDec.TabStop = false;
+            this.gbMatrizDec.Text = "Matriz de Decisión";
+            // 
+            // dgvMatrizDec
+            // 
+            this.dgvMatrizDec.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMatrizDec.Location = new System.Drawing.Point(26, 20);
+            this.dgvMatrizDec.Name = "dgvMatrizDec";
+            this.dgvMatrizDec.Size = new System.Drawing.Size(369, 150);
+            this.dgvMatrizDec.TabIndex = 0;
+            // 
             // SelecciónAlternativas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -645,6 +679,8 @@
             this.gbSeleccionP.ResumeLayout(false);
             this.gbSeleccionP.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCriterios)).EndInit();
+            this.gbMatrizDec.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMatrizDec)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -705,5 +741,8 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion3;
         private System.Windows.Forms.DataGridViewComboBoxColumn Objetivo;
         private System.Windows.Forms.DataGridViewComboBoxColumn Peso;
+        private System.Windows.Forms.GroupBox gbMatrizDec;
+        private System.Windows.Forms.DataGridView dgvMatrizDec;
+        private System.Windows.Forms.Button btnMatrizDecision;
     }
 }
