@@ -62,15 +62,29 @@ namespace AlquileresDEC.Interfaces
 
             cmbFiltoNroHab.SelectedIndex = 0;
 
-            //Cargar Grilla
-            //dgvAltCandidatas.DataSource = mp.ConsultarPropiedadSinFiltros();
-            //dgvAltCandidatas.DataMember = "Propiedad";
-            //dgvAltCandidatas.Columns[1].Visible = false;
+            //Cargar grilla de Criterios
+            DataTable data2 = new DataTable();
+            data2.Columns.Add(new DataColumn("Criterios", typeof(string)));
+            
+            data2.Rows.Add("Antigüedad");
+            data2.Rows.Add("Barrio");
+            data2.Rows.Add("Estado");
+            data2.Rows.Add("NroHabitaciones");
+            data2.Rows.Add("Precio");
+            data2.Rows.Add("Servicios");
+            data2.Rows.Add("Requisitos");
 
-            //dgvAltCandidatas.AutoGenerateColumns = false;
+            dgvCriterios.DataSource = data2;
+            dgvCriterios.Columns["Criterios"].DisplayIndex = 1;                    
+            
+           
+           //Cargar Grilla Alternativas candidatas  
             dgvAltCandidatas.DataSource = datos;
             dgvAltCandidatas.DataMember = "Propiedad";
             dgvAltCandidatas.Columns[1].Visible = false;
+
+            //Inicializar Combo P en 1
+            cmbP.SelectedIndex = 0;
         }
 
         //Listas con ItemOpcional
@@ -149,7 +163,7 @@ namespace AlquileresDEC.Interfaces
         private void btnAgregarTodos_Click(object sender, EventArgs e)
         {
             int c = 0;
-            
+           
             //Lista temporal de registros seleccionados
             List<DataGridViewRow> rowSelected = new List<DataGridViewRow>();
             foreach (DataGridViewRow row in dgvAltCandidatas.Rows)
@@ -168,7 +182,6 @@ namespace AlquileresDEC.Interfaces
                                     MessageBoxIcon.Warning);                                
                                 dgvAltCandidatas.Rows.Remove(row);//Eliminar de la grilla de candidatas a la que ya está elegida.
                                 //MessageBox.Show(row.Cells["direccion"].ToString(), "La propiedad ya ha sido elegida");
-                                
                                 c++;
                                 
                                 break;
@@ -182,7 +195,6 @@ namespace AlquileresDEC.Interfaces
 
                     //rowSelected.Add(row);
                 }
-
                
             }
 
@@ -297,6 +309,7 @@ namespace AlquileresDEC.Interfaces
                 dgvAltCandidatas.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
         }
+        
 
        
         

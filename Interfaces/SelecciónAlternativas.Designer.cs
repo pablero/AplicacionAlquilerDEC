@@ -46,7 +46,6 @@
             this.gbAlternativasCandidatas = new System.Windows.Forms.GroupBox();
             this.cbSelTodosCand = new System.Windows.Forms.CheckBox();
             this.dgvAltCandidatas = new System.Windows.Forms.DataGridView();
-            this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.gbAlternativasElegidas = new System.Windows.Forms.GroupBox();
             this.cbSelTodosEleg = new System.Windows.Forms.CheckBox();
             this.dgvAltElegidas = new System.Windows.Forms.DataGridView();
@@ -77,10 +76,12 @@
             this.cmbP = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvCriterios = new System.Windows.Forms.DataGridView();
-            this.Criterios = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Objetivo = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Seleccion3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Objetivo = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Peso = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.gbFiltros.SuspendLayout();
             this.gbAlternativasCandidatas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAltCandidatas)).BeginInit();
@@ -285,12 +286,6 @@
             this.dgvAltCandidatas.TabIndex = 15;
             this.dgvAltCandidatas.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvAltCandidatas_CurrentCellDirtyStateChanged);
             // 
-            // Seleccion
-            // 
-            this.Seleccion.HeaderText = "Selección";
-            this.Seleccion.Name = "Seleccion";
-            this.Seleccion.Width = 60;
-            // 
             // gbAlternativasElegidas
             // 
             this.gbAlternativasElegidas.Controls.Add(this.cbSelTodosEleg);
@@ -450,7 +445,7 @@
             this.gbParametros.Controls.Add(this.dgvCriterios);
             this.gbParametros.Location = new System.Drawing.Point(10, 395);
             this.gbParametros.Name = "gbParametros";
-            this.gbParametros.Size = new System.Drawing.Size(867, 244);
+            this.gbParametros.Size = new System.Drawing.Size(1288, 244);
             this.gbParametros.TabIndex = 23;
             this.gbParametros.TabStop = false;
             this.gbParametros.Text = "Parámetros a utilizar en Topsis";
@@ -470,7 +465,7 @@
             this.groupBox5.Controls.Add(this.gbSeleccionP);
             this.groupBox5.Location = new System.Drawing.Point(392, 19);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(469, 176);
+            this.groupBox5.Size = new System.Drawing.Size(264, 176);
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             // 
@@ -481,7 +476,7 @@
             this.gbNormalizacion.Controls.Add(this.rbSuma);
             this.gbNormalizacion.Location = new System.Drawing.Point(6, 19);
             this.gbNormalizacion.Name = "gbNormalizacion";
-            this.gbNormalizacion.Size = new System.Drawing.Size(432, 55);
+            this.gbNormalizacion.Size = new System.Drawing.Size(248, 55);
             this.gbNormalizacion.TabIndex = 29;
             this.gbNormalizacion.TabStop = false;
             this.gbNormalizacion.Text = "Selección de Normalización";
@@ -489,7 +484,7 @@
             // rbMaximo
             // 
             this.rbMaximo.AutoSize = true;
-            this.rbMaximo.Location = new System.Drawing.Point(336, 23);
+            this.rbMaximo.Location = new System.Drawing.Point(173, 23);
             this.rbMaximo.Name = "rbMaximo";
             this.rbMaximo.Size = new System.Drawing.Size(61, 17);
             this.rbMaximo.TabIndex = 32;
@@ -499,7 +494,7 @@
             // rbRaiz
             // 
             this.rbRaiz.AutoSize = true;
-            this.rbRaiz.Location = new System.Drawing.Point(177, 23);
+            this.rbRaiz.Location = new System.Drawing.Point(93, 23);
             this.rbRaiz.Name = "rbRaiz";
             this.rbRaiz.Size = new System.Drawing.Size(48, 17);
             this.rbRaiz.TabIndex = 31;
@@ -524,23 +519,27 @@
             this.gbSeleccionP.Controls.Add(this.label5);
             this.gbSeleccionP.Location = new System.Drawing.Point(6, 90);
             this.gbSeleccionP.Name = "gbSeleccionP";
-            this.gbSeleccionP.Size = new System.Drawing.Size(432, 59);
+            this.gbSeleccionP.Size = new System.Drawing.Size(248, 59);
             this.gbSeleccionP.TabIndex = 34;
             this.gbSeleccionP.TabStop = false;
             this.gbSeleccionP.Text = "Selección del valor de P";
             // 
             // cmbP
             // 
+            this.cmbP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbP.FormattingEnabled = true;
-            this.cmbP.Location = new System.Drawing.Point(161, 24);
+            this.cmbP.Items.AddRange(new object[] {
+            "1",
+            "2"});
+            this.cmbP.Location = new System.Drawing.Point(56, 24);
             this.cmbP.Name = "cmbP";
-            this.cmbP.Size = new System.Drawing.Size(160, 21);
+            this.cmbP.Size = new System.Drawing.Size(111, 21);
             this.cmbP.TabIndex = 35;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(135, 27);
+            this.label5.Location = new System.Drawing.Point(30, 27);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(20, 13);
             this.label5.TabIndex = 0;
@@ -548,27 +547,17 @@
             // 
             // dgvCriterios
             // 
+            this.dgvCriterios.AllowUserToAddRows = false;
+            this.dgvCriterios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCriterios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCriterios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Criterios,
-            this.Objetivo});
+            this.Seleccion3,
+            this.Objetivo,
+            this.Peso});
             this.dgvCriterios.Location = new System.Drawing.Point(12, 19);
             this.dgvCriterios.Name = "dgvCriterios";
             this.dgvCriterios.Size = new System.Drawing.Size(369, 176);
             this.dgvCriterios.TabIndex = 27;
-            // 
-            // Criterios
-            // 
-            this.Criterios.HeaderText = "Criterios";
-            this.Criterios.Name = "Criterios";
-            // 
-            // Objetivo
-            // 
-            this.Objetivo.HeaderText = "Objetivo";
-            this.Objetivo.Items.AddRange(new object[] {
-            "Maximizar",
-            "Minimizar"});
-            this.Objetivo.Name = "Objetivo";
             // 
             // btnGenerar
             // 
@@ -588,6 +577,41 @@
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // Seleccion
+            // 
+            this.Seleccion.HeaderText = "Selección";
+            this.Seleccion.Name = "Seleccion";
+            this.Seleccion.Width = 60;
+            // 
+            // Seleccion3
+            // 
+            this.Seleccion3.HeaderText = "Selección";
+            this.Seleccion3.Name = "Seleccion3";
+            // 
+            // Objetivo
+            // 
+            this.Objetivo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Objetivo.HeaderText = "Objetivo";
+            this.Objetivo.Items.AddRange(new object[] {
+            "Maximizar",
+            "Minimizar"});
+            this.Objetivo.Name = "Objetivo";
+            // 
+            // Peso
+            // 
+            this.Peso.HeaderText = "Peso";
+            this.Peso.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"});
+            this.Peso.Name = "Peso";
             // 
             // SelecciónAlternativas
             // 
@@ -657,13 +681,10 @@
         private System.Windows.Forms.ComboBox cmbP;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dgvCriterios;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Criterios;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Objetivo;
         private System.Windows.Forms.Button btnGenerar;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cmbFiltoNroHab;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion2;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_propiedad;
         private System.Windows.Forms.DataGridViewTextBoxColumn TipoPropiedad;
@@ -680,5 +701,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn antiguedad;
         private System.Windows.Forms.CheckBox cbSelTodosCand;
         private System.Windows.Forms.CheckBox cbSelTodosEleg;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion3;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Objetivo;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Peso;
     }
 }
