@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="dtoPropiedad" targetNamespace="http://tempuri.org/dtoPropiedad.xsd" xmlns:mstns="http://tempuri.org/dtoPropiedad.xsd" xmlns="http://tempuri.org/dtoPropiedad.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+<xs:schema id="dtoPropiedad2" targetNamespace="http://tempuri.org/dtoPropiedad2.xsd" xmlns:mstns="http://tempuri.org/dtoPropiedad2.xsd" xmlns="http://tempuri.org/dtoPropiedad2.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
@@ -9,10 +9,10 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="dtoPropiedad" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dtoPropiedad" msprop:Generator_UserDSName="dtoPropiedad">
+  <xs:element name="dtoPropiedad2" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dtoPropiedad2" msprop:Generator_UserDSName="dtoPropiedad2">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Propiedad" msprop:Generator_TableClassName="PropiedadDataTable" msprop:Generator_TableVarName="tablePropiedad" msprop:Generator_TablePropName="Propiedad" msprop:Generator_RowDeletingName="PropiedadRowDeleting" msprop:Generator_RowChangingName="PropiedadRowChanging" msprop:Generator_RowEvHandlerName="PropiedadRowChangeEventHandler" msprop:Generator_RowDeletedName="PropiedadRowDeleted" msprop:Generator_UserTableName="Propiedad" msprop:Generator_RowChangedName="PropiedadRowChanged" msprop:Generator_RowEvArgName="PropiedadRowChangeEvent" msprop:Generator_RowClassName="PropiedadRow">
+        <xs:element name="Propiedad" msprop:Generator_TableClassName="PropiedadDataTable" msprop:Generator_TableVarName="tablePropiedad" msprop:Generator_RowChangedName="PropiedadRowChanged" msprop:Generator_TablePropName="Propiedad" msprop:Generator_RowDeletingName="PropiedadRowDeleting" msprop:Generator_RowChangingName="PropiedadRowChanging" msprop:Generator_RowEvHandlerName="PropiedadRowChangeEventHandler" msprop:Generator_RowDeletedName="PropiedadRowDeleted" msprop:Generator_RowClassName="PropiedadRow" msprop:Generator_UserTableName="Propiedad" msprop:Generator_RowEvArgName="PropiedadRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_propiedad" msprop:Generator_ColumnVarNameInTable="columnid_propiedad" msprop:Generator_ColumnPropNameInRow="id_propiedad" msprop:Generator_ColumnPropNameInTable="id_propiedadColumn" msprop:Generator_UserColumnName="id_propiedad" type="xs:short" />
@@ -34,12 +34,16 @@
               <xs:element name="Servicios" msprop:Generator_ColumnVarNameInTable="columnServicios" msprop:Generator_ColumnPropNameInRow="Servicios" msprop:Generator_ColumnPropNameInTable="ServiciosColumn" msprop:Generator_UserColumnName="Servicios" type="xs:string" minOccurs="0" />
               <xs:element name="Requisitos" msprop:Generator_ColumnVarNameInTable="columnRequisitos" msprop:Generator_ColumnPropNameInRow="Requisitos" msprop:Generator_ColumnPropNameInTable="RequisitosColumn" msprop:Generator_UserColumnName="Requisitos" type="xs:string" minOccurs="0" />
               <xs:element name="AñosAntigüedad" msprop:Generator_ColumnVarNameInTable="columnAñosAntigüedad" msprop:Generator_ColumnPropNameInRow="AñosAntigüedad" msprop:Generator_ColumnPropNameInTable="AñosAntigüedadColumn" msprop:Generator_UserColumnName="AñosAntigüedad" type="xs:short" minOccurs="0" />
+              <xs:element name="CriterioBarrio" msprop:Generator_ColumnVarNameInTable="columnCriterioBarrio" msprop:Generator_ColumnPropNameInRow="CriterioBarrio" msprop:Generator_ColumnPropNameInTable="CriterioBarrioColumn" msprop:Generator_UserColumnName="CriterioBarrio" type="xs:short" minOccurs="0" />
+              <xs:element name="CriterioEstado" msprop:Generator_ColumnVarNameInTable="columnCriterioEstado" msprop:Generator_ColumnPropNameInRow="CriterioEstado" msprop:Generator_ColumnPropNameInTable="CriterioEstadoColumn" msprop:Generator_UserColumnName="CriterioEstado" type="xs:short" minOccurs="0" />
+              <xs:element name="CriterioServicio" msprop:Generator_ColumnVarNameInTable="columnCriterioServicio" msprop:Generator_ColumnPropNameInRow="CriterioServicio" msprop:Generator_ColumnPropNameInTable="CriterioServicioColumn" msprop:Generator_UserColumnName="CriterioServicio" type="xs:short" minOccurs="0" />
+              <xs:element name="CriterioRequisito" msprop:Generator_ColumnVarNameInTable="columnCriterioRequisito" msprop:Generator_ColumnPropNameInRow="CriterioRequisito" msprop:Generator_ColumnPropNameInTable="CriterioRequisitoColumn" msprop:Generator_UserColumnName="CriterioRequisito" type="xs:short" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
       </xs:choice>
     </xs:complexType>
-    <xs:unique name="PropiedadKey1">
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Propiedad" />
       <xs:field xpath="mstns:id_propiedad" />
     </xs:unique>

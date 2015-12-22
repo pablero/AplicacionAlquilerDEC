@@ -20,9 +20,9 @@ namespace AlquileresDEC.Datos {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("dtoPropiedad")]
+    [global::System.Xml.Serialization.XmlRootAttribute("dtoPropiedad2")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class dtoPropiedad : global::System.Data.DataSet {
+    public partial class dtoPropiedad2 : global::System.Data.DataSet {
         
         private PropiedadDataTable tablePropiedad;
         
@@ -30,7 +30,7 @@ namespace AlquileresDEC.Datos {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public dtoPropiedad() {
+        public dtoPropiedad2() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace AlquileresDEC.Datos {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected dtoPropiedad(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected dtoPropiedad2(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -127,7 +127,7 @@ namespace AlquileresDEC.Datos {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            dtoPropiedad cln = ((dtoPropiedad)(base.Clone()));
+            dtoPropiedad2 cln = ((dtoPropiedad2)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -199,9 +199,9 @@ namespace AlquileresDEC.Datos {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "dtoPropiedad";
+            this.DataSetName = "dtoPropiedad2";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/dtoPropiedad.xsd";
+            this.Namespace = "http://tempuri.org/dtoPropiedad2.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tablePropiedad = new PropiedadDataTable();
@@ -225,7 +225,7 @@ namespace AlquileresDEC.Datos {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            dtoPropiedad ds = new dtoPropiedad();
+            dtoPropiedad2 ds = new dtoPropiedad2();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -304,6 +304,14 @@ namespace AlquileresDEC.Datos {
             private global::System.Data.DataColumn columnRequisitos;
             
             private global::System.Data.DataColumn columnAñosAntigüedad;
+            
+            private global::System.Data.DataColumn columnCriterioBarrio;
+            
+            private global::System.Data.DataColumn columnCriterioEstado;
+            
+            private global::System.Data.DataColumn columnCriterioServicio;
+            
+            private global::System.Data.DataColumn columnCriterioRequisito;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -444,6 +452,38 @@ namespace AlquileresDEC.Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CriterioBarrioColumn {
+                get {
+                    return this.columnCriterioBarrio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CriterioEstadoColumn {
+                get {
+                    return this.columnCriterioEstado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CriterioServicioColumn {
+                get {
+                    return this.columnCriterioServicio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CriterioRequisitoColumn {
+                get {
+                    return this.columnCriterioRequisito;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -479,7 +519,24 @@ namespace AlquileresDEC.Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PropiedadRow AddPropiedadRow(short id_propiedad, string TipoPropiedad, string Dirección, string Barrio, string Localidad, short NroHab, short Piso, char Depto, double Precio, string Estado, string Servicios, string Requisitos, short AñosAntigüedad) {
+            public PropiedadRow AddPropiedadRow(
+                        short id_propiedad, 
+                        string TipoPropiedad, 
+                        string Dirección, 
+                        string Barrio, 
+                        string Localidad, 
+                        short NroHab, 
+                        short Piso, 
+                        char Depto, 
+                        double Precio, 
+                        string Estado, 
+                        string Servicios, 
+                        string Requisitos, 
+                        short AñosAntigüedad, 
+                        short CriterioBarrio, 
+                        short CriterioEstado, 
+                        short CriterioServicio, 
+                        short CriterioRequisito) {
                 PropiedadRow rowPropiedadRow = ((PropiedadRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         id_propiedad,
@@ -494,10 +551,21 @@ namespace AlquileresDEC.Datos {
                         Estado,
                         Servicios,
                         Requisitos,
-                        AñosAntigüedad};
+                        AñosAntigüedad,
+                        CriterioBarrio,
+                        CriterioEstado,
+                        CriterioServicio,
+                        CriterioRequisito};
                 rowPropiedadRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPropiedadRow);
                 return rowPropiedadRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PropiedadRow FindByid_propiedad(short id_propiedad) {
+                return ((PropiedadRow)(this.Rows.Find(new object[] {
+                            id_propiedad})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -530,6 +598,10 @@ namespace AlquileresDEC.Datos {
                 this.columnServicios = base.Columns["Servicios"];
                 this.columnRequisitos = base.Columns["Requisitos"];
                 this.columnAñosAntigüedad = base.Columns["AñosAntigüedad"];
+                this.columnCriterioBarrio = base.Columns["CriterioBarrio"];
+                this.columnCriterioEstado = base.Columns["CriterioEstado"];
+                this.columnCriterioServicio = base.Columns["CriterioServicio"];
+                this.columnCriterioRequisito = base.Columns["CriterioRequisito"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -561,8 +633,16 @@ namespace AlquileresDEC.Datos {
                 base.Columns.Add(this.columnRequisitos);
                 this.columnAñosAntigüedad = new global::System.Data.DataColumn("AñosAntigüedad", typeof(short), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAñosAntigüedad);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("PropiedadKey1", new global::System.Data.DataColumn[] {
-                                this.columnid_propiedad}, false));
+                this.columnCriterioBarrio = new global::System.Data.DataColumn("CriterioBarrio", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCriterioBarrio);
+                this.columnCriterioEstado = new global::System.Data.DataColumn("CriterioEstado", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCriterioEstado);
+                this.columnCriterioServicio = new global::System.Data.DataColumn("CriterioServicio", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCriterioServicio);
+                this.columnCriterioRequisito = new global::System.Data.DataColumn("CriterioRequisito", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCriterioRequisito);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnid_propiedad}, true));
                 this.columnid_propiedad.AllowDBNull = false;
                 this.columnid_propiedad.Unique = true;
             }
@@ -632,7 +712,7 @@ namespace AlquileresDEC.Datos {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                dtoPropiedad ds = new dtoPropiedad();
+                dtoPropiedad2 ds = new dtoPropiedad2();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -910,6 +990,70 @@ namespace AlquileresDEC.Datos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public short CriterioBarrio {
+                get {
+                    try {
+                        return ((short)(this[this.tablePropiedad.CriterioBarrioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CriterioBarrio\' de la tabla \'Propiedad\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePropiedad.CriterioBarrioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public short CriterioEstado {
+                get {
+                    try {
+                        return ((short)(this[this.tablePropiedad.CriterioEstadoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CriterioEstado\' de la tabla \'Propiedad\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePropiedad.CriterioEstadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public short CriterioServicio {
+                get {
+                    try {
+                        return ((short)(this[this.tablePropiedad.CriterioServicioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CriterioServicio\' de la tabla \'Propiedad\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePropiedad.CriterioServicioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public short CriterioRequisito {
+                get {
+                    try {
+                        return ((short)(this[this.tablePropiedad.CriterioRequisitoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CriterioRequisito\' de la tabla \'Propiedad\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePropiedad.CriterioRequisitoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsTipoPropiedadNull() {
                 return this.IsNull(this.tablePropiedad.TipoPropiedadColumn);
             }
@@ -1050,6 +1194,54 @@ namespace AlquileresDEC.Datos {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetAñosAntigüedadNull() {
                 this[this.tablePropiedad.AñosAntigüedadColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCriterioBarrioNull() {
+                return this.IsNull(this.tablePropiedad.CriterioBarrioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCriterioBarrioNull() {
+                this[this.tablePropiedad.CriterioBarrioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCriterioEstadoNull() {
+                return this.IsNull(this.tablePropiedad.CriterioEstadoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCriterioEstadoNull() {
+                this[this.tablePropiedad.CriterioEstadoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCriterioServicioNull() {
+                return this.IsNull(this.tablePropiedad.CriterioServicioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCriterioServicioNull() {
+                this[this.tablePropiedad.CriterioServicioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCriterioRequisitoNull() {
+                return this.IsNull(this.tablePropiedad.CriterioRequisitoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCriterioRequisitoNull() {
+                this[this.tablePropiedad.CriterioRequisitoColumn] = global::System.Convert.DBNull;
             }
         }
         

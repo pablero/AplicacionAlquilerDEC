@@ -46,9 +46,31 @@
             this.gbAlternativasCandidatas = new System.Windows.Forms.GroupBox();
             this.cbSelTodosCand = new System.Windows.Forms.CheckBox();
             this.dgvAltCandidatas = new System.Windows.Forms.DataGridView();
+            this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.gbAlternativasElegidas = new System.Windows.Forms.GroupBox();
             this.cbSelTodosEleg = new System.Windows.Forms.CheckBox();
             this.dgvAltElegidas = new System.Windows.Forms.DataGridView();
+            this.btnAgregarTodos = new System.Windows.Forms.Button();
+            this.btnQuitarTodos = new System.Windows.Forms.Button();
+            this.gbParametros = new System.Windows.Forms.GroupBox();
+            this.gbMatrizDec = new System.Windows.Forms.GroupBox();
+            this.dgvMatrizDec = new System.Windows.Forms.DataGridView();
+            this.btnExcel = new System.Windows.Forms.Button();
+            this.btnMatrizDecision = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.gbNormalizacion = new System.Windows.Forms.GroupBox();
+            this.rbMaximo = new System.Windows.Forms.RadioButton();
+            this.rbRaiz = new System.Windows.Forms.RadioButton();
+            this.rbSuma = new System.Windows.Forms.RadioButton();
+            this.gbSeleccionP = new System.Windows.Forms.GroupBox();
+            this.cmbP = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dgvCriterios = new System.Windows.Forms.DataGridView();
+            this.Seleccion3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Objetivo = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Peso = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.btnGenerar = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.Seleccion2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.id_propiedad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TipoPropiedad = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,40 +85,22 @@
             this.Servicios = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Requisitos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.antiguedad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnAgregarTodos = new System.Windows.Forms.Button();
-            this.btnQuitarTodos = new System.Windows.Forms.Button();
-            this.gbParametros = new System.Windows.Forms.GroupBox();
-            this.btnExcel = new System.Windows.Forms.Button();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.gbNormalizacion = new System.Windows.Forms.GroupBox();
-            this.rbMaximo = new System.Windows.Forms.RadioButton();
-            this.rbRaiz = new System.Windows.Forms.RadioButton();
-            this.rbSuma = new System.Windows.Forms.RadioButton();
-            this.gbSeleccionP = new System.Windows.Forms.GroupBox();
-            this.cmbP = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dgvCriterios = new System.Windows.Forms.DataGridView();
-            this.btnGenerar = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
-            this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Seleccion3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Objetivo = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Peso = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.btnMatrizDecision = new System.Windows.Forms.Button();
-            this.gbMatrizDec = new System.Windows.Forms.GroupBox();
-            this.dgvMatrizDec = new System.Windows.Forms.DataGridView();
+            this.CriterioBarrio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CriterioEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CriterioServicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CriterioRequisito = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbFiltros.SuspendLayout();
             this.gbAlternativasCandidatas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAltCandidatas)).BeginInit();
             this.gbAlternativasElegidas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAltElegidas)).BeginInit();
             this.gbParametros.SuspendLayout();
+            this.gbMatrizDec.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMatrizDec)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.gbNormalizacion.SuspendLayout();
             this.gbSeleccionP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCriterios)).BeginInit();
-            this.gbMatrizDec.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMatrizDec)).BeginInit();
             this.SuspendLayout();
             // 
             // gbFiltros
@@ -291,6 +295,12 @@
             this.dgvAltCandidatas.TabIndex = 15;
             this.dgvAltCandidatas.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvAltCandidatas_CurrentCellDirtyStateChanged);
             // 
+            // Seleccion
+            // 
+            this.Seleccion.HeaderText = "Selección";
+            this.Seleccion.Name = "Seleccion";
+            this.Seleccion.Width = 60;
+            // 
             // gbAlternativasElegidas
             // 
             this.gbAlternativasElegidas.Controls.Add(this.cbSelTodosEleg);
@@ -332,96 +342,15 @@
             this.Estado,
             this.Servicios,
             this.Requisitos,
-            this.antiguedad});
+            this.antiguedad,
+            this.CriterioBarrio,
+            this.CriterioEstado,
+            this.CriterioServicio,
+            this.CriterioRequisito});
             this.dgvAltElegidas.Location = new System.Drawing.Point(16, 41);
             this.dgvAltElegidas.Name = "dgvAltElegidas";
             this.dgvAltElegidas.Size = new System.Drawing.Size(519, 199);
             this.dgvAltElegidas.TabIndex = 21;
-            // 
-            // Seleccion2
-            // 
-            this.Seleccion2.HeaderText = "Selección";
-            this.Seleccion2.Name = "Seleccion2";
-            this.Seleccion2.Width = 60;
-            // 
-            // id_propiedad
-            // 
-            this.id_propiedad.HeaderText = "id_propiedad";
-            this.id_propiedad.Name = "id_propiedad";
-            this.id_propiedad.Visible = false;
-            this.id_propiedad.Width = 93;
-            // 
-            // TipoPropiedad
-            // 
-            this.TipoPropiedad.HeaderText = "TipoPropiedad";
-            this.TipoPropiedad.Name = "TipoPropiedad";
-            this.TipoPropiedad.Width = 101;
-            // 
-            // Direccion
-            // 
-            this.Direccion.HeaderText = "Dirección";
-            this.Direccion.Name = "Direccion";
-            this.Direccion.Width = 77;
-            // 
-            // Barrio
-            // 
-            this.Barrio.HeaderText = "Barrio";
-            this.Barrio.Name = "Barrio";
-            this.Barrio.Width = 59;
-            // 
-            // Localidad
-            // 
-            this.Localidad.HeaderText = "Localidad";
-            this.Localidad.Name = "Localidad";
-            this.Localidad.Width = 78;
-            // 
-            // NroHab
-            // 
-            this.NroHab.HeaderText = "NroHab";
-            this.NroHab.Name = "NroHab";
-            this.NroHab.Width = 69;
-            // 
-            // Piso
-            // 
-            this.Piso.HeaderText = "Piso";
-            this.Piso.Name = "Piso";
-            this.Piso.Width = 52;
-            // 
-            // Depto
-            // 
-            this.Depto.HeaderText = "Depto";
-            this.Depto.Name = "Depto";
-            this.Depto.Width = 61;
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
-            this.Precio.Width = 62;
-            // 
-            // Estado
-            // 
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            this.Estado.Width = 65;
-            // 
-            // Servicios
-            // 
-            this.Servicios.HeaderText = "Servicios";
-            this.Servicios.Name = "Servicios";
-            this.Servicios.Width = 75;
-            // 
-            // Requisitos
-            // 
-            this.Requisitos.HeaderText = "Requisitos";
-            this.Requisitos.Name = "Requisitos";
-            this.Requisitos.Width = 81;
-            // 
-            // antiguedad
-            // 
-            this.antiguedad.HeaderText = "AñosAntigüedad";
-            this.antiguedad.Name = "antiguedad";
-            this.antiguedad.Width = 110;
             // 
             // btnAgregarTodos
             // 
@@ -449,21 +378,52 @@
             this.gbParametros.Controls.Add(this.btnMatrizDecision);
             this.gbParametros.Controls.Add(this.groupBox5);
             this.gbParametros.Controls.Add(this.dgvCriterios);
-            this.gbParametros.Location = new System.Drawing.Point(10, 395);
+            this.gbParametros.Location = new System.Drawing.Point(10, 397);
             this.gbParametros.Name = "gbParametros";
             this.gbParametros.Size = new System.Drawing.Size(1288, 244);
             this.gbParametros.TabIndex = 23;
             this.gbParametros.TabStop = false;
             this.gbParametros.Text = "Parámetros a utilizar en Topsis";
             // 
+            // gbMatrizDec
+            // 
+            this.gbMatrizDec.Controls.Add(this.dgvMatrizDec);
+            this.gbMatrizDec.Controls.Add(this.btnExcel);
+            this.gbMatrizDec.Location = new System.Drawing.Point(747, 19);
+            this.gbMatrizDec.Name = "gbMatrizDec";
+            this.gbMatrizDec.Size = new System.Drawing.Size(535, 208);
+            this.gbMatrizDec.TabIndex = 42;
+            this.gbMatrizDec.TabStop = false;
+            this.gbMatrizDec.Text = "Matriz de Decisión";
+            // 
+            // dgvMatrizDec
+            // 
+            this.dgvMatrizDec.AllowUserToAddRows = false;
+            this.dgvMatrizDec.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvMatrizDec.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMatrizDec.Location = new System.Drawing.Point(16, 19);
+            this.dgvMatrizDec.Name = "dgvMatrizDec";
+            this.dgvMatrizDec.Size = new System.Drawing.Size(513, 150);
+            this.dgvMatrizDec.TabIndex = 0;
+            // 
             // btnExcel
             // 
-            this.btnExcel.Location = new System.Drawing.Point(410, 79);
+            this.btnExcel.Location = new System.Drawing.Point(234, 172);
             this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(108, 36);
+            this.btnExcel.Size = new System.Drawing.Size(108, 30);
             this.btnExcel.TabIndex = 36;
             this.btnExcel.Text = "Exportar A Excel";
             this.btnExcel.UseVisualStyleBackColor = true;
+            // 
+            // btnMatrizDecision
+            // 
+            this.btnMatrizDecision.Location = new System.Drawing.Point(667, 85);
+            this.btnMatrizDecision.Name = "btnMatrizDecision";
+            this.btnMatrizDecision.Size = new System.Drawing.Size(74, 49);
+            this.btnMatrizDecision.TabIndex = 41;
+            this.btnMatrizDecision.Text = "Generar Matriz Decisión ->>";
+            this.btnMatrizDecision.UseVisualStyleBackColor = true;
+            this.btnMatrizDecision.Click += new System.EventHandler(this.btnMatrizDecision_Click);
             // 
             // groupBox5
             // 
@@ -565,31 +525,6 @@
             this.dgvCriterios.Size = new System.Drawing.Size(369, 190);
             this.dgvCriterios.TabIndex = 27;
             // 
-            // btnGenerar
-            // 
-            this.btnGenerar.Location = new System.Drawing.Point(464, 645);
-            this.btnGenerar.Name = "btnGenerar";
-            this.btnGenerar.Size = new System.Drawing.Size(111, 39);
-            this.btnGenerar.TabIndex = 38;
-            this.btnGenerar.Text = "Generar Solución Topsis";
-            this.btnGenerar.UseVisualStyleBackColor = true;
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Location = new System.Drawing.Point(889, 645);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(87, 39);
-            this.btnSalir.TabIndex = 40;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // Seleccion
-            // 
-            this.Seleccion.HeaderText = "Selección";
-            this.Seleccion.Name = "Seleccion";
-            this.Seleccion.Width = 60;
-            // 
             // Seleccion3
             // 
             this.Seleccion3.HeaderText = "Selección";
@@ -619,33 +554,137 @@
             "9"});
             this.Peso.Name = "Peso";
             // 
-            // btnMatrizDecision
+            // btnGenerar
             // 
-            this.btnMatrizDecision.Location = new System.Drawing.Point(662, 85);
-            this.btnMatrizDecision.Name = "btnMatrizDecision";
-            this.btnMatrizDecision.Size = new System.Drawing.Size(74, 49);
-            this.btnMatrizDecision.TabIndex = 41;
-            this.btnMatrizDecision.Text = "Generar Matriz Decisión ->>";
-            this.btnMatrizDecision.UseVisualStyleBackColor = true;
+            this.btnGenerar.Location = new System.Drawing.Point(464, 645);
+            this.btnGenerar.Name = "btnGenerar";
+            this.btnGenerar.Size = new System.Drawing.Size(111, 39);
+            this.btnGenerar.TabIndex = 38;
+            this.btnGenerar.Text = "Generar Solución Topsis";
+            this.btnGenerar.UseVisualStyleBackColor = true;
             // 
-            // gbMatrizDec
+            // btnSalir
             // 
-            this.gbMatrizDec.Controls.Add(this.dgvMatrizDec);
-            this.gbMatrizDec.Controls.Add(this.btnExcel);
-            this.gbMatrizDec.Location = new System.Drawing.Point(747, 19);
-            this.gbMatrizDec.Name = "gbMatrizDec";
-            this.gbMatrizDec.Size = new System.Drawing.Size(535, 194);
-            this.gbMatrizDec.TabIndex = 42;
-            this.gbMatrizDec.TabStop = false;
-            this.gbMatrizDec.Text = "Matriz de Decisión";
+            this.btnSalir.Location = new System.Drawing.Point(889, 645);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(87, 39);
+            this.btnSalir.TabIndex = 40;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // dgvMatrizDec
+            // Seleccion2
             // 
-            this.dgvMatrizDec.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMatrizDec.Location = new System.Drawing.Point(26, 20);
-            this.dgvMatrizDec.Name = "dgvMatrizDec";
-            this.dgvMatrizDec.Size = new System.Drawing.Size(369, 150);
-            this.dgvMatrizDec.TabIndex = 0;
+            this.Seleccion2.HeaderText = "Selección";
+            this.Seleccion2.Name = "Seleccion2";
+            this.Seleccion2.Width = 60;
+            // 
+            // id_propiedad
+            // 
+            this.id_propiedad.HeaderText = "id_propiedad";
+            this.id_propiedad.Name = "id_propiedad";
+            this.id_propiedad.Visible = false;
+            this.id_propiedad.Width = 93;
+            // 
+            // TipoPropiedad
+            // 
+            this.TipoPropiedad.HeaderText = "TipoPropiedad";
+            this.TipoPropiedad.Name = "TipoPropiedad";
+            this.TipoPropiedad.Width = 101;
+            // 
+            // Direccion
+            // 
+            this.Direccion.HeaderText = "Dirección";
+            this.Direccion.Name = "Direccion";
+            this.Direccion.Width = 77;
+            // 
+            // Barrio
+            // 
+            this.Barrio.HeaderText = "Barrio";
+            this.Barrio.Name = "Barrio";
+            this.Barrio.Width = 59;
+            // 
+            // Localidad
+            // 
+            this.Localidad.HeaderText = "Localidad";
+            this.Localidad.Name = "Localidad";
+            this.Localidad.Width = 78;
+            // 
+            // NroHab
+            // 
+            this.NroHab.HeaderText = "NroHab";
+            this.NroHab.Name = "NroHab";
+            this.NroHab.Width = 69;
+            // 
+            // Piso
+            // 
+            this.Piso.HeaderText = "Piso";
+            this.Piso.Name = "Piso";
+            this.Piso.Width = 52;
+            // 
+            // Depto
+            // 
+            this.Depto.HeaderText = "Depto";
+            this.Depto.Name = "Depto";
+            this.Depto.Width = 61;
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.Width = 62;
+            // 
+            // Estado
+            // 
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.Width = 65;
+            // 
+            // Servicios
+            // 
+            this.Servicios.HeaderText = "Servicios";
+            this.Servicios.Name = "Servicios";
+            this.Servicios.Width = 75;
+            // 
+            // Requisitos
+            // 
+            this.Requisitos.HeaderText = "Requisitos";
+            this.Requisitos.Name = "Requisitos";
+            this.Requisitos.Width = 81;
+            // 
+            // antiguedad
+            // 
+            this.antiguedad.HeaderText = "AñosAntigüedad";
+            this.antiguedad.Name = "antiguedad";
+            this.antiguedad.Width = 110;
+            // 
+            // CriterioBarrio
+            // 
+            this.CriterioBarrio.HeaderText = "CriterioBarrio";
+            this.CriterioBarrio.Name = "CriterioBarrio";
+            this.CriterioBarrio.Visible = false;
+            this.CriterioBarrio.Width = 91;
+            // 
+            // CriterioEstado
+            // 
+            this.CriterioEstado.HeaderText = "CriterioEstado";
+            this.CriterioEstado.Name = "CriterioEstado";
+            this.CriterioEstado.Visible = false;
+            this.CriterioEstado.Width = 97;
+            // 
+            // CriterioServicio
+            // 
+            this.CriterioServicio.HeaderText = "CriterioServicio";
+            this.CriterioServicio.Name = "CriterioServicio";
+            this.CriterioServicio.Visible = false;
+            this.CriterioServicio.Width = 102;
+            // 
+            // CriterioRequisito
+            // 
+            this.CriterioRequisito.HeaderText = "CriterioRequisito";
+            this.CriterioRequisito.Name = "CriterioRequisito";
+            this.CriterioRequisito.Visible = false;
+            this.CriterioRequisito.Width = 108;
             // 
             // SelecciónAlternativas
             // 
@@ -673,14 +712,14 @@
             this.gbAlternativasElegidas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAltElegidas)).EndInit();
             this.gbParametros.ResumeLayout(false);
+            this.gbMatrizDec.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMatrizDec)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.gbNormalizacion.ResumeLayout(false);
             this.gbNormalizacion.PerformLayout();
             this.gbSeleccionP.ResumeLayout(false);
             this.gbSeleccionP.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCriterios)).EndInit();
-            this.gbMatrizDec.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMatrizDec)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -721,6 +760,15 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cmbFiltoNroHab;
+        private System.Windows.Forms.CheckBox cbSelTodosCand;
+        private System.Windows.Forms.CheckBox cbSelTodosEleg;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion3;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Objetivo;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Peso;
+        private System.Windows.Forms.GroupBox gbMatrizDec;
+        private System.Windows.Forms.DataGridView dgvMatrizDec;
+        private System.Windows.Forms.Button btnMatrizDecision;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion2;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_propiedad;
         private System.Windows.Forms.DataGridViewTextBoxColumn TipoPropiedad;
@@ -735,14 +783,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Servicios;
         private System.Windows.Forms.DataGridViewTextBoxColumn Requisitos;
         private System.Windows.Forms.DataGridViewTextBoxColumn antiguedad;
-        private System.Windows.Forms.CheckBox cbSelTodosCand;
-        private System.Windows.Forms.CheckBox cbSelTodosEleg;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion3;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Objetivo;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Peso;
-        private System.Windows.Forms.GroupBox gbMatrizDec;
-        private System.Windows.Forms.DataGridView dgvMatrizDec;
-        private System.Windows.Forms.Button btnMatrizDecision;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CriterioBarrio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CriterioEstado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CriterioServicio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CriterioRequisito;
     }
 }

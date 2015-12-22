@@ -41,12 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexion.cs" />
-    <Compile Include="dtoPropiedad.cs">
-      <DependentUpon>dtoPropiedad.xsd</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="dtoPropiedad.designer.cs">
-      <DependentUpon>dtoPropiedad.cs</DependentUpon>
+    <Compile Include="dtoPropiedad2.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dtoPropiedad2.xsd</DependentUpon>
     </Compile>
     <Compile Include="MapeoPropiedad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -58,16 +56,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="dtoPropiedad.xsc">
-      <DependentUpon>dtoPropiedad.xsd</DependentUpon>
+    <None Include="dtoPropiedad2.xsc">
+      <DependentUpon>dtoPropiedad2.xsd</DependentUpon>
     </None>
-    <None Include="dtoPropiedad.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dtoPropiedad1.Designer.cs</LastGenOutput>
+    <None Include="dtoPropiedad2.xsd">
       <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dtoPropiedad2.Designer.cs</LastGenOutput>
     </None>
-    <None Include="dtoPropiedad.xss">
-      <DependentUpon>dtoPropiedad.xsd</DependentUpon>
+    <None Include="dtoPropiedad2.xss">
+      <DependentUpon>dtoPropiedad2.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

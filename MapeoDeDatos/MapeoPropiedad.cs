@@ -311,40 +311,17 @@ namespace AlquileresDEC.Datos
             }
         }
 
-        //Consultar Propiedades sin Filtro
-        /*public DataSet ConsultarPropiedadSinFiltros()
+        
+        public dtoPropiedad2 ConsultarPropiedadSinFiltros()
         {
-            try
-            {
-                conexion.origen.Open();
-                conexion.ds = new DataSet();
-                conexion.str_sql =
-                    @"select p.id_propiedad,tp.nombre as TipoPropiedad,p.direccion as Dirección, b.nombre as Barrio, l.nombre as Localidad, p.nro_habitaciones as NroHab,p.piso as Piso,p.depto as Depto,
-                         p.precio as Precio, e.nombre as Estado, s.nombre as Servicios, r.nombre as Requisitos,cast(datediff(dd,p.fecha_inauguracion,GETDATE()) / 365.25 as int)as AñosAntigüedad from Propiedad p, Barrio b, Localidad l,TipoPropiedad tp, Estado e, Servicio s, Requisito r
-                         where p.id_tipoPropiedad=tp.id_tipoPropiedad and p.id_barrio=b.id_barrio and b.id_localidad=l.id_localidad and p.id_estado=e.id_estado and p.id_servicio=s.id_servicio and p.id_requisito=r.id_requisito";
-                conexion.da = new SqlDataAdapter(conexion.str_sql, conexion.origen);
-                conexion.da.Fill(conexion.ds, "Propiedad");
-                conexion.origen.Close();
-                return conexion.ds;
-            }
-            catch (Exception)
-            {
-                if (conexion.origen.State == ConnectionState.Open)
-                    conexion.origen.Close();
-                return null;
-            }
-        }*/
-        //Prueba
-        public dtoPropiedad ConsultarPropiedadSinFiltros()
-        {
-            dtoPropiedad propiedad = new dtoPropiedad();
+            dtoPropiedad2 propiedad = new dtoPropiedad2();
             try
             {
                 conexion.origen.Open();
                 //conexion.ds = new DataSet();
                 conexion.str_sql =
                     @"select p.id_propiedad,tp.nombre as TipoPropiedad,p.direccion as Dirección, b.nombre as Barrio, l.nombre as Localidad, p.nro_habitaciones as NroHab,p.piso as Piso,p.depto as Depto,
-                         p.precio as Precio, e.nombre as Estado, s.nombre as Servicios, r.nombre as Requisitos,cast(datediff(dd,p.fecha_inauguracion,GETDATE()) / 365.25 as int)as AñosAntigüedad from Propiedad p, Barrio b, Localidad l,TipoPropiedad tp, Estado e, Servicio s, Requisito r
+                         p.precio as Precio, e.nombre as Estado, s.nombre as Servicios, r.nombre as Requisitos,cast(datediff(dd,p.fecha_inauguracion,GETDATE()) / 365.25 as int)as AñosAntigüedad, b.calificacion as CriterioBarrio, e.calificacion as CriterioEstado, s.calificacion as CriterioServicio, r.calificacion as CriterioRequisito from Propiedad p, Barrio b, Localidad l,TipoPropiedad tp, Estado e, Servicio s, Requisito r
                          where p.id_tipoPropiedad=tp.id_tipoPropiedad and p.id_barrio=b.id_barrio and b.id_localidad=l.id_localidad and p.id_estado=e.id_estado and p.id_servicio=s.id_servicio and p.id_requisito=r.id_requisito";
                 conexion.cmd = new SqlCommand(conexion.str_sql, conexion.origen);
                 conexion.da = new SqlDataAdapter(conexion.cmd);
@@ -361,16 +338,16 @@ namespace AlquileresDEC.Datos
             }
         }
         //Prueba con filtro
-        public dtoPropiedad ConsultarPropiedadConFiltros(int? id_tipoP, int? id_barrio, int? nroHab, double? pDesde, double? pHasta)
+        public dtoPropiedad2 ConsultarPropiedadConFiltros(int? id_tipoP, int? id_barrio, int? nroHab, double? pDesde, double? pHasta)
         {
-            dtoPropiedad propiedad = new dtoPropiedad();
+            dtoPropiedad2 propiedad = new dtoPropiedad2();
             try
             {
                 conexion.origen.Open();
                 //conexion.ds = new DataSet();
                 conexion.str_sql =
                     @"select p.id_propiedad,tp.nombre as TipoPropiedad,p.direccion as Dirección, b.nombre as Barrio, l.nombre as Localidad, p.nro_habitaciones as NroHab,p.piso as Piso,p.depto as Depto,
-                         p.precio as Precio, e.nombre as Estado, s.nombre as Servicios, r.nombre as Requisitos,cast(datediff(dd,p.fecha_inauguracion,GETDATE()) / 365.25 as int)as AñosAntigüedad from Propiedad p, Barrio b, Localidad l,TipoPropiedad tp, Estado e, Servicio s, Requisito r
+                         p.precio as Precio, e.nombre as Estado, s.nombre as Servicios, r.nombre as Requisitos,cast(datediff(dd,p.fecha_inauguracion,GETDATE()) / 365.25 as int)as AñosAntigüedad, b.calificacion as CriterioBarrio, e.calificacion as CriterioEstado, s.calificacion as CriterioServicio, r.calificacion as CriterioRequisito from Propiedad p, Barrio b, Localidad l,TipoPropiedad tp, Estado e, Servicio s, Requisito r
                          where p.id_tipoPropiedad=tp.id_tipoPropiedad and p.id_barrio=b.id_barrio and b.id_localidad=l.id_localidad and p.id_estado=e.id_estado and p.id_servicio=s.id_servicio and p.id_requisito=r.id_requisito";
                 if (id_tipoP.HasValue)
                     conexion.str_sql += " and p.id_tipoPropiedad= " + id_tipoP;
@@ -405,41 +382,7 @@ namespace AlquileresDEC.Datos
 
         }
 
-        //Consultar Propiedades con Filtro
-        /*public DataSet ConsultarPropiedadConFiltros(int? id_tipoP,int? id_barrio, int? nroHab, double? pDesde, double? pHasta)
-        {
-            try
-            {
-                conexion.origen.Open();
-                conexion.ds = new DataSet();
-                conexion.str_sql =
-                    @"select p.id_propiedad,tp.nombre as TipoPropiedad,p.direccion as Dirección, b.nombre as Barrio, l.nombre as Localidad, p.nro_habitaciones as NroHab,p.piso as Piso,p.depto as Depto,
-                         p.precio as Precio, e.nombre as Estado, s.nombre as Servicios, r.nombre as Requisitos,cast(datediff(dd,p.fecha_inauguracion,GETDATE()) / 365.25 as int)as AñosAntigüedad from Propiedad p, Barrio b, Localidad l,TipoPropiedad tp, Estado e, Servicio s, Requisito r
-                         where p.id_tipoPropiedad=tp.id_tipoPropiedad and p.id_barrio=b.id_barrio and b.id_localidad=l.id_localidad and p.id_estado=e.id_estado and p.id_servicio=s.id_servicio and p.id_requisito=r.id_requisito";
-                if (id_tipoP.HasValue)
-                    conexion.str_sql += " and p.id_tipoPropiedad= " + id_tipoP;
-                if (id_barrio.HasValue)
-                    conexion.str_sql += " and p.id_barrio= " + id_barrio;
-                if (nroHab.HasValue)
-                    conexion.str_sql += " and p.nro_habitaciones= " + nroHab;
-                if (pDesde.HasValue)
-                    conexion.str_sql += " and p.precio > '" + pDesde + "'";
-                if (pHasta.HasValue)
-                    conexion.str_sql += " and p.precio < '" + pHasta + "'";
-
-                conexion.da = new SqlDataAdapter(conexion.str_sql, conexion.origen);
-                conexion.da.Fill(conexion.ds, "Propiedad");
-                conexion.origen.Close();
-                return conexion.ds;
-                
-            }
-            catch (Exception)
-            {
-                if (conexion.origen.State == ConnectionState.Open)
-                    conexion.origen.Close();
-                return null;
-            }
-        }*/
+        
 
         //*****Inicio de consultas de ConsultarPropiedad*****
 

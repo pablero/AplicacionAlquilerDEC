@@ -48,7 +48,7 @@ namespace AlquileresDEC.Interfaces
 
         private void SelecciónAlternativas_Load(object sender, EventArgs e)
         {
-            dtoPropiedad datos = mp.ConsultarPropiedadSinFiltros();
+            dtoPropiedad2 datos = mp.ConsultarPropiedadSinFiltros();
             
             //Cargar combo TipoPropiedad
             cmbFiltroTipoPropiedad.DisplayMember = "Nombre";
@@ -66,13 +66,13 @@ namespace AlquileresDEC.Interfaces
             DataTable data2 = new DataTable();
             data2.Columns.Add(new DataColumn("Criterios", typeof(string)));
             
-            data2.Rows.Add("Antigüedad");
-            data2.Rows.Add("Barrio");
-            data2.Rows.Add("Estado");
-            data2.Rows.Add("NroHabitaciones");
+            data2.Rows.Add("Antiguedad");
+            data2.Rows.Add("CriterioBarrio");
+            data2.Rows.Add("CriterioEstado");
+            data2.Rows.Add("NroHab");
             data2.Rows.Add("Precio");
-            data2.Rows.Add("Servicios");
-            data2.Rows.Add("Requisitos");
+            data2.Rows.Add("CriterioServicio");
+            data2.Rows.Add("CriterioRequisito");
 
             dgvCriterios.DataSource = data2;
             dgvCriterios.Columns["Criterios"].DisplayIndex = 1;                    
@@ -82,6 +82,10 @@ namespace AlquileresDEC.Interfaces
             dgvAltCandidatas.DataSource = datos;
             dgvAltCandidatas.DataMember = "Propiedad";
             dgvAltCandidatas.Columns[1].Visible = false;
+            dgvAltCandidatas.Columns[14].Visible = false;
+            dgvAltCandidatas.Columns[15].Visible = false;
+            dgvAltCandidatas.Columns[16].Visible = false;
+            dgvAltCandidatas.Columns[17].Visible = false;
 
             //Inicializar Combo P en 1
             cmbP.SelectedIndex = 0;
@@ -156,6 +160,10 @@ namespace AlquileresDEC.Interfaces
             //dgvAltCandidatas.DataMember = "PropiedadFiltro";
             dgvAltCandidatas.DataMember = "PropiedadFiltro";
             dgvAltCandidatas.Columns[1].Visible = false;
+            dgvAltCandidatas.Columns[14].Visible = false;
+            dgvAltCandidatas.Columns[15].Visible = false;
+            dgvAltCandidatas.Columns[16].Visible = false;
+            dgvAltCandidatas.Columns[17].Visible = false;
             cbSelTodosCand.Checked = false;
             cbSelTodosEleg.Checked = false;
         }
@@ -211,11 +219,15 @@ namespace AlquileresDEC.Interfaces
                                                       row.Cells["NroHab"].Value,
                                                       row.Cells["Piso"].Value, 
                                                       row.Cells["Depto"].Value,
-                                                      row.Cells["Precio"].Value,
+                                                      row.Cells["Precio"].Value,                                                     
                                                       row.Cells["Estado"].Value,
                                                       row.Cells["Servicios"].Value,
                                                       row.Cells["Requisitos"].Value,
-                                                      row.Cells["AñosAntigüedad"].Value});
+                                                      row.Cells["AñosAntigüedad"].Value,
+                                                      row.Cells["CriterioBarrio"].Value,
+                                                      row.Cells["CriterioEstado"].Value,
+                                                      row.Cells["CriterioServicio"].Value,
+                                                      row.Cells["CriterioRequisito"].Value});
                 dgvAltCandidatas.Rows.Remove(row);
             }
 
@@ -238,10 +250,10 @@ namespace AlquileresDEC.Interfaces
             if (rowSelected.Count > 0)
             {
                 //Propiedad datos = dgvAltCandidatas.DataSource as Propiedad;
-                dtoPropiedad datos = dgvAltCandidatas.DataSource as dtoPropiedad;
+                dtoPropiedad2 datos = dgvAltCandidatas.DataSource as dtoPropiedad2;
                 foreach (DataGridViewRow row in rowSelected)
                 {
-                    dtoPropiedad.PropiedadRow propRow = datos.Propiedad.NewPropiedadRow();
+                    dtoPropiedad2.PropiedadRow propRow = datos.Propiedad.NewPropiedadRow();
                     propRow.id_propiedad = Convert.ToInt16(row.Cells["id_propiedad"].Value);
                     propRow.TipoPropiedad = Convert.ToString(row.Cells["TipoPropiedad"].Value);
                     propRow.Dirección = Convert.ToString(row.Cells["Direccion"].Value);
@@ -255,6 +267,10 @@ namespace AlquileresDEC.Interfaces
                     propRow.Servicios = Convert.ToString(row.Cells["Servicios"].Value);
                     propRow.Requisitos = Convert.ToString(row.Cells["Requisitos"].Value);
                     propRow.AñosAntigüedad = Convert.ToInt16(row.Cells["antiguedad"].Value);
+                    propRow.CriterioBarrio = Convert.ToInt16(row.Cells["CriterioBarrio"].Value);
+                    propRow.CriterioBarrio = Convert.ToInt16(row.Cells["CriterioEstado"].Value);
+                    propRow.CriterioBarrio = Convert.ToInt16(row.Cells["CriterioServicio"].Value);
+                    propRow.CriterioBarrio = Convert.ToInt16(row.Cells["CriterioRequisito"].Value);
                     datos.Propiedad.Rows.Add(propRow);
 
                     dgvAltElegidas.Rows.Remove(row);
@@ -262,6 +278,11 @@ namespace AlquileresDEC.Interfaces
                 dgvAltCandidatas.DataSource = datos;
                 dgvAltCandidatas.DataMember = "Propiedad";
                 dgvAltCandidatas.Columns[1].Visible = false;
+                dgvAltCandidatas.Columns[14].Visible = false;
+                dgvAltCandidatas.Columns[15].Visible = false;
+                dgvAltCandidatas.Columns[16].Visible = false;
+                dgvAltCandidatas.Columns[17].Visible = false;
+
                 
             }
             cbSelTodosEleg.Checked = false;
@@ -308,6 +329,59 @@ namespace AlquileresDEC.Interfaces
             {
                 dgvAltCandidatas.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
+        }
+
+        private void btnMatrizDecision_Click(object sender, EventArgs e)
+        {
+            DataTable dt2 = new DataTable();
+            dt2.Columns.Add("Id_propiedad", typeof(System.Int16));
+            dt2.Columns.Add("Direccion", typeof(System.String));
+            //De acuerdo a los criterios seleccionados va a crear 
+            //las columnas del datatable, las dos de arriba las crea siempre.
+            foreach (DataGridViewRow rowGrid2 in dgvCriterios.Rows)
+            {
+                DataGridViewCheckBoxCell cellSeleccion = rowGrid2.Cells["Seleccion3"] as DataGridViewCheckBoxCell;
+                if (Convert.ToBoolean(cellSeleccion.Value))
+                {
+                    string nombre=Convert.ToString(rowGrid2.Cells["Criterios"].Value);
+                    if (nombre == "Precio")
+                        dt2.Columns.Add(nombre, typeof(System.Double));
+                    else
+                        dt2.Columns.Add(nombre, typeof(System.Int16));
+                }
+            }
+            /*dt2.Columns.Add("Antigüedad", typeof(System.Int16));
+            dt2.Columns.Add("Barrio", typeof(System.Int16));
+            dt2.Columns.Add("Estado", typeof(System.Int16));
+            dt2.Columns.Add("NroHab", typeof(System.Int16));
+            dt2.Columns.Add("Precio", typeof(System.Double));
+            dt2.Columns.Add("Servicios", typeof(System.Int16));
+            dt2.Columns.Add("Requisitos", typeof(System.Int16));*/
+
+            foreach (DataGridViewRow rowGrid in dgvAltElegidas.Rows)
+            {
+                DataRow dr = dt2.NewRow();
+                dr["id_propiedad"] = Convert.ToInt16(rowGrid.Cells[1].Value);
+                dr["Direccion"] =Convert.ToString(rowGrid.Cells[3].Value);
+                if(dt2.Columns["CriterioBarrio"]!=null)
+                    dr["CriterioBarrio"] = Convert.ToInt16(rowGrid.Cells[14].Value);
+                if(dt2.Columns["CriterioEstado"]!=null)
+                    dr["CriterioEstado"] = Convert.ToInt16(rowGrid.Cells[15].Value);
+                if (dt2.Columns["NroHab"] != null)
+                    dr["NroHab"] = Convert.ToInt16(rowGrid.Cells[6].Value);
+                if (dt2.Columns["Precio"] != null)
+                    dr["Precio"] = Convert.ToDouble(rowGrid.Cells[9].Value);
+                if (dt2.Columns["antiguedad"] != null)
+                    dr["antiguedad"] = Convert.ToInt16(rowGrid.Cells[13].Value);
+                if (dt2.Columns["CriterioServicio"] != null)
+                    dr["CriterioServicio"] = Convert.ToInt16(rowGrid.Cells[16].Value);
+                if (dt2.Columns["CriterioRequisito"] != null)
+                    dr["CriterioRequisito"] = Convert.ToInt16(rowGrid.Cells[17].Value);               
+
+                dt2.Rows.Add(dr);
+            }
+            dgvMatrizDec.DataSource = dt2;
+            dgvMatrizDec.Columns[0].Visible = false;
         }
         
 
