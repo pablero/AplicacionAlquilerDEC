@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using AlquileresDEC.Datos;
 using AlquileresDEC.Entidades;
+using Microsoft.Office.Interop.Excel;
 
 namespace AlquileresDEC.Interfaces
 {
@@ -63,7 +64,7 @@ namespace AlquileresDEC.Interfaces
             cmbFiltoNroHab.SelectedIndex = 0;
 
             //Cargar grilla de Criterios
-            DataTable data2 = new DataTable();
+            System.Data.DataTable data2 = new System.Data.DataTable();
             data2.Columns.Add(new DataColumn("Criterios", typeof(string)));
             
             data2.Rows.Add("Antiguedad");
@@ -293,7 +294,7 @@ namespace AlquileresDEC.Interfaces
         {
             foreach (DataGridViewRow fila in dgvAltCandidatas.Rows)
             {
-                if (((CheckBox)sender).Checked)
+                if (((System.Windows.Forms.CheckBox)sender).Checked)
                 {
                     fila.Cells[0].Value = true;
                     //banderaPaso = 1;
@@ -310,7 +311,7 @@ namespace AlquileresDEC.Interfaces
         {
             foreach (DataGridViewRow fila in dgvAltElegidas.Rows)
             {
-                if (((CheckBox)sender).Checked)
+                if (((System.Windows.Forms.CheckBox)sender).Checked)
                 {
                     fila.Cells[0].Value = true;
                     //banderaPaso = 1;
@@ -333,7 +334,8 @@ namespace AlquileresDEC.Interfaces
 
         private void btnMatrizDecision_Click(object sender, EventArgs e)
         {
-            DataTable dt2 = new DataTable();
+            //Creo un datatable con las columnas de la grilla de criterios y las filas de la grilla alternativas seleccionadas
+            System.Data.DataTable dt2 = new System.Data.DataTable();
             dt2.Columns.Add("Id_propiedad", typeof(System.Int16));
             dt2.Columns.Add("Direccion", typeof(System.String));
             //De acuerdo a los criterios seleccionados va a crear 
@@ -343,20 +345,14 @@ namespace AlquileresDEC.Interfaces
                 DataGridViewCheckBoxCell cellSeleccion = rowGrid2.Cells["Seleccion3"] as DataGridViewCheckBoxCell;
                 if (Convert.ToBoolean(cellSeleccion.Value))
                 {
+                    //Solamente agrego las columnas al datatable de las casillas seleccionadas de la grilla criterios.
                     string nombre=Convert.ToString(rowGrid2.Cells["Criterios"].Value);
-                    if (nombre == "Precio")
+                    if (nombre == "Precio")//Porque precio es el único de tipo de datos double, los demás son enteros.
                         dt2.Columns.Add(nombre, typeof(System.Double));
                     else
                         dt2.Columns.Add(nombre, typeof(System.Int16));
                 }
-            }
-            /*dt2.Columns.Add("Antigüedad", typeof(System.Int16));
-            dt2.Columns.Add("Barrio", typeof(System.Int16));
-            dt2.Columns.Add("Estado", typeof(System.Int16));
-            dt2.Columns.Add("NroHab", typeof(System.Int16));
-            dt2.Columns.Add("Precio", typeof(System.Double));
-            dt2.Columns.Add("Servicios", typeof(System.Int16));
-            dt2.Columns.Add("Requisitos", typeof(System.Int16));*/
+            }            
 
             foreach (DataGridViewRow rowGrid in dgvAltElegidas.Rows)
             {
@@ -382,6 +378,50 @@ namespace AlquileresDEC.Interfaces
             }
             dgvMatrizDec.DataSource = dt2;
             dgvMatrizDec.Columns[0].Visible = false;
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            Microsoft.Office.Interop.Excel.ApplicationClass excel = new ApplicationClass();
+
+            excel.Application.Workbooks.Add(true);
+
+            int ColumnIndex = 0;
+
+            foreach (DataGridViewColumn col in dgvMatrizDec.Columns)
+            {
+
+                ColumnIndex++;
+
+                excel.Cells[1, ColumnIndex] = col.Name;
+
+            }
+
+            int rowIndex = 0;
+
+            foreach (DataGridViewRow row in dgvMatrizDec.Rows)
+            {
+
+                rowIndex++;
+
+                ColumnIndex = 0;
+
+                foreach (DataGridViewColumn col in dgvMatrizDec.Columns)
+                {
+
+                    ColumnIndex++;
+
+                    excel.Cells[rowIndex + 1, ColumnIndex] = row.Cells[col.Name].Value;
+
+                }
+
+            }
+
+            excel.Visible = true;
+
+            Worksheet worksheet = (Worksheet)excel.ActiveSheet;
+
+            worksheet.Activate();
         }
         
 

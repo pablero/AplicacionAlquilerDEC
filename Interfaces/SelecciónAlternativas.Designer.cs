@@ -414,6 +414,7 @@
             this.btnExcel.TabIndex = 36;
             this.btnExcel.Text = "Exportar A Excel";
             this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // btnMatrizDecision
             // 
